@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Routes** | Pointer to [**[]RouteStructure**](RouteStructure.md) | A list of routes that should be reconstructed prior to optimization. Reconstruction ensures all constraints are met and may involve removing orders, changing breaks, or adjusting the start time of the route. After the reconstruction, the optimization will try to improve the routes. The structure of the routes can be changed by the optimization as long as the constraints are satisfied. Check your individual price plan or contract to see whether or not the request may contain routes. | [optional] [default to []]
 **Constraints** | Pointer to [**Constraints**](Constraints.md) |  | [optional] 
 **Rules** | Pointer to [**Rules**](Rules.md) |  | [optional] 
+**Metadata** | Pointer to [**OptimizationRequestMetadata**](OptimizationRequestMetadata.md) |  | [optional] 
 
 ## Methods
 
@@ -211,6 +212,31 @@ SetRules sets Rules field to given value.
 `func (o *OptimizationRequest) HasRules() bool`
 
 HasRules returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *OptimizationRequest) GetMetadata() OptimizationRequestMetadata`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *OptimizationRequest) GetMetadataOk() (*OptimizationRequestMetadata, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *OptimizationRequest) SetMetadata(v OptimizationRequestMetadata)`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *OptimizationRequest) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

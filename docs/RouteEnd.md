@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LocationId** | Pointer to **string** | The unique identifier of the location where the route ends. This is the end location of the assigned vehicle. | [optional] 
+**LocationId** | Pointer to **string** | The unique identifier of the location where the route ends. | [optional] 
 **Approach** | Pointer to [**Leg**](Leg.md) |  | [optional] 
 **Arrival** | Pointer to **time.Time** | The point in time when the vehicle arrives at its end location. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | [optional] 
 **Duration** | Pointer to **int32** | The duration [s] between the arrival at the end location and the end of the route. | [optional] 

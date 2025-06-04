@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Threshold** | **int32** | The threshold on the route duration [s] that defines when this overtime starts. | 
-**ExtraPerHour** | **float64** | Specifies the extra cost for every hour above the threshold. If the threshold of multiple overtimes is exceeded, the extra costs per hour are added. | 
+**Threshold** | **int32** | The threshold for the route duration [s] above which the extra cost per hour applies. | 
+**ExtraPerHour** | **float64** | Specifies the extra cost for every hour above the threshold. | 
 
 ## Methods
 

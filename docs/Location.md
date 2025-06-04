@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** | A unique identifier of the location. | 
 **Latitude** | **float64** | The latitude value of the location in degrees (WGS84/EPSG:4326) from south to north. | 
 **Longitude** | **float64** | The longitude value of the location in degrees (WGS84/EPSG:4326) from west to east. | 
+**MatchSideOfStreet** | Pointer to **bool** | Requires the vehicle to approach from the side of the street where the location is situated. This prevents the driver from needing to cross the street. | [optional] [default to false]
 **StopProperties** | Pointer to [**StopProperties**](StopProperties.md) |  | [optional] 
 **Categories** | Pointer to **[]string** | A list of categories the location belongs to that can be used to describe constraints or rules. | [optional] [default to []]
 
@@ -88,6 +89,31 @@ and a boolean to check if the value has been set.
 
 SetLongitude sets Longitude field to given value.
 
+
+### GetMatchSideOfStreet
+
+`func (o *Location) GetMatchSideOfStreet() bool`
+
+GetMatchSideOfStreet returns the MatchSideOfStreet field if non-nil, zero value otherwise.
+
+### GetMatchSideOfStreetOk
+
+`func (o *Location) GetMatchSideOfStreetOk() (*bool, bool)`
+
+GetMatchSideOfStreetOk returns a tuple with the MatchSideOfStreet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchSideOfStreet
+
+`func (o *Location) SetMatchSideOfStreet(v bool)`
+
+SetMatchSideOfStreet sets MatchSideOfStreet field to given value.
+
+### HasMatchSideOfStreet
+
+`func (o *Location) HasMatchSideOfStreet() bool`
+
+HasMatchSideOfStreet returns a boolean if a field has been set.
 
 ### GetStopProperties
 

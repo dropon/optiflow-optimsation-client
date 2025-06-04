@@ -102,7 +102,7 @@ import (
 )
 
 func main() {
-	optimizationRequest := *openapiclient.NewOptimizationRequest(*openapiclient.NewOptimizationSettings(int32(7200)), []openapiclient.Location{*openapiclient.NewLocation("LOCATION-123", float64(50.95136607213874), float64(3.8068358460359364))}, *openapiclient.NewOrders(), []openapiclient.Vehicle{*openapiclient.NewVehicle("VEHICLE-123", *openapiclient.NewVehicleStart("GHENT", time.Now()), *openapiclient.NewVehicleEnd("BRUSSELS", time.Now()), *openapiclient.NewVehicleRouting("EUR_VAN"), *openapiclient.NewVehicleCosts(float64(40), float64(0.5)))}) // OptimizationRequest | The data needed to optimize the routes.
+	optimizationRequest := *openapiclient.NewOptimizationRequest(*openapiclient.NewOptimizationSettings(int32(7200)), []openapiclient.Location{*openapiclient.NewLocation("LOCATION-123", float64(50.95136607213874), float64(3.8068358460359364))}, *openapiclient.NewOrders(), []openapiclient.Vehicle{*openapiclient.NewVehicle("VEHICLE-123", *openapiclient.NewVehicleStart("GHENT", time.Now()), *openapiclient.NewVehicleEnd(time.Now()), *openapiclient.NewVehicleRouting("EUR_VAN"), *openapiclient.NewVehicleCosts(float64(40), float64(0.5)))}) // OptimizationRequest | The data needed to optimize the routes.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

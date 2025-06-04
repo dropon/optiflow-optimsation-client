@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Compactness** | Pointer to **float64** | A scale between 0 and 1 resembling a tradeoff between minimizing distance cost and maximizing compactness, where higher values indicate a stronger preference for compact routes. As the cost per kilometer increases, the influence of this tradeoff becomes more significant. A route is considered compact if all stops for executing non-depot tasks are close to each other. | [optional] [default to 0]
+**RouteDurationBalancing** | Pointer to **float64** | A scale between 0 and 1 resembling a tradeoff between minimizing the total hour cost and balancing the route durations of the vehicles. Higher values indicate a stronger preference for a route duration close to the average route duration. As the cost per hour increases, the influence of this tradeoff becomes more significant. | [optional] [default to 0]
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetCompactness sets Compactness field to given value.
 `func (o *VehiclePreferences) HasCompactness() bool`
 
 HasCompactness returns a boolean if a field has been set.
+
+### GetRouteDurationBalancing
+
+`func (o *VehiclePreferences) GetRouteDurationBalancing() float64`
+
+GetRouteDurationBalancing returns the RouteDurationBalancing field if non-nil, zero value otherwise.
+
+### GetRouteDurationBalancingOk
+
+`func (o *VehiclePreferences) GetRouteDurationBalancingOk() (*float64, bool)`
+
+GetRouteDurationBalancingOk returns a tuple with the RouteDurationBalancing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRouteDurationBalancing
+
+`func (o *VehiclePreferences) SetRouteDurationBalancing(v float64)`
+
+SetRouteDurationBalancing sets RouteDurationBalancing field to given value.
+
+### HasRouteDurationBalancing
+
+`func (o *VehiclePreferences) HasRouteDurationBalancing() bool`
+
+HasRouteDurationBalancing returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

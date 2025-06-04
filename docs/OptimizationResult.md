@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The unique identifier of the optimization. | 
+**Metadata** | Pointer to [**OptimizationResultMetadata**](OptimizationResultMetadata.md) |  | [optional] 
 **Status** | [**OptimizationStatus**](OptimizationStatus.md) |  | 
-**Routes** | Pointer to [**[]Route**](Route.md) | The routes scheduled by the optimization.As long as the optimization is not yet &#x60;SUCCEEDED&#x60;, scheduled routes may be only an intermediate result. | [optional] [default to []]
+**Routes** | Pointer to [**[]Route**](Route.md) | The routes scheduled by the optimization. As long as the optimization is not yet &#x60;SUCCEEDED&#x60;, scheduled routes may be only an intermediate result. | [optional] [default to []]
 **Metrics** | Pointer to [**Metrics**](Metrics.md) |  | [optional] 
 **Error** | Pointer to [**Error**](Error.md) |  | [optional] 
 **Warnings** | Pointer to [**[]Warning**](Warning.md) | A list of warnings concerning the optimization. | [optional] [default to []]
@@ -49,6 +50,31 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+
+### GetMetadata
+
+`func (o *OptimizationResult) GetMetadata() OptimizationResultMetadata`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *OptimizationResult) GetMetadataOk() (*OptimizationResultMetadata, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *OptimizationResult) SetMetadata(v OptimizationResultMetadata)`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *OptimizationResult) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 ### GetStatus
 
