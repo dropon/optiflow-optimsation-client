@@ -24,7 +24,7 @@ jobs:
         run: npm install -g @openapitools/openapi-generator-cli
 
       - name: Remove previously generated client
-        run: rm -rf .* 
+        run: rm -rf * 
 
       - name: Generate Go client from OpenAPI spec
         run: |
@@ -45,5 +45,8 @@ jobs:
           git cherry-pick f6e633dadca0d15bb402e384ed6c6feb10ebe6c6|| echo "Cherry-pick failed or already applied"
           git cherry-pick e60f99ed41bff620b9babfaef3a93c6362cd0ec4|| echo "Cherry-pick failed or already applied"
 
-      - name: Force push to main
-        run: git push origin main --force
+      - name: Checkout to test
+        run: git checkout test 
+
+      - name: Force push to test 
+        run: git push origin test --force
