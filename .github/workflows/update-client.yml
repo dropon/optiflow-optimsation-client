@@ -85,7 +85,7 @@ jobs:
 
 
       - name: Notify Slack about new version
-        if: steps.bump_tag.outputs.new_tag != ''
+        if: steps.changes.outputs.diff_count != '0' 
         run: |
           WEBHOOK_URL="https://hooks.slack.com/services/${{ vars.SLACK_CHANNEL }}/${{ vars.SLACK_CHANNEL_ID }}/${{ secrets.SLACK_SECRET }}"
           MESSAGE="Heads up, new optiflow client version available: ${{ steps.bump_tag.outputs.new_tag }}"
