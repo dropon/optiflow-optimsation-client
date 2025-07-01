@@ -28,14 +28,6 @@ jobs:
           git checkout main 
           git pull
 
-      - name: Delete old branches
-        continue-on-error: true
-        run: |
-          git push -d origin new-version
-
-      - name: Checkout to new-version
-        run: git checkout -b new-version 
-
       - name: Install OpenAPI Generator CLI via NPM
         run: npm install -g @openapitools/openapi-generator-cli
 
@@ -92,7 +84,7 @@ jobs:
       - name: Check if something changed with git diff
         id: changes
         run: |
-          DIFF_COUNT=$(git diff new-version..main | wc -l | xargs)
+          DIFF_COUNT=$(git diff origin/main..main | wc -l | xargs)
           echo "Count of different lines: $DIFF_COUNT"
           echo "diff_count=$DIFF_COUNT" >> $GITHUB_OUTPUT
 
@@ -130,6 +122,6 @@ jobs:
           
           curl -X POST --data-urlencode "payload={\"text\": \"$MESSAGE\", \"channel\": \"#it_builds\", \"username\": \"deploy-bot\", \"icon_emoji\": \":monkey_face:\"}" "$WEBHOOK_URL"
 
-      - name: Force push to new-version 
+      - name: Force push to main
         if: steps.changes.outputs.diff_count != '0'
         run: git push origin main --force
