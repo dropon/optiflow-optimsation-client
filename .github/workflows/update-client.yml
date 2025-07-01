@@ -58,6 +58,40 @@ jobs:
           echo "Count of different lines: $DIFF_COUNT"
           echo "diff_count=$DIFF_COUNT" >> $GITHUB_OUTPUT
 
+      - name: Bump patch version and create new tag
+        if: steps.changes.outputs.diff_count != '0'
+        id: bump_tag
+        run: |
+          git fetch --tags
+
+          # Get latest tag matching vX.Y.Z format
+          LATEST_TAG=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
+          echo "Latest tag: $LATEST_TAG"
+
+          # Parse version components
+          VERSION=${LATEST_TAG#v}               # Strip the 'v'
+          MAJOR=$(echo "$VERSION" | cut -d. -f1)
+          MINOR=$(echo "$VERSION" | cut -d. -f2)
+          PATCH=$(echo "$VERSION" | cut -d. -f3)
+
+          # Bump patch
+          NEW_PATCH=$((PATCH + 1))
+          NEW_TAG="v$MAJOR.$MINOR.$NEW_PATCH"
+          echo "New tag will be: $NEW_TAG"
+
+          # Create and push the new tag
+          git tag "$NEW_TAG"
+          git push origin "$NEW_TAG"
+
+
+      - name: Notify Slack about new version
+        if: steps.bump_tag.outputs.new_tag != ''
+        run: |
+          WEBHOOK_URL="https://hooks.slack.com/services/${{ vars.SLACK_CHANNEL }}/${{ vars.SLACK_CHANNEL_ID }}/${{ secrets.SLACK_SECRET }}"
+          MESSAGE="Heads up, new optiflow client version available: ${{ steps.bump_tag.outputs.new_tag }}"
+          
+          curl -X POST --data-urlencode "payload={\"text\": \"$MESSAGE\", \"channel\": \"#it_builds\", \"username\": \"deploy-bot\", \"icon_emoji\": \":monkey_face:\"}" "$WEBHOOK_URL"
+
       - name: Force push to new-version 
         if: steps.changes.outputs.diff_count != '0'
         run: git push origin new-version --force
