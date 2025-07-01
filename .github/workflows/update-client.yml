@@ -26,6 +26,9 @@ jobs:
       - name: Remove previously generated client
         run: rm -rf * 
 
+      - name: Check what's inside 
+        run: ls -la
+
       - name: Generate Go client from OpenAPI spec
         run: |
           openapi-generator-cli generate \
