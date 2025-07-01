@@ -26,7 +26,7 @@ jobs:
       - name: Switch to main and pull
         run: |
           git checkout main 
-          git pull main
+          git pull
 
       - name: Delete old branches
         run: |
