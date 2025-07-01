@@ -39,22 +39,17 @@ jobs:
             -i https://api.myptv.com/meta/services/routeoptimization/optiflow/v1/openapi.json \
             -o .
 
+      - name: Cherry-pick required commits
+        run: |
+          git cherry-pick f6e633dadca0d15bb402e384ed6c6feb10ebe6c6|| echo "Cherry-pick failed or already applied"
+          git cherry-pick e60f99ed41bff620b9babfaef3a93c6362cd0ec4|| echo "Cherry-pick failed or already applied"
+
       - name: Commit regenerated client
         run: |
           git config user.name "dropon-bot"
           git config user.email "bot@dropon.io"
           git add .
           git commit -m "Regenerate Go client from OpenAPI spec" || echo "No changes to commit"
-
-      - name: Cherry-pick required commits
-        run: |
-          git cherry-pick f6e633dadca0d15bb402e384ed6c6feb10ebe6c6|| echo "Cherry-pick failed or already applied"
-          git cherry-pick e60f99ed41bff620b9babfaef3a93c6362cd0ec4|| echo "Cherry-pick failed or already applied"
-
-      - name: Add all changes 
-        run: |
-          git add .
-          git commit -m "new generated client"
 
       - name: Force push to test 
         run: git push origin test --force
