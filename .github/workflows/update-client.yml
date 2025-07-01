@@ -32,7 +32,6 @@ jobs:
         run: |
           git push -d origin new-version
 
-
       - name: Checkout to new-version
         run: git checkout -b new-version 
 
