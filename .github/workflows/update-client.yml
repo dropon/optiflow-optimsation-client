@@ -23,8 +23,8 @@ jobs:
       - name: Fetch all branches
         run: git fetch -a
 
-      - name: Checkout to test
-        run: git switch test 
+      - name: Checkout to new-version
+        run: git switch new-version 
 
       - name: Install OpenAPI Generator CLI via NPM
         run: npm install -g @openapitools/openapi-generator-cli
@@ -53,9 +53,9 @@ jobs:
 
       - name: Check if something changed with git diff
         run: |
-          DIFF_COUNT=$(git diff test..test2 | wc -l | xargs)
+          DIFF_COUNT=$(git diff main..new-version| wc -l | xargs)
           echo "diff_count=$DIFF_COUNT" >> $GITHUB_OUTPUT
 
-      - name: Force push to test 
+      - name: Force push to new-version 
         if: steps.changes.outputs.diff_count != '0'
-        run: git push origin test --force
+        run: git push origin new-version --force
