@@ -44,6 +44,28 @@ jobs:
           git cherry-pick f6e633dadca0d15bb402e384ed6c6feb10ebe6c6|| echo "Cherry-pick failed or already applied"
           git cherry-pick e60f99ed41bff620b9babfaef3a93c6362cd0ec4|| echo "Cherry-pick failed or already applied"
 
+      - name: Extract Go version from go.mod
+        id: go_version
+        run: |
+          VERSION=$(grep '^go ' go.mod | cut -d' ' -f2)
+          echo "Using Go version: $VERSION"
+          echo "go_version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Set up Go from go.mod
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ steps.go_version.outputs.go_version }}
+
+      - name: Typecheck Go client
+        run: go build -o /dev/null ./...
+
+      - name: Notify Slack on build failure
+        if: failure() 
+        run: |
+          WEBHOOK_URL="https://hooks.slack.com/services/${{ vars.SLACK_CHANNEL }}/${{ vars.SLACK_CHANNEL_ID }}/${{ secrets.SLACK_SECRET }}"
+          MESSAGE=":rotating_light: *Go build failed for optiflow client!* Please check the logs in GitHub Actions. :boom:"
+          curl -X POST --data-urlencode "payload={\"text\": \"$MESSAGE\", \"channel\": \"#it_builds\", \"username\": \"deploy-bot\", \"icon_emoji\": \":monkey_face:\"}" "$WEBHOOK_URL"
+
       - name: Commit regenerated client
         run: |
           git config user.name "dropon-bot"
