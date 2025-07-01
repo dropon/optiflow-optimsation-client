@@ -1,0 +1,52 @@
+name: Update Go Client from OpenAPI Spec
+
+on:
+  schedule:
+    - cron: '0 * * * *' # runs hourly
+  workflow_dispatch:     # allows manual run
+
+jobs:
+  regenerate-client:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_PAT }}  
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' 
+
+      - name: Install OpenAPI Generator CLI via NPM
+        run: npm install -g @openapitools/openapi-generator-cli
+
+      - name: Remove previously generated client
+        run: rm -rf * 
+
+      - name: Generate Go client from OpenAPI spec
+        run: |
+          openapi-generator-cli generate \
+            -g go \
+            -i https://api.myptv.com/meta/services/routeoptimization/optiflow/v1/openapi.json \
+            -o .
+
+      - name: Commit regenerated client
+        run: |
+          git config user.name "dropon-bot"
+          git config user.email "bot@dropon.io"
+          git add .
+          git commit -m "Regenerate Go client from OpenAPI spec" || echo "No changes to commit"
+
+      - name: Cherry-pick required commits
+        run: |
+          git cherry-pick f6e633dadca0d15bb402e384ed6c6feb10ebe6c6|| echo "Cherry-pick failed or already applied"
+          git cherry-pick e60f99ed41bff620b9babfaef3a93c6362cd0ec4|| echo "Cherry-pick failed or already applied"
+
+      - name: Go to other branch 
+        run: git checkout test
+
+      - name: Force push to test
+        run: git push origin test --force
