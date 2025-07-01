@@ -54,7 +54,7 @@ jobs:
       - name: Check if something changed with git diff
         run: |
           DIFF_COUNT=$(git diff new-version..main | wc -l | xargs)
-          echo "diff_count=$DIFF_COUNT" >> $GITHUB_OUTPUT
+          echo "diff_count=$DIFF_COUNT" >> "$GITHUB_OUTPUT"
 
       - name: Force push to new-version 
         if: steps.changes.outputs.diff_count != '0'
