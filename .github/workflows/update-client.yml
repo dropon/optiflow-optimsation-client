@@ -43,6 +43,9 @@ jobs:
           git add .
           git commit -m "Regenerate Go client from OpenAPI spec" || echo "No changes to commit"
 
+      - name: Fetch all branches
+        run: git fetch -a
+
       - name: Cherry-pick required commits
         run: |
           git cherry-pick f6e633dadca0d15bb402e384ed6c6feb10ebe6c6|| echo "Cherry-pick failed or already applied"
