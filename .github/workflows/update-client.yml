@@ -29,6 +29,7 @@ jobs:
           git pull
 
       - name: Delete old branches
+        continue-on-error: true
         run: |
           git push -d origin new-version
 
