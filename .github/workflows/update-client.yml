@@ -51,5 +51,11 @@ jobs:
           git add .
           git commit -m "Regenerate Go client from OpenAPI spec" || echo "No changes to commit"
 
+      - name: Check if something changed with git diff
+        run: |
+          DIFF_COUNT=$(git diff test..test2 | wc -l | xargs)
+          echo "diff_count=$DIFF_COUNT" >> $GITHUB_OUTPUT
+
       - name: Force push to test 
+        if: steps.changes.outputs.diff_count != '0'
         run: git push origin test --force
