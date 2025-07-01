@@ -52,10 +52,11 @@ jobs:
           git commit -m "Regenerate Go client from OpenAPI spec" || echo "No changes to commit"
 
       - name: Check if something changed with git diff
+        id: changes
         run: |
           DIFF_COUNT=$(git diff new-version..main | wc -l | xargs)
           echo "Count of different lines: $DIFF_COUNT"
-          echo "diff_count=$DIFF_COUNT" >> "$GITHUB_OUTPUT"
+          echo "diff_count=$DIFF_COUNT" >> $GITHUB_OUTPUT
 
       - name: Force push to new-version 
         if: steps.changes.outputs.diff_count != '0'
