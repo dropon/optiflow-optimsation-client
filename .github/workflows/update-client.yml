@@ -23,8 +23,18 @@ jobs:
       - name: Fetch all branches
         run: git fetch -a
 
+      - name: Switch to main and pull
+        run: |
+          git checkout main 
+          git pull main
+
+      - name: Delete old branches
+        run: |
+          git push -d origin new-version
+
+
       - name: Checkout to new-version
-        run: git switch new-version 
+        run: git checkout -b new-version 
 
       - name: Install OpenAPI Generator CLI via NPM
         run: npm install -g @openapitools/openapi-generator-cli
