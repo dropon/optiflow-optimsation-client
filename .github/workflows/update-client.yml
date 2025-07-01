@@ -52,7 +52,7 @@ jobs:
           git cherry-pick e60f99ed41bff620b9babfaef3a93c6362cd0ec4|| echo "Cherry-pick failed or already applied"
 
       - name: Checkout to test
-        run: git checkout test 
+        run: git switch test 
 
       - name: Force push to test 
         run: git push origin test --force
