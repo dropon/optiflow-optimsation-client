@@ -53,8 +53,12 @@ jobs:
         run: |
           git config user.name "dropon-bot"
           git config user.email "bot@dropon.io"
-          git cherry-pick f6e633dadca0d15bb402e384ed6c6feb10ebe6c6|| echo "Cherry-pick failed or already applied"
-          git cherry-pick e60f99ed41bff620b9babfaef3a93c6362cd0ec4|| echo "Cherry-pick failed or already applied"
+          git add .
+          git commit -m "chore: add new client version"
+          git cherry-pick --no-commit f6e633dadca0d15bb402e384ed6c6feb10ebe6c6|| echo "Cherry-pick failed or already applied"
+          git cherry-pick --no-commit e60f99ed41bff620b9babfaef3a93c6362cd0ec4|| echo "Cherry-pick failed or already applied"
+          git add . 
+          git commit -m "fix: resolve name clashes"
 
       - name: Extract Go version from go.mod
         id: go_version
