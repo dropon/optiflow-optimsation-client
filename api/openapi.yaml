@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.15"
+  version: "1.16"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -27,17 +27,17 @@ paths:
           application/json:
             examples:
               animalTransport:
-                $ref: '#/components/examples/AnimalTransportRequest'
+                $ref: "#/components/examples/AnimalTransportRequest"
               deliveriesWithBackHauls:
-                $ref: '#/components/examples/DeliveriesWithBackHaulsRequest'
+                $ref: "#/components/examples/DeliveriesWithBackHaulsRequest"
               nothingToOptimize:
-                $ref: '#/components/examples/NothingToOptimizeRequest'
+                $ref: "#/components/examples/NothingToOptimizeRequest"
               postalService:
-                $ref: '#/components/examples/PostalServiceRequest'
+                $ref: "#/components/examples/PostalServiceRequest"
               taxiService:
-                $ref: '#/components/examples/TaxiServiceRequest'
+                $ref: "#/components/examples/TaxiServiceRequest"
             schema:
-              $ref: '#/components/schemas/OptimizationRequest'
+              $ref: "#/components/schemas/OptimizationRequest"
         description: The data needed to optimize the routes.
         required: true
       responses:
@@ -45,13 +45,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OptimizationIdentifier'
+                $ref: "#/components/schemas/OptimizationIdentifier"
           description: The request has been accepted for optimization.
         default:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Response on failure.
       tags:
       - Optimization
@@ -77,23 +77,23 @@ paths:
             application/json:
               examples:
                 animalTransport:
-                  $ref: '#/components/examples/AnimalTransportResult'
+                  $ref: "#/components/examples/AnimalTransportResult"
                 deliveriesWithBackHauls:
-                  $ref: '#/components/examples/DeliveriesWithBackHaulsResult'
+                  $ref: "#/components/examples/DeliveriesWithBackHaulsResult"
                 nothingToOptimize:
-                  $ref: '#/components/examples/NothingToOptimizeResult'
+                  $ref: "#/components/examples/NothingToOptimizeResult"
                 postalService:
-                  $ref: '#/components/examples/PostalServiceResult'
+                  $ref: "#/components/examples/PostalServiceResult"
                 taxiService:
-                  $ref: '#/components/examples/TaxiServiceResult'
+                  $ref: "#/components/examples/TaxiServiceResult"
               schema:
-                $ref: '#/components/schemas/OptimizationResult'
+                $ref: "#/components/schemas/OptimizationResult"
           description: The current result of the optimization is successfully provided.
         default:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Response on failure.
       tags:
       - Optimization
@@ -119,7 +119,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Response on failure.
       tags:
       - Optimization
@@ -2073,7 +2073,7 @@ components:
           description: A list of breaks that are scheduled to be taken before the
             appointment.
           items:
-            $ref: '#/components/schemas/Break'
+            $ref: "#/components/schemas/Break"
           type: array
         waitingDuration:
           description: "The duration [s] of the waiting period before the appointment\
@@ -2103,7 +2103,7 @@ components:
             \ When the order is a pickup order (resp. delivery order), its delivery\
             \ task (resp. pickup task) will be scheduled at a depot."
           items:
-            $ref: '#/components/schemas/Task'
+            $ref: "#/components/schemas/Task"
           minItems: 1
           type: array
         end:
@@ -2160,7 +2160,7 @@ components:
             the vehicle may work without taking a break. All the time spent during
             a route is considered working time except for waiting time and break time.
           items:
-            $ref: '#/components/schemas/WorkingBreakSettings'
+            $ref: "#/components/schemas/WorkingBreakSettings"
           maxItems: 2
           type: array
         driving:
@@ -2169,7 +2169,7 @@ components:
             the vehicle may drive without taking a break of at least the specified
             duration.
           items:
-            $ref: '#/components/schemas/DrivingBreakSettings'
+            $ref: "#/components/schemas/DrivingBreakSettings"
           maxItems: 2
           type: array
       type: object
@@ -2353,21 +2353,21 @@ components:
           default: []
           description: A list of constraints on combinations of orders and compartments.
           items:
-            $ref: '#/components/schemas/OrderCompartmentCombinationConstraint'
+            $ref: "#/components/schemas/OrderCompartmentCombinationConstraint"
           maxItems: 50
           type: array
         orderVehicle:
           default: []
           description: A list of constraints on combinations of orders and vehicles.
           items:
-            $ref: '#/components/schemas/OrderVehicleCombinationConstraint'
+            $ref: "#/components/schemas/OrderVehicleCombinationConstraint"
           maxItems: 1000
           type: array
         depotVehicle:
           default: []
           description: A list of constraints on combinations of depots and vehicles.
           items:
-            $ref: '#/components/schemas/DepotVehicleCombinationConstraint'
+            $ref: "#/components/schemas/DepotVehicleCombinationConstraint"
           maxItems: 50
           type: array
       type: object
@@ -2390,7 +2390,7 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         loadingStrategy:
-          $ref: '#/components/schemas/CompartmentLoadingStrategy'
+          $ref: "#/components/schemas/CompartmentLoadingStrategy"
         categories:
           default: []
           description: A list of categories the compartment belongs to that can be
@@ -2579,11 +2579,11 @@ components:
             vehicleCategory: SMALL_TRUCK
       properties:
         combinations:
-          $ref: '#/components/schemas/CombinationConstraints'
+          $ref: "#/components/schemas/CombinationConstraints"
         orders:
-          $ref: '#/components/schemas/OrderConstraints'
+          $ref: "#/components/schemas/OrderConstraints"
         tasks:
-          $ref: '#/components/schemas/TaskConstraints'
+          $ref: "#/components/schemas/TaskConstraints"
       type: object
     DeliveryOrder:
       description: "An order to deliver goods, which are picked up from a depot."
@@ -2624,9 +2624,9 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         delivery:
-          $ref: '#/components/schemas/TaskProperties'
+          $ref: "#/components/schemas/TaskProperties"
         properties:
-          $ref: '#/components/schemas/OrderProperties'
+          $ref: "#/components/schemas/OrderProperties"
       required:
       - delivery
       - id
@@ -2662,9 +2662,10 @@ components:
           type: string
         timeSlotIds:
           default: []
-          description: A list of unique identifiers of the time slots of the depot
-            location that can be used to execute tasks at this depot. When empty all
-            time slots can be used.
+          description: "A list of unique identifiers of the time slots of the depot\
+            \ location that can be used to execute tasks at this depot. When empty\
+            \ all time slots can be used. If more than 50 time slots are specified\
+            \ for the depot location, the list must not be empty."
           example:
           - MORNING
           - NOON
@@ -2704,7 +2705,7 @@ components:
         vehicleCategory: FORK_LIFT
       properties:
         type:
-          $ref: '#/components/schemas/DepotVehicleCombinationConstraintType'
+          $ref: "#/components/schemas/DepotVehicleCombinationConstraintType"
         depotCategory:
           description: The category of depots to which the constraint applies. The
             constraint will be ignored when no depot belongs to this category.
@@ -2900,7 +2901,7 @@ components:
           description: A list of affected parameters and/or properties that caused
             this error.
           items:
-            $ref: '#/components/schemas/CausingError'
+            $ref: "#/components/schemas/CausingError"
           type: array
         details:
           additionalProperties: true
@@ -2930,7 +2931,7 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         type:
-          $ref: '#/components/schemas/ForbiddenTaskSequenceType'
+          $ref: "#/components/schemas/ForbiddenTaskSequenceType"
         secondTaskCategory:
           description: The category of the tasks that must not be preceded in the
             route by tasks belonging to the first task category. The constraint will
@@ -3015,7 +3016,7 @@ components:
           description: A list of breaks taken while travelling from the start location
             to the end location.
           items:
-            $ref: '#/components/schemas/Break'
+            $ref: "#/components/schemas/Break"
           type: array
         distance:
           description: "The distance [m] travelled between the start location and\
@@ -3190,7 +3191,7 @@ components:
             to cross the street.
           type: boolean
         stopProperties:
-          $ref: '#/components/schemas/StopProperties'
+          $ref: "#/components/schemas/StopProperties"
         categories:
           default: []
           description: A list of categories the location belongs to that can be used
@@ -3237,12 +3238,12 @@ components:
             The rule applies if any of the conditions are met. A condition is met
             if all of its properties are matched.
           items:
-            $ref: '#/components/schemas/LocationRuleCondition'
+            $ref: "#/components/schemas/LocationRuleCondition"
           maxItems: 10
           minItems: 1
           type: array
         preparationDuration:
-          $ref: '#/components/schemas/DurationModifier'
+          $ref: "#/components/schemas/DurationModifier"
       required:
       - conditions
       - preparationDuration
@@ -3647,6 +3648,9 @@ components:
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
+            routeDuration:
+              importance: 0.5
+              preferredDuration: 28800
             compactness: 0.5
           breaks:
             driving:
@@ -3776,6 +3780,9 @@ components:
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
+            routeDuration:
+              importance: 0.5
+              preferredDuration: 28800
             compactness: 0.5
           breaks:
             driving:
@@ -3905,6 +3912,9 @@ components:
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
+            routeDuration:
+              importance: 0.5
+              preferredDuration: 28800
             compactness: 0.5
           breaks:
             driving:
@@ -4034,6 +4044,9 @@ components:
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
+            routeDuration:
+              importance: 0.5
+              preferredDuration: 28800
             compactness: 0.5
           breaks:
             driving:
@@ -4163,6 +4176,9 @@ components:
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
+            routeDuration:
+              importance: 0.5
+              preferredDuration: 28800
             compactness: 0.5
           breaks:
             driving:
@@ -5192,24 +5208,24 @@ components:
               vehicleCategory: SMALL_TRUCK
       properties:
         settings:
-          $ref: '#/components/schemas/OptimizationSettings'
+          $ref: "#/components/schemas/OptimizationSettings"
         locations:
           description: |-
             A list of locations where goods have to be picked up or delivered, or where vehicles are located.
             Please note that the upper bound on number of locations is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
-            $ref: '#/components/schemas/Location'
+            $ref: "#/components/schemas/Location"
           maxItems: 50000
           minItems: 1
           type: array
         orders:
-          $ref: '#/components/schemas/Orders'
+          $ref: "#/components/schemas/Orders"
         vehicles:
           description: |-
             A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle.
             Please note that the upper bound on number of vehicles is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
-            $ref: '#/components/schemas/Vehicle'
+            $ref: "#/components/schemas/Vehicle"
           maxItems: 2500
           minItems: 1
           type: array
@@ -5223,7 +5239,7 @@ components:
             \ delivery orders can be loaded into the vehicle. Those must be delivered\
             \ before stopping at the next depot."
           items:
-            $ref: '#/components/schemas/Depot'
+            $ref: "#/components/schemas/Depot"
           maxItems: 50
           type: array
         routes:
@@ -5235,15 +5251,15 @@ components:
             The structure of the routes can be changed by the optimization as long as the constraints are satisfied.
             Check your individual price plan or contract to see whether or not the request may contain routes.
           items:
-            $ref: '#/components/schemas/RouteStructure'
+            $ref: "#/components/schemas/RouteStructure"
           maxItems: 2500
           type: array
         constraints:
-          $ref: '#/components/schemas/Constraints'
+          $ref: "#/components/schemas/Constraints"
         rules:
-          $ref: '#/components/schemas/Rules'
+          $ref: "#/components/schemas/Rules"
         metadata:
-          $ref: '#/components/schemas/OptimizationRequestMetadata'
+          $ref: "#/components/schemas/OptimizationRequestMetadata"
       required:
       - locations
       - orders
@@ -5787,26 +5803,26 @@ components:
           format: uuid
           type: string
         metadata:
-          $ref: '#/components/schemas/OptimizationResultMetadata'
+          $ref: "#/components/schemas/OptimizationResultMetadata"
         status:
-          $ref: '#/components/schemas/OptimizationStatus'
+          $ref: "#/components/schemas/OptimizationStatus"
         routes:
           default: []
           description: "The routes scheduled by the optimization. As long as the optimization\
             \ is not yet `SUCCEEDED`, scheduled routes may be only an intermediate\
             \ result."
           items:
-            $ref: '#/components/schemas/Route'
+            $ref: "#/components/schemas/Route"
           type: array
         metrics:
-          $ref: '#/components/schemas/Metrics'
+          $ref: "#/components/schemas/Metrics"
         error:
-          $ref: '#/components/schemas/Error'
+          $ref: "#/components/schemas/Error"
         warnings:
           default: []
           description: A list of warnings concerning the optimization.
           items:
-            $ref: '#/components/schemas/Warning'
+            $ref: "#/components/schemas/Warning"
           type: array
       required:
       - id
@@ -5883,7 +5899,7 @@ components:
         orderCategory: FROZEN
       properties:
         type:
-          $ref: '#/components/schemas/OrderCompartmentCombinationConstraintType'
+          $ref: "#/components/schemas/OrderCompartmentCombinationConstraintType"
         orderCategory:
           description: The category of orders to which the constraint applies. The
             constraint will be ignored when no order belongs to this category.
@@ -5970,7 +5986,7 @@ components:
             must be delivered in the route before an order belonging to a category
             later in the sequence can be picked up.
           items:
-            $ref: '#/components/schemas/RespectedOrderSequence'
+            $ref: "#/components/schemas/RespectedOrderSequence"
           maxItems: 100
           type: array
         loadingIncompatibilities:
@@ -5978,7 +5994,7 @@ components:
           description: A list of constraints that prevent orders to be loaded or unloaded
             while other orders are loaded in the vehicle.
           items:
-            $ref: '#/components/schemas/LoadingIncompatibilityConstraint'
+            $ref: "#/components/schemas/LoadingIncompatibilityConstraint"
           maxItems: 100
           type: array
       type: object
@@ -6008,7 +6024,7 @@ components:
             \ values of orders loaded into the vehicle must be lower than or equal\
             \ to the value of the vehicle."
           items:
-            $ref: '#/components/schemas/Load'
+            $ref: "#/components/schemas/Load"
           maxItems: 10
           type: array
         repositioningEffort:
@@ -6059,7 +6075,7 @@ components:
         vehicleCategory: COOLING
       properties:
         type:
-          $ref: '#/components/schemas/OrderVehicleCombinationConstraintType'
+          $ref: "#/components/schemas/OrderVehicleCombinationConstraintType"
         orderCategory:
           description: The category of orders to which the constraint applies. The
             constraint will be ignored if no order belongs to this category.
@@ -6559,7 +6575,7 @@ components:
             A list of orders that must be picked up from a specific location and transported to a depot.
             Please note that the upper bound on number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
-            $ref: '#/components/schemas/PickupOrder'
+            $ref: "#/components/schemas/PickupOrder"
           maxItems: 50000
           type: array
         deliveries:
@@ -6568,7 +6584,7 @@ components:
             A list of orders that must be delivered to a specific location and transported from a depot.
             Please note that the upper bound on number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
-            $ref: '#/components/schemas/DeliveryOrder'
+            $ref: "#/components/schemas/DeliveryOrder"
           maxItems: 50000
           type: array
         pickupDeliveries:
@@ -6577,7 +6593,7 @@ components:
             A list of orders that must be picked up at a specific location and delivered to a specific location.
             Please note that the upper bound on number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
-            $ref: '#/components/schemas/PickupDeliveryOrder'
+            $ref: "#/components/schemas/PickupDeliveryOrder"
           maxItems: 50000
           type: array
       type: object
@@ -6699,11 +6715,11 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         pickup:
-          $ref: '#/components/schemas/TaskProperties'
+          $ref: "#/components/schemas/TaskProperties"
         delivery:
-          $ref: '#/components/schemas/TaskProperties'
+          $ref: "#/components/schemas/TaskProperties"
         properties:
-          $ref: '#/components/schemas/OrderProperties'
+          $ref: "#/components/schemas/OrderProperties"
       required:
       - delivery
       - id
@@ -6748,9 +6764,9 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         pickup:
-          $ref: '#/components/schemas/TaskProperties'
+          $ref: "#/components/schemas/TaskProperties"
         properties:
-          $ref: '#/components/schemas/OrderProperties'
+          $ref: "#/components/schemas/OrderProperties"
       required:
       - id
       - pickup
@@ -7107,7 +7123,7 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         start:
-          $ref: '#/components/schemas/RouteStart'
+          $ref: "#/components/schemas/RouteStart"
         stops:
           default: []
           description: The list of stops scheduled on the route. A stop describes
@@ -7117,12 +7133,12 @@ components:
             if they are assigned to the same time slot. Consecutive appointments are
             grouped as a stop if they are scheduled at the same location.
           items:
-            $ref: '#/components/schemas/Stop'
+            $ref: "#/components/schemas/Stop"
           type: array
         end:
-          $ref: '#/components/schemas/RouteEnd'
+          $ref: "#/components/schemas/RouteEnd"
         metrics:
-          $ref: '#/components/schemas/RouteMetrics'
+          $ref: "#/components/schemas/RouteMetrics"
       type: object
     RouteConstraints:
       description: Describes constraints on the route that may be assigned to the
@@ -7142,6 +7158,34 @@ components:
           description: "Restricts the maximum distance [m] travelled on the route\
             \ assigned to the vehicle."
           example: 100000
+          format: int32
+          minimum: 1
+          type: integer
+      type: object
+    RouteDurationPreference:
+      description: Describes a preference towards a specific route duration of the
+        vehicle.
+      example:
+        importance: 0.5
+        preferredDuration: 28800
+      properties:
+        importance:
+          default: 0
+          description: "A scale between 0 and 1 resembling a tradeoff between minimizing\
+            \ the total hour cost and steering towards the preferred duration of the\
+            \ vehicle. Higher values indicate a stronger preference for a route duration\
+            \ close to the preferred one. As the cost per hour increases, the influence\
+            \ of this tradeoff becomes more significant."
+          example: 0.5
+          format: double
+          maximum: 1
+          minimum: 0
+          type: number
+        preferredDuration:
+          description: "The preferred duration [s] of the route assigned to the vehicle.\
+            \ If omitted, the preferred route duration of this vehicle is the average\
+            \ route duration."
+          example: 28800
           format: int32
           minimum: 1
           type: integer
@@ -7176,7 +7220,7 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         approach:
-          $ref: '#/components/schemas/Leg'
+          $ref: "#/components/schemas/Leg"
         arrival:
           description: "The point in time when the vehicle arrives at its end location.\
             \ Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)."
@@ -7330,7 +7374,7 @@ components:
           default: []
           description: A sequence of tasks scheduled on the route.
           items:
-            $ref: '#/components/schemas/TaskStructure'
+            $ref: "#/components/schemas/TaskStructure"
           maxItems: 10000
           type: array
         breaks:
@@ -7339,7 +7383,7 @@ components:
             A list of breaks scheduled on the route.
             When omitted, reconstruction will make a best effort to schedule breaks in order to satisfy the break settings.
           items:
-            $ref: '#/components/schemas/BreakStructure'
+            $ref: "#/components/schemas/BreakStructure"
           maxItems: 50
           type: array
       required:
@@ -7463,7 +7507,7 @@ components:
           default: []
           description: A list of rules that conditionally modify location properties.
           items:
-            $ref: '#/components/schemas/LocationRule'
+            $ref: "#/components/schemas/LocationRule"
           maxItems: 50
           type: array
       type: object
@@ -7582,7 +7626,7 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         approach:
-          $ref: '#/components/schemas/Leg'
+          $ref: "#/components/schemas/Leg"
         arrival:
           description: "The point in time when the vehicle arrives at the location.\
             \ Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)."
@@ -7602,7 +7646,7 @@ components:
             for execution at this stop. Consecutive tasks are grouped into an appointment
             if they have been assigned to the same time slot.
           items:
-            $ref: '#/components/schemas/Appointment'
+            $ref: "#/components/schemas/Appointment"
           minItems: 1
           type: array
         vehicleSlotIndex:
@@ -7645,7 +7689,7 @@ components:
           default: []
           description: A list of available vehicle slots.
           items:
-            $ref: '#/components/schemas/VehicleSlot'
+            $ref: "#/components/schemas/VehicleSlot"
           maxItems: 20
           type: array
         violationCostPerExtraSlot:
@@ -7739,11 +7783,11 @@ components:
             \ this location will be grouped into one appointment and the timings of\
             \ this appointment are unrestricted."
           items:
-            $ref: '#/components/schemas/TimeSlot'
-          maxItems: 50
+            $ref: "#/components/schemas/TimeSlot"
+          maxItems: 50000
           type: array
         concurrency:
-          $ref: '#/components/schemas/StopConcurrency'
+          $ref: "#/components/schemas/StopConcurrency"
       type: object
     Task:
       description: A description of a task that is scheduled for execution on a route.
@@ -7772,13 +7816,13 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         type:
-          $ref: '#/components/schemas/TaskType'
+          $ref: "#/components/schemas/TaskType"
         breaks:
           default: []
           description: A list of breaks that are scheduled to be taken before the
             execution of the task.
           items:
-            $ref: '#/components/schemas/Break'
+            $ref: "#/components/schemas/Break"
           type: array
         start:
           description: "The point in time when the execution of the task is scheduled\
@@ -7884,7 +7928,7 @@ components:
             \ must be planned on the same route, or consecutively if they are on the\
             \ same route, depending on the constraint defined in the task group."
           items:
-            $ref: '#/components/schemas/TaskGroup'
+            $ref: "#/components/schemas/TaskGroup"
           maxItems: 100
           type: array
         respectedSequences:
@@ -7894,7 +7938,7 @@ components:
             must be scheduled on the route before a task belonging to a category later
             in the sequence.
           items:
-            $ref: '#/components/schemas/RespectedTaskSequence'
+            $ref: "#/components/schemas/RespectedTaskSequence"
           maxItems: 100
           type: array
         forbiddenSequences:
@@ -7903,7 +7947,7 @@ components:
             \ a route. Tasks belonging to certain categories must not be scheduled\
             \ before, or immediately before, tasks belonging to another specific category."
           items:
-            $ref: '#/components/schemas/ForbiddenTaskSequence'
+            $ref: "#/components/schemas/ForbiddenTaskSequence"
           maxItems: 100
           type: array
       type: object
@@ -7925,7 +7969,7 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         constraint:
-          $ref: '#/components/schemas/TaskGroupConstraint'
+          $ref: "#/components/schemas/TaskGroupConstraint"
       required:
       - constraint
       - taskCategory
@@ -7964,9 +8008,10 @@ components:
           type: string
         timeSlotIds:
           default: []
-          description: A list of unique identifiers of the time slots of the location
-            that can be used to execute this task. When empty all time slots can be
-            used.
+          description: "A list of unique identifiers of the time slots of the location\
+            \ that can be used to execute this task. When empty all time slots can\
+            \ be used. If more than 50 time slots are specified for the location,\
+            \ the list must not be empty."
           example:
           - MORNING
           - NOON
@@ -8021,7 +8066,7 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         type:
-          $ref: '#/components/schemas/TaskType'
+          $ref: "#/components/schemas/TaskType"
         timeSlotId:
           description: |-
             The unique identifier of the time slot assigned to an appointment to execute the task.
@@ -8224,6 +8269,9 @@ components:
             threshold: 0
         preferences:
           routeDurationBalancing: 0.5
+          routeDuration:
+            importance: 0.5
+            preferredDuration: 28800
           compactness: 0.5
         breaks:
           driving:
@@ -8306,17 +8354,17 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         start:
-          $ref: '#/components/schemas/VehicleStart'
+          $ref: "#/components/schemas/VehicleStart"
         end:
-          $ref: '#/components/schemas/VehicleEnd'
+          $ref: "#/components/schemas/VehicleEnd"
         routing:
-          $ref: '#/components/schemas/VehicleRouting'
+          $ref: "#/components/schemas/VehicleRouting"
         costs:
-          $ref: '#/components/schemas/VehicleCosts'
+          $ref: "#/components/schemas/VehicleCosts"
         preferences:
-          $ref: '#/components/schemas/VehiclePreferences'
+          $ref: "#/components/schemas/VehiclePreferences"
         breaks:
-          $ref: '#/components/schemas/BreakSettings'
+          $ref: "#/components/schemas/BreakSettings"
         compartments:
           default: []
           description: "A list of compartments available for loading orders. Orders\
@@ -8326,11 +8374,11 @@ components:
             \ to the unloading sequence. When unspecified or empty, the vehicle is\
             \ assumed to have a single compartment with loading strategy `NONE`."
           items:
-            $ref: '#/components/schemas/Compartment'
+            $ref: "#/components/schemas/Compartment"
           maxItems: 5
           type: array
         constraints:
-          $ref: '#/components/schemas/VehicleConstraints'
+          $ref: "#/components/schemas/VehicleConstraints"
         categories:
           default: []
           description: A list of categories the vehicle belongs to that can be used
@@ -8381,11 +8429,11 @@ components:
             \ value of the vehicle. For unspecified dimensions, the load of the vehicle\
             \ is assumed to be unconstrained for this dimension."
           items:
-            $ref: '#/components/schemas/Load'
+            $ref: "#/components/schemas/Load"
           maxItems: 10
           type: array
         route:
-          $ref: '#/components/schemas/RouteConstraints'
+          $ref: "#/components/schemas/RouteConstraints"
       type: object
     VehicleCosts:
       description: Defines the costs for using the vehicle to execute tasks.
@@ -8471,7 +8519,7 @@ components:
             \ the additional cost for the extra hours contributes to the total cost\
             \ of the route."
           items:
-            $ref: '#/components/schemas/OvertimeCost'
+            $ref: "#/components/schemas/OvertimeCost"
           maxItems: 20
           type: array
         overdistances:
@@ -8481,7 +8529,7 @@ components:
             \ threshold, the additional cost for the extra kilometers contributes\
             \ to the total cost of the route."
           items:
-            $ref: '#/components/schemas/OverdistanceCost'
+            $ref: "#/components/schemas/OverdistanceCost"
           maxItems: 20
           type: array
         overstops:
@@ -8491,7 +8539,7 @@ components:
             \ threshold, the additional cost for the extra stops contributes to the\
             \ total cost of the route."
           items:
-            $ref: '#/components/schemas/OverstopCost'
+            $ref: "#/components/schemas/OverstopCost"
           maxItems: 20
           type: array
         repositioningEfforts:
@@ -8501,7 +8549,7 @@ components:
 
             When two orders are loaded into the same compartment and delivered in the same order, we refer to them as a non-last-in-first-out (non-LIFO) pair. Any non-LIFO pair of orders requires repositioning in the vehicle, as the last picked-up order obstructs the first order that needs to be delivered. The effort involved in this repositioning is the minimum effort required for the two orders. The total repositioning effort for the route is the sum of the repositioning efforts for all non-LIFO pairs of orders.
           items:
-            $ref: '#/components/schemas/RepositioningEffortCost'
+            $ref: "#/components/schemas/RepositioningEffortCost"
           maxItems: 20
           type: array
       required:
@@ -8552,6 +8600,9 @@ components:
         \ which **may result in increased costs** as a tradeoff for meeting them."
       example:
         routeDurationBalancing: 0.5
+        routeDuration:
+          importance: 0.5
+          preferredDuration: 28800
         compactness: 0.5
       properties:
         compactness:
@@ -8567,13 +8618,17 @@ components:
           maximum: 1
           minimum: 0
           type: number
+        routeDuration:
+          $ref: "#/components/schemas/RouteDurationPreference"
         routeDurationBalancing:
           default: 0
-          description: "A scale between 0 and 1 resembling a tradeoff between minimizing\
-            \ the total hour cost and balancing the route durations of the vehicles.\
-            \ Higher values indicate a stronger preference for a route duration close\
-            \ to the average route duration. As the cost per hour increases, the influence\
-            \ of this tradeoff becomes more significant."
+          deprecated: true
+          description: "**Deprecated, use routeDuration instead.**  A scale between\
+            \ 0 and 1 resembling a tradeoff between minimizing the total hour cost\
+            \ and balancing the route durations of the vehicles. Higher values indicate\
+            \ a stronger preference for a route duration close to the average route\
+            \ duration. As the cost per hour increases, the influence of this tradeoff\
+            \ becomes more significant."
           example: 0.5
           format: double
           maximum: 1
@@ -8609,9 +8664,9 @@ components:
           minimum: 0
           type: number
         violations:
-          $ref: '#/components/schemas/RoutingViolationStrategy'
+          $ref: "#/components/schemas/RoutingViolationStrategy"
         trafficMode:
-          $ref: '#/components/schemas/TrafficMode'
+          $ref: "#/components/schemas/TrafficMode"
       required:
       - profile
       type: object

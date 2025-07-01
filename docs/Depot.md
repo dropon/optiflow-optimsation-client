@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | A unique identifier of the depot. | 
 **LocationId** | **string** | The unique identifier of the location where the depot is situated. | 
-**TimeSlotIds** | Pointer to **[]string** | A list of unique identifiers of the time slots of the depot location that can be used to execute tasks at this depot. When empty all time slots can be used. | [optional] [default to []]
+**TimeSlotIds** | Pointer to **[]string** | A list of unique identifiers of the time slots of the depot location that can be used to execute tasks at this depot. When empty all time slots can be used. If more than 50 time slots are specified for the depot location, the list must not be empty. | [optional] [default to []]
 **Categories** | Pointer to **[]string** | A list of categories the depot belongs to that can be used to describe constraints or rules. | [optional] [default to []]
 
 ## Methods
