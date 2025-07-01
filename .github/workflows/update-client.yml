@@ -88,7 +88,7 @@ jobs:
         if: steps.changes.outputs.diff_count != '0' 
         run: |
           WEBHOOK_URL="https://hooks.slack.com/services/${{ vars.SLACK_CHANNEL }}/${{ vars.SLACK_CHANNEL_ID }}/${{ secrets.SLACK_SECRET }}"
-          MESSAGE="Heads up, new optiflow client version available. Go to https://github.com/dropon/optiflow-optimsation-client/tags to create a release from the generated tag."
+          MESSAGE="Heads up, new optiflow client version available. Go to https://github.com/dropon/optiflow-optimsation-client/tags to create a release from the generated tag. Don't forget to update the go.mod file from base and redeploy."
           
           curl -X POST --data-urlencode "payload={\"text\": \"$MESSAGE\", \"channel\": \"#it_builds\", \"username\": \"deploy-bot\", \"icon_emoji\": \":monkey_face:\"}" "$WEBHOOK_URL"
 
