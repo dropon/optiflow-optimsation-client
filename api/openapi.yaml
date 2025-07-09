@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.16"
+  version: "1.17"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -2519,6 +2519,22 @@ components:
             - DIRT
             vehicleCategory: SMALL_TRUCK
         tasks:
+          loadingIncompatibilities:
+          - loadedOrderCategory: SMALL_BOX
+            forbiddenTaskCategory: BIG_BOX
+            vehicleCategory: SINGLE_COMPARTMENT
+          - loadedOrderCategory: SMALL_BOX
+            forbiddenTaskCategory: BIG_BOX
+            vehicleCategory: SINGLE_COMPARTMENT
+          - loadedOrderCategory: SMALL_BOX
+            forbiddenTaskCategory: BIG_BOX
+            vehicleCategory: SINGLE_COMPARTMENT
+          - loadedOrderCategory: SMALL_BOX
+            forbiddenTaskCategory: BIG_BOX
+            vehicleCategory: SINGLE_COMPARTMENT
+          - loadedOrderCategory: SMALL_BOX
+            forbiddenTaskCategory: BIG_BOX
+            vehicleCategory: SINGLE_COMPARTMENT
           forbiddenSequences:
           - firstTaskCategory: BLACK_PAINT
             type: NOT_IMMEDIATELY_BEFORE
@@ -3063,45 +3079,6 @@ components:
       required:
       - dimension
       - value
-      type: object
-    LoadingIncompatibilityConstraint:
-      description: Describes a constraint where orders are forbidden to be loaded
-        or unloaded while other orders are loaded in the vehicle.
-      example:
-        loadedOrderCategory: SMALL_BOX
-        forbiddenOrderCategory: BIG_BOX
-        vehicleCategory: SINGLE_COMPARTMENT
-      properties:
-        loadedOrderCategory:
-          description: Orders belonging to this category must be loaded in the vehicle
-            for this constraint to apply. The constraint will be ignored when no order
-            belongs to this category.
-          example: SMALL_BOX
-          maxLength: 36
-          minLength: 1
-          pattern: "^[a-zA-Z0-9_-]{1,36}$"
-          type: string
-        forbiddenOrderCategory:
-          description: Orders belonging to this category cannot be loaded or unloaded
-            while the constraint applies. The constraint will be ignored when no order
-            belongs to this category.
-          example: BIG_BOX
-          maxLength: 36
-          minLength: 1
-          pattern: "^[a-zA-Z0-9_-]{1,36}$"
-          type: string
-        vehicleCategory:
-          description: The category of vehicles to which this constraint applies.
-            When omitted the constraint applies to all vehicles. The constraint will
-            be ignored when no vehicle belongs to this category.
-          example: SINGLE_COMPARTMENT
-          maxLength: 36
-          minLength: 1
-          pattern: "^[a-zA-Z0-9_-]{1,36}$"
-          type: string
-      required:
-      - forbiddenOrderCategory
-      - loadedOrderCategory
       type: object
     Location:
       description: "A specific location where goods have to be picked up or delivered,\
@@ -5148,6 +5125,22 @@ components:
               - DIRT
               vehicleCategory: SMALL_TRUCK
           tasks:
+            loadingIncompatibilities:
+            - loadedOrderCategory: SMALL_BOX
+              forbiddenTaskCategory: BIG_BOX
+              vehicleCategory: SINGLE_COMPARTMENT
+            - loadedOrderCategory: SMALL_BOX
+              forbiddenTaskCategory: BIG_BOX
+              vehicleCategory: SINGLE_COMPARTMENT
+            - loadedOrderCategory: SMALL_BOX
+              forbiddenTaskCategory: BIG_BOX
+              vehicleCategory: SINGLE_COMPARTMENT
+            - loadedOrderCategory: SMALL_BOX
+              forbiddenTaskCategory: BIG_BOX
+              vehicleCategory: SINGLE_COMPARTMENT
+            - loadedOrderCategory: SMALL_BOX
+              forbiddenTaskCategory: BIG_BOX
+              vehicleCategory: SINGLE_COMPARTMENT
             forbiddenSequences:
             - firstTaskCategory: BLACK_PAINT
               type: NOT_IMMEDIATELY_BEFORE
@@ -5987,16 +5980,55 @@ components:
             later in the sequence can be picked up.
           items:
             $ref: "#/components/schemas/RespectedOrderSequence"
-          maxItems: 100
+          maxItems: 1000
           type: array
         loadingIncompatibilities:
           default: []
           description: A list of constraints that prevent orders to be loaded or unloaded
             while other orders are loaded in the vehicle.
           items:
-            $ref: "#/components/schemas/LoadingIncompatibilityConstraint"
-          maxItems: 100
+            $ref: "#/components/schemas/OrderLoadingIncompatibilityConstraint"
+          maxItems: 1000
           type: array
+      type: object
+    OrderLoadingIncompatibilityConstraint:
+      description: Describes a constraint where orders are forbidden to be loaded
+        or unloaded while other orders are loaded in the vehicle.
+      example:
+        loadedOrderCategory: SMALL_BOX
+        forbiddenOrderCategory: BIG_BOX
+        vehicleCategory: SINGLE_COMPARTMENT
+      properties:
+        loadedOrderCategory:
+          description: Orders belonging to this category must be loaded in the vehicle
+            for this constraint to apply. The constraint will be ignored when no order
+            belongs to this category.
+          example: SMALL_BOX
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+        forbiddenOrderCategory:
+          description: Orders belonging to this category cannot be loaded or unloaded
+            while the constraint applies. The constraint will be ignored when no order
+            belongs to this category.
+          example: BIG_BOX
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+        vehicleCategory:
+          description: The category of vehicles to which this constraint applies.
+            When omitted the constraint applies to all vehicles. The constraint will
+            be ignored when no vehicle belongs to this category.
+          example: SINGLE_COMPARTMENT
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+      required:
+      - forbiddenOrderCategory
+      - loadedOrderCategory
       type: object
     OrderProperties:
       description: Information about the order.
@@ -7863,6 +7895,22 @@ components:
     TaskConstraints:
       description: Constraints on the way tasks can be scheduled together on routes.
       example:
+        loadingIncompatibilities:
+        - loadedOrderCategory: SMALL_BOX
+          forbiddenTaskCategory: BIG_BOX
+          vehicleCategory: SINGLE_COMPARTMENT
+        - loadedOrderCategory: SMALL_BOX
+          forbiddenTaskCategory: BIG_BOX
+          vehicleCategory: SINGLE_COMPARTMENT
+        - loadedOrderCategory: SMALL_BOX
+          forbiddenTaskCategory: BIG_BOX
+          vehicleCategory: SINGLE_COMPARTMENT
+        - loadedOrderCategory: SMALL_BOX
+          forbiddenTaskCategory: BIG_BOX
+          vehicleCategory: SINGLE_COMPARTMENT
+        - loadedOrderCategory: SMALL_BOX
+          forbiddenTaskCategory: BIG_BOX
+          vehicleCategory: SINGLE_COMPARTMENT
         forbiddenSequences:
         - firstTaskCategory: BLACK_PAINT
           type: NOT_IMMEDIATELY_BEFORE
@@ -7939,7 +7987,7 @@ components:
             in the sequence.
           items:
             $ref: "#/components/schemas/RespectedTaskSequence"
-          maxItems: 100
+          maxItems: 1000
           type: array
         forbiddenSequences:
           default: []
@@ -7948,7 +7996,15 @@ components:
             \ before, or immediately before, tasks belonging to another specific category."
           items:
             $ref: "#/components/schemas/ForbiddenTaskSequence"
-          maxItems: 100
+          maxItems: 1000
+          type: array
+        loadingIncompatibilities:
+          default: []
+          description: A list of constraints that prevent tasks to be loaded or unloaded
+            depending on which other orders are loaded in the vehicle.
+          items:
+            $ref: "#/components/schemas/TaskLoadingIncompatibilityConstraint"
+          maxItems: 1000
           type: array
       type: object
     TaskGroup:
@@ -7986,6 +8042,45 @@ components:
       x-enum-varnames:
       - CONSECUTIVE
       - SAME_ROUTE
+    TaskLoadingIncompatibilityConstraint:
+      description: Describes a constraint where tasks are forbidden to be loaded or
+        unloaded depending on other orders which are loaded in the vehicle.
+      example:
+        loadedOrderCategory: SMALL_BOX
+        forbiddenTaskCategory: BIG_BOX
+        vehicleCategory: SINGLE_COMPARTMENT
+      properties:
+        loadedOrderCategory:
+          description: Orders belonging to this category must be loaded in the vehicle
+            for this constraint to apply. The constraint will be ignored when no order
+            belongs to this category.
+          example: SMALL_BOX
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+        forbiddenTaskCategory:
+          description: Tasks belonging to this category cannot be executed while the
+            constraint applies. The constraint will be ignored when no task belongs
+            to this category.
+          example: BIG_BOX
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+        vehicleCategory:
+          description: The category of vehicles to which this constraint applies.
+            When omitted the constraint applies to all vehicles. The constraint will
+            be ignored when no vehicle belongs to this category.
+          example: SINGLE_COMPARTMENT
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+      required:
+      - forbiddenTaskCategory
+      - loadedOrderCategory
+      type: object
     TaskProperties:
       description: Describes the pickup task or the delivery task of an order.
       example:

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RespectedSequences** | Pointer to [**[]RespectedOrderSequence**](RespectedOrderSequence.md) | A list of sequences that must be respected when scheduling routes. Orders belonging to a category that occurs earlier in the sequence must be delivered in the route before an order belonging to a category later in the sequence can be picked up. | [optional] [default to []]
-**LoadingIncompatibilities** | Pointer to [**[]LoadingIncompatibilityConstraint**](LoadingIncompatibilityConstraint.md) | A list of constraints that prevent orders to be loaded or unloaded while other orders are loaded in the vehicle. | [optional] [default to []]
+**LoadingIncompatibilities** | Pointer to [**[]OrderLoadingIncompatibilityConstraint**](OrderLoadingIncompatibilityConstraint.md) | A list of constraints that prevent orders to be loaded or unloaded while other orders are loaded in the vehicle. | [optional] [default to []]
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasRespectedSequences returns a boolean if a field has been set.
 
 ### GetLoadingIncompatibilities
 
-`func (o *OrderConstraints) GetLoadingIncompatibilities() []LoadingIncompatibilityConstraint`
+`func (o *OrderConstraints) GetLoadingIncompatibilities() []OrderLoadingIncompatibilityConstraint`
 
 GetLoadingIncompatibilities returns the LoadingIncompatibilities field if non-nil, zero value otherwise.
 
 ### GetLoadingIncompatibilitiesOk
 
-`func (o *OrderConstraints) GetLoadingIncompatibilitiesOk() (*[]LoadingIncompatibilityConstraint, bool)`
+`func (o *OrderConstraints) GetLoadingIncompatibilitiesOk() (*[]OrderLoadingIncompatibilityConstraint, bool)`
 
 GetLoadingIncompatibilitiesOk returns a tuple with the LoadingIncompatibilities field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLoadingIncompatibilities
 
-`func (o *OrderConstraints) SetLoadingIncompatibilities(v []LoadingIncompatibilityConstraint)`
+`func (o *OrderConstraints) SetLoadingIncompatibilities(v []OrderLoadingIncompatibilityConstraint)`
 
 SetLoadingIncompatibilities sets LoadingIncompatibilities field to given value.
 

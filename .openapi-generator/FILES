@@ -26,7 +26,6 @@ docs/ForbiddenTaskSequence.md
 docs/ForbiddenTaskSequenceType.md
 docs/Leg.md
 docs/Load.md
-docs/LoadingIncompatibilityConstraint.md
 docs/Location.md
 docs/LocationRule.md
 docs/LocationRuleCondition.md
@@ -42,6 +41,7 @@ docs/OptimizationStatus.md
 docs/OrderCompartmentCombinationConstraint.md
 docs/OrderCompartmentCombinationConstraintType.md
 docs/OrderConstraints.md
+docs/OrderLoadingIncompatibilityConstraint.md
 docs/OrderProperties.md
 docs/OrderVehicleCombinationConstraint.md
 docs/OrderVehicleCombinationConstraintType.md
@@ -70,6 +70,7 @@ docs/Task.md
 docs/TaskConstraints.md
 docs/TaskGroup.md
 docs/TaskGroupConstraint.md
+docs/TaskLoadingIncompatibilityConstraint.md
 docs/TaskProperties.md
 docs/TaskStructure.md
 docs/TaskType.md
@@ -109,7 +110,6 @@ model_forbidden_task_sequence.go
 model_forbidden_task_sequence_type.go
 model_leg.go
 model_load.go
-model_loading_incompatibility_constraint.go
 model_location.go
 model_location_rule.go
 model_location_rule_condition.go
@@ -124,6 +124,7 @@ model_optimization_status.go
 model_order_compartment_combination_constraint.go
 model_order_compartment_combination_constraint_type.go
 model_order_constraints.go
+model_order_loading_incompatibility_constraint.go
 model_order_properties.go
 model_order_vehicle_combination_constraint.go
 model_order_vehicle_combination_constraint_type.go
@@ -152,6 +153,7 @@ model_task.go
 model_task_constraints.go
 model_task_group.go
 model_task_group_constraint.go
+model_task_loading_incompatibility_constraint.go
 model_task_properties.go
 model_task_structure.go
 model_task_type.go
