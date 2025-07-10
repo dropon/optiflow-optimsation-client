@@ -22,7 +22,7 @@ type OrderVehicleCombinationConstraintType string
 const (
 	ORDER_REQUIRES_VEHICLE OrderVehicleCombinationConstraintType = "ORDER_REQUIRES_VEHICLE"
 	VEHICLE_REQUIRES_ORDER OrderVehicleCombinationConstraintType = "VEHICLE_REQUIRES_ORDER"
-	ORDER_VEHICLE_FORBIDDEN_COMBINATION OrderVehicleCombinationConstraintType = "FORBIDDEN_COMBINATION"
+	FORBIDDEN_COMBINATION OrderVehicleCombinationConstraintType = "FORBIDDEN_COMBINATION"
 )
 
 // All allowed values of OrderVehicleCombinationConstraintType enum

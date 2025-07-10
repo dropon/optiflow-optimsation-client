@@ -2270,6 +2270,7 @@ components:
               * `runningOptimizationIds` - Currently running optimization ids [string].
               * `limit` - The limit.
             * `ROUTE_OPTIMIZATION_ROUTES_FORBIDDEN` - The request is not allowed to contain routes.
+            * `ROUTE_OPTIMIZATION_STOP_CONCURRENCY_FORBIDDEN` - The request is not allowed to contain locations with stop concurrency.
 
             **Error codes for** `GENERAL_RESOURCE_NOT_FOUND`
             * `GENERAL_INVALID_ID` - No resource exists for the provided ID.

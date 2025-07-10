@@ -22,7 +22,7 @@ type OrderCompartmentCombinationConstraintType string
 const (
 	ORDER_REQUIRES_COMPARTMENT OrderCompartmentCombinationConstraintType = "ORDER_REQUIRES_COMPARTMENT"
 	COMPARTMENT_REQUIRES_ORDER OrderCompartmentCombinationConstraintType = "COMPARTMENT_REQUIRES_ORDER"
-	FORBIDDEN_COMBINATION_ORDER_COMPARTMENT OrderCompartmentCombinationConstraintType = "FORBIDDEN_COMBINATION"
+	FORBIDDEN_COMBINATION OrderCompartmentCombinationConstraintType = "FORBIDDEN_COMBINATION"
 )
 
 // All allowed values of OrderCompartmentCombinationConstraintType enum
