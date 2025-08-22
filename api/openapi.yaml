@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.17"
+  version: "1.18"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -3578,51 +3578,66 @@ components:
           costs:
             perKilometer: 0.5
             overstops:
-            - extraPerStop: 0.23021358869347652
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
+              extraFixed: 0.9301444243932576
             fixed: 100
             overtimes:
-            - extraPerHour: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
+              extraFixed: 0.6027456183070403
             overdistances:
-            - extraPerKilometer: 0.5962133916683182
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
+              extraFixed: 0.5637376656633328
             perHour: 40
             perStop: 0.5
             repositioningEfforts:
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
@@ -3710,51 +3725,66 @@ components:
           costs:
             perKilometer: 0.5
             overstops:
-            - extraPerStop: 0.23021358869347652
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
+              extraFixed: 0.9301444243932576
             fixed: 100
             overtimes:
-            - extraPerHour: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
+              extraFixed: 0.6027456183070403
             overdistances:
-            - extraPerKilometer: 0.5962133916683182
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
+              extraFixed: 0.5637376656633328
             perHour: 40
             perStop: 0.5
             repositioningEfforts:
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
@@ -3842,51 +3872,66 @@ components:
           costs:
             perKilometer: 0.5
             overstops:
-            - extraPerStop: 0.23021358869347652
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
+              extraFixed: 0.9301444243932576
             fixed: 100
             overtimes:
-            - extraPerHour: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
+              extraFixed: 0.6027456183070403
             overdistances:
-            - extraPerKilometer: 0.5962133916683182
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
+              extraFixed: 0.5637376656633328
             perHour: 40
             perStop: 0.5
             repositioningEfforts:
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
@@ -3974,51 +4019,66 @@ components:
           costs:
             perKilometer: 0.5
             overstops:
-            - extraPerStop: 0.23021358869347652
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
+              extraFixed: 0.9301444243932576
             fixed: 100
             overtimes:
-            - extraPerHour: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
+              extraFixed: 0.6027456183070403
             overdistances:
-            - extraPerKilometer: 0.5962133916683182
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
+              extraFixed: 0.5637376656633328
             perHour: 40
             perStop: 0.5
             repositioningEfforts:
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
@@ -4106,51 +4166,66 @@ components:
           costs:
             perKilometer: 0.5
             overstops:
-            - extraPerStop: 0.23021358869347652
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
-            - extraPerStop: 0.23021358869347652
+              extraFixed: 0.9301444243932576
+            - extraPerStop: 0.3616076749251911
               threshold: 0
+              extraFixed: 0.9301444243932576
             fixed: 100
             overtimes:
-            - extraPerHour: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
-            - extraPerHour: 0.6027456183070403
+              extraFixed: 0.6027456183070403
+            - extraPerHour: 0.14658129805029452
               threshold: 0
+              extraFixed: 0.6027456183070403
             overdistances:
-            - extraPerKilometer: 0.5962133916683182
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
-            - extraPerKilometer: 0.5962133916683182
+              extraFixed: 0.5637376656633328
+            - extraPerKilometer: 0.23021358869347652
               threshold: 0
+              extraFixed: 0.5637376656633328
             perHour: 40
             perStop: 0.5
             repositioningEfforts:
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
-            - extraPerEffort: 0.9301444243932576
+            - extraPerEffort: 0.4145608029883936
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
@@ -6631,11 +6706,13 @@ components:
           type: array
       type: object
     OverdistanceCost:
-      description: Specifies an increased cost per kilometer if the total distance
-        of a route exceeds a threshold.
+      description: Specifies an extra fixed cost and an increased cost per kilometer
+        if the total distance of a route exceeds a threshold. Either the fixed cost
+        or the extra cost per kilometer must not be zero.
       example:
-        extraPerKilometer: 0.5962133916683182
+        extraPerKilometer: 0.23021358869347652
         threshold: 0
+        extraFixed: 0.5637376656633328
       properties:
         threshold:
           description: "The threshold for the route's total distance [m] above which\
@@ -6643,22 +6720,29 @@ components:
           format: int32
           minimum: 0
           type: integer
+        extraFixed:
+          default: 0
+          description: Specifies the extra fixed cost when exceeding the threshold.
+          format: double
+          minimum: 0
+          type: number
         extraPerKilometer:
+          default: 0
           description: Specifies the extra cost for every kilometer above the threshold.
-          exclusiveMinimum: true
           format: double
           minimum: 0
           type: number
       required:
-      - extraPerKilometer
       - threshold
       type: object
     OverstopCost:
-      description: Specifies an increased cost per stop if the number of stops of
-        a route exceeds a threshold.
+      description: Specifies an extra fixed cost and an increased cost per stop if
+        the number of stops of a route exceeds a threshold. Either the fixed cost
+        or the extra cost per stop must not be zero.
       example:
-        extraPerStop: 0.23021358869347652
+        extraPerStop: 0.3616076749251911
         threshold: 0
+        extraFixed: 0.9301444243932576
       properties:
         threshold:
           description: The threshold for the route's number of stops above which the
@@ -6666,22 +6750,29 @@ components:
           format: int32
           minimum: 0
           type: integer
+        extraFixed:
+          default: 0
+          description: Specifies the extra fixed cost when exceeding the threshold.
+          format: double
+          minimum: 0
+          type: number
         extraPerStop:
+          default: 0
           description: Specifies the extra cost for every stop above the threshold.
-          exclusiveMinimum: true
           format: double
           minimum: 0
           type: number
       required:
-      - extraPerStop
       - threshold
       type: object
     OvertimeCost:
-      description: Specifies an increased cost per hour if the route duration exceeds
-        a threshold.
+      description: Specifies an extra fixed cost and an increased cost per hour if
+        the route duration exceeds a threshold. Either the fixed cost or the extra
+        cost per hour must not be zero.
       example:
-        extraPerHour: 0.6027456183070403
+        extraPerHour: 0.14658129805029452
         threshold: 0
+        extraFixed: 0.6027456183070403
       properties:
         threshold:
           description: "The threshold for the route duration [s] above which the extra\
@@ -6689,14 +6780,19 @@ components:
           format: int32
           minimum: 0
           type: integer
+        extraFixed:
+          default: 0
+          description: Specifies the extra fixed cost when exceeding the threshold.
+          format: double
+          minimum: 0
+          type: number
         extraPerHour:
+          default: 0
           description: Specifies the extra cost for every hour above the threshold.
-          exclusiveMinimum: true
           format: double
           minimum: 0
           type: number
       required:
-      - extraPerHour
       - threshold
       type: object
     PickupDeliveryOrder:
@@ -6809,7 +6905,7 @@ components:
         Specifies an increased cost per effort if the route's repositioning effort goes above a threshold.
         When two orders are loaded into the same compartment and delivered in the reverse order, we refer to them as a non-last-in-first-out (non-LIFO) pair. Any non-LIFO pair of orders requires repositioning in the vehicle, as the last picked-up order obstructs the first order that needs to be delivered. The effort involved in this repositioning is the minimum effort required for the two orders. The total repositioning effort for the route is the sum of the repositioning efforts for all non-LIFO pairs of orders.
       example:
-        extraPerEffort: 0.9301444243932576
+        extraPerEffort: 0.4145608029883936
         threshold: 0
       properties:
         threshold:
@@ -7220,7 +7316,7 @@ components:
             \ route duration."
           example: 28800
           format: int32
-          minimum: 1
+          minimum: 0
           type: integer
       type: object
     RouteEnd:
@@ -8296,7 +8392,7 @@ components:
       description: |-
         Defines the traffic situation that should be considered when calculating routes.
         * `CONSTANT` - Describes a situation where travel times stay the same, no matter the departure time.  In this scenario, traffic conditions are assumed to be steady, unaffected by rush hours, events, or other temporary changes in congestion.
-        * `AVERAGE` - Describes a situation where travel times fluctuate, depending on the departure time. In this scenario, a typical traffic situation for that time of day and day of week will be considered such as the rush-hour on Monday morning or light traffic on Saturday evening. This traffic situation is only supported in Belgium (BE), Switzerland (CH), Czechia (CZ), Germany (DE), Spain (ES), France (FR), United Kingdom (GB), Italy (IT), Liechtenstein (LI), Luxembourg (LU), The Netherlands (NL), Vatican City (VA) and Australia (AU) and for the routing profiles `EUR_VAN`, `EUR_TRUCK_11_99T`, `EUR_TRUCK_40T`, `AUS_LCV_LIGHT_COMMERCIAL`, `AUS_MR_MEDIUM_RIGID` and `AUS_HR_HEAVY_RIGID`. The spherical distance between any two locations should be at most 650 kilometers when using the `AVERAGE` traffic situation. Moreover, the planning horizon for this combination of routing profile and traffic mode should be at most 2 days. The planning horizon is the difference between the maximum of the latest end time and the minimum of the earliest start time of the vehicles using this combination.
+        * `AVERAGE` - Describes a situation where travel times fluctuate, depending on the departure time at a stop. In this scenario, a typical traffic situation for that time of day and day of week will be considered such as the rush-hour on Monday morning or light traffic on Saturday evening. This traffic situation is only supported in Australia (AU), Belgium (BE), Canada (CA), Switzerland (CH), Czechia (CZ), Germany (DE), Spain (ES), France (FR), United Kingdom (GB), Italy (IT), Liechtenstein (LI), Luxembourg (LU), The Netherlands (NL), Vatican City (VA), Andorra (AD), Austria (AT), Monaco (MC), San Marino (SM) and The United States (US) and for the routing profiles `EUR_VAN`, `EUR_TRUCK_11_99T`, `EUR_TRUCK_40T`, `AUS_LCV_LIGHT_COMMERCIAL`, `AUS_MR_MEDIUM_RIGID`, `AUS_HR_HEAVY_RIGID`, `USA_8_SEMITRAILER_5AXLE`, `USA_5_DELIVERY` and `USA_1_PICKUP`. The spherical distance between any two locations should be at most 650 kilometers when using the `AVERAGE` traffic situation. Moreover, the planning horizon for this combination of routing profile and traffic mode should be at most 2 days. The planning horizon is the difference between the maximum of the latest end time and the minimum of the earliest start time of the vehicles using this combination.
       enum:
       - CONSTANT
       - AVERAGE
@@ -8317,51 +8413,66 @@ components:
         costs:
           perKilometer: 0.5
           overstops:
-          - extraPerStop: 0.23021358869347652
+          - extraPerStop: 0.3616076749251911
             threshold: 0
-          - extraPerStop: 0.23021358869347652
+            extraFixed: 0.9301444243932576
+          - extraPerStop: 0.3616076749251911
             threshold: 0
-          - extraPerStop: 0.23021358869347652
+            extraFixed: 0.9301444243932576
+          - extraPerStop: 0.3616076749251911
             threshold: 0
-          - extraPerStop: 0.23021358869347652
+            extraFixed: 0.9301444243932576
+          - extraPerStop: 0.3616076749251911
             threshold: 0
-          - extraPerStop: 0.23021358869347652
+            extraFixed: 0.9301444243932576
+          - extraPerStop: 0.3616076749251911
             threshold: 0
+            extraFixed: 0.9301444243932576
           fixed: 100
           overtimes:
-          - extraPerHour: 0.6027456183070403
+          - extraPerHour: 0.14658129805029452
             threshold: 0
-          - extraPerHour: 0.6027456183070403
+            extraFixed: 0.6027456183070403
+          - extraPerHour: 0.14658129805029452
             threshold: 0
-          - extraPerHour: 0.6027456183070403
+            extraFixed: 0.6027456183070403
+          - extraPerHour: 0.14658129805029452
             threshold: 0
-          - extraPerHour: 0.6027456183070403
+            extraFixed: 0.6027456183070403
+          - extraPerHour: 0.14658129805029452
             threshold: 0
-          - extraPerHour: 0.6027456183070403
+            extraFixed: 0.6027456183070403
+          - extraPerHour: 0.14658129805029452
             threshold: 0
+            extraFixed: 0.6027456183070403
           overdistances:
-          - extraPerKilometer: 0.5962133916683182
+          - extraPerKilometer: 0.23021358869347652
             threshold: 0
-          - extraPerKilometer: 0.5962133916683182
+            extraFixed: 0.5637376656633328
+          - extraPerKilometer: 0.23021358869347652
             threshold: 0
-          - extraPerKilometer: 0.5962133916683182
+            extraFixed: 0.5637376656633328
+          - extraPerKilometer: 0.23021358869347652
             threshold: 0
-          - extraPerKilometer: 0.5962133916683182
+            extraFixed: 0.5637376656633328
+          - extraPerKilometer: 0.23021358869347652
             threshold: 0
-          - extraPerKilometer: 0.5962133916683182
+            extraFixed: 0.5637376656633328
+          - extraPerKilometer: 0.23021358869347652
             threshold: 0
+            extraFixed: 0.5637376656633328
           perHour: 40
           perStop: 0.5
           repositioningEfforts:
-          - extraPerEffort: 0.9301444243932576
+          - extraPerEffort: 0.4145608029883936
             threshold: 0
-          - extraPerEffort: 0.9301444243932576
+          - extraPerEffort: 0.4145608029883936
             threshold: 0
-          - extraPerEffort: 0.9301444243932576
+          - extraPerEffort: 0.4145608029883936
             threshold: 0
-          - extraPerEffort: 0.9301444243932576
+          - extraPerEffort: 0.4145608029883936
             threshold: 0
-          - extraPerEffort: 0.9301444243932576
+          - extraPerEffort: 0.4145608029883936
             threshold: 0
         preferences:
           routeDurationBalancing: 0.5
@@ -8536,51 +8647,66 @@ components:
       example:
         perKilometer: 0.5
         overstops:
-        - extraPerStop: 0.23021358869347652
+        - extraPerStop: 0.3616076749251911
           threshold: 0
-        - extraPerStop: 0.23021358869347652
+          extraFixed: 0.9301444243932576
+        - extraPerStop: 0.3616076749251911
           threshold: 0
-        - extraPerStop: 0.23021358869347652
+          extraFixed: 0.9301444243932576
+        - extraPerStop: 0.3616076749251911
           threshold: 0
-        - extraPerStop: 0.23021358869347652
+          extraFixed: 0.9301444243932576
+        - extraPerStop: 0.3616076749251911
           threshold: 0
-        - extraPerStop: 0.23021358869347652
+          extraFixed: 0.9301444243932576
+        - extraPerStop: 0.3616076749251911
           threshold: 0
+          extraFixed: 0.9301444243932576
         fixed: 100
         overtimes:
-        - extraPerHour: 0.6027456183070403
+        - extraPerHour: 0.14658129805029452
           threshold: 0
-        - extraPerHour: 0.6027456183070403
+          extraFixed: 0.6027456183070403
+        - extraPerHour: 0.14658129805029452
           threshold: 0
-        - extraPerHour: 0.6027456183070403
+          extraFixed: 0.6027456183070403
+        - extraPerHour: 0.14658129805029452
           threshold: 0
-        - extraPerHour: 0.6027456183070403
+          extraFixed: 0.6027456183070403
+        - extraPerHour: 0.14658129805029452
           threshold: 0
-        - extraPerHour: 0.6027456183070403
+          extraFixed: 0.6027456183070403
+        - extraPerHour: 0.14658129805029452
           threshold: 0
+          extraFixed: 0.6027456183070403
         overdistances:
-        - extraPerKilometer: 0.5962133916683182
+        - extraPerKilometer: 0.23021358869347652
           threshold: 0
-        - extraPerKilometer: 0.5962133916683182
+          extraFixed: 0.5637376656633328
+        - extraPerKilometer: 0.23021358869347652
           threshold: 0
-        - extraPerKilometer: 0.5962133916683182
+          extraFixed: 0.5637376656633328
+        - extraPerKilometer: 0.23021358869347652
           threshold: 0
-        - extraPerKilometer: 0.5962133916683182
+          extraFixed: 0.5637376656633328
+        - extraPerKilometer: 0.23021358869347652
           threshold: 0
-        - extraPerKilometer: 0.5962133916683182
+          extraFixed: 0.5637376656633328
+        - extraPerKilometer: 0.23021358869347652
           threshold: 0
+          extraFixed: 0.5637376656633328
         perHour: 40
         perStop: 0.5
         repositioningEfforts:
-        - extraPerEffort: 0.9301444243932576
+        - extraPerEffort: 0.4145608029883936
           threshold: 0
-        - extraPerEffort: 0.9301444243932576
+        - extraPerEffort: 0.4145608029883936
           threshold: 0
-        - extraPerEffort: 0.9301444243932576
+        - extraPerEffort: 0.4145608029883936
           threshold: 0
-        - extraPerEffort: 0.9301444243932576
+        - extraPerEffort: 0.4145608029883936
           threshold: 0
-        - extraPerEffort: 0.9301444243932576
+        - extraPerEffort: 0.4145608029883936
           threshold: 0
       properties:
         perHour:
