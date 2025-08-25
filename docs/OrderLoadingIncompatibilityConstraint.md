@@ -1,4 +1,4 @@
-# LoadingIncompatibilityConstraint
+# OrderLoadingIncompatibilityConstraint
 
 ## Properties
 
@@ -10,85 +10,85 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewLoadingIncompatibilityConstraint
+### NewOrderLoadingIncompatibilityConstraint
 
-`func NewLoadingIncompatibilityConstraint(loadedOrderCategory string, forbiddenOrderCategory string, ) *LoadingIncompatibilityConstraint`
+`func NewOrderLoadingIncompatibilityConstraint(loadedOrderCategory string, forbiddenOrderCategory string, ) *OrderLoadingIncompatibilityConstraint`
 
-NewLoadingIncompatibilityConstraint instantiates a new LoadingIncompatibilityConstraint object
+NewOrderLoadingIncompatibilityConstraint instantiates a new OrderLoadingIncompatibilityConstraint object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewLoadingIncompatibilityConstraintWithDefaults
+### NewOrderLoadingIncompatibilityConstraintWithDefaults
 
-`func NewLoadingIncompatibilityConstraintWithDefaults() *LoadingIncompatibilityConstraint`
+`func NewOrderLoadingIncompatibilityConstraintWithDefaults() *OrderLoadingIncompatibilityConstraint`
 
-NewLoadingIncompatibilityConstraintWithDefaults instantiates a new LoadingIncompatibilityConstraint object
+NewOrderLoadingIncompatibilityConstraintWithDefaults instantiates a new OrderLoadingIncompatibilityConstraint object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetLoadedOrderCategory
 
-`func (o *LoadingIncompatibilityConstraint) GetLoadedOrderCategory() string`
+`func (o *OrderLoadingIncompatibilityConstraint) GetLoadedOrderCategory() string`
 
 GetLoadedOrderCategory returns the LoadedOrderCategory field if non-nil, zero value otherwise.
 
 ### GetLoadedOrderCategoryOk
 
-`func (o *LoadingIncompatibilityConstraint) GetLoadedOrderCategoryOk() (*string, bool)`
+`func (o *OrderLoadingIncompatibilityConstraint) GetLoadedOrderCategoryOk() (*string, bool)`
 
 GetLoadedOrderCategoryOk returns a tuple with the LoadedOrderCategory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLoadedOrderCategory
 
-`func (o *LoadingIncompatibilityConstraint) SetLoadedOrderCategory(v string)`
+`func (o *OrderLoadingIncompatibilityConstraint) SetLoadedOrderCategory(v string)`
 
 SetLoadedOrderCategory sets LoadedOrderCategory field to given value.
 
 
 ### GetForbiddenOrderCategory
 
-`func (o *LoadingIncompatibilityConstraint) GetForbiddenOrderCategory() string`
+`func (o *OrderLoadingIncompatibilityConstraint) GetForbiddenOrderCategory() string`
 
 GetForbiddenOrderCategory returns the ForbiddenOrderCategory field if non-nil, zero value otherwise.
 
 ### GetForbiddenOrderCategoryOk
 
-`func (o *LoadingIncompatibilityConstraint) GetForbiddenOrderCategoryOk() (*string, bool)`
+`func (o *OrderLoadingIncompatibilityConstraint) GetForbiddenOrderCategoryOk() (*string, bool)`
 
 GetForbiddenOrderCategoryOk returns a tuple with the ForbiddenOrderCategory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForbiddenOrderCategory
 
-`func (o *LoadingIncompatibilityConstraint) SetForbiddenOrderCategory(v string)`
+`func (o *OrderLoadingIncompatibilityConstraint) SetForbiddenOrderCategory(v string)`
 
 SetForbiddenOrderCategory sets ForbiddenOrderCategory field to given value.
 
 
 ### GetVehicleCategory
 
-`func (o *LoadingIncompatibilityConstraint) GetVehicleCategory() string`
+`func (o *OrderLoadingIncompatibilityConstraint) GetVehicleCategory() string`
 
 GetVehicleCategory returns the VehicleCategory field if non-nil, zero value otherwise.
 
 ### GetVehicleCategoryOk
 
-`func (o *LoadingIncompatibilityConstraint) GetVehicleCategoryOk() (*string, bool)`
+`func (o *OrderLoadingIncompatibilityConstraint) GetVehicleCategoryOk() (*string, bool)`
 
 GetVehicleCategoryOk returns a tuple with the VehicleCategory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVehicleCategory
 
-`func (o *LoadingIncompatibilityConstraint) SetVehicleCategory(v string)`
+`func (o *OrderLoadingIncompatibilityConstraint) SetVehicleCategory(v string)`
 
 SetVehicleCategory sets VehicleCategory field to given value.
 
 ### HasVehicleCategory
 
-`func (o *LoadingIncompatibilityConstraint) HasVehicleCategory() bool`
+`func (o *OrderLoadingIncompatibilityConstraint) HasVehicleCategory() bool`
 
 HasVehicleCategory returns a boolean if a field has been set.
 

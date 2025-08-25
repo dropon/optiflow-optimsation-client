@@ -5,13 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Threshold** | **int32** | The threshold for the route duration [s] above which the extra cost per hour applies. | 
-**ExtraPerHour** | **float64** | Specifies the extra cost for every hour above the threshold. | 
+**ExtraFixed** | Pointer to **float64** | Specifies the extra fixed cost when exceeding the threshold. | [optional] [default to 0]
+**ExtraPerHour** | Pointer to **float64** | Specifies the extra cost for every hour above the threshold. | [optional] [default to 0]
 
 ## Methods
 
 ### NewOvertimeCost
 
-`func NewOvertimeCost(threshold int32, extraPerHour float64, ) *OvertimeCost`
+`func NewOvertimeCost(threshold int32, ) *OvertimeCost`
 
 NewOvertimeCost instantiates a new OvertimeCost object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +47,31 @@ and a boolean to check if the value has been set.
 SetThreshold sets Threshold field to given value.
 
 
+### GetExtraFixed
+
+`func (o *OvertimeCost) GetExtraFixed() float64`
+
+GetExtraFixed returns the ExtraFixed field if non-nil, zero value otherwise.
+
+### GetExtraFixedOk
+
+`func (o *OvertimeCost) GetExtraFixedOk() (*float64, bool)`
+
+GetExtraFixedOk returns a tuple with the ExtraFixed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtraFixed
+
+`func (o *OvertimeCost) SetExtraFixed(v float64)`
+
+SetExtraFixed sets ExtraFixed field to given value.
+
+### HasExtraFixed
+
+`func (o *OvertimeCost) HasExtraFixed() bool`
+
+HasExtraFixed returns a boolean if a field has been set.
+
 ### GetExtraPerHour
 
 `func (o *OvertimeCost) GetExtraPerHour() float64`
@@ -65,6 +91,11 @@ and a boolean to check if the value has been set.
 
 SetExtraPerHour sets ExtraPerHour field to given value.
 
+### HasExtraPerHour
+
+`func (o *OvertimeCost) HasExtraPerHour() bool`
+
+HasExtraPerHour returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

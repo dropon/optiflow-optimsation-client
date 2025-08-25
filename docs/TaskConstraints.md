@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Groups** | Pointer to [**[]TaskGroup**](TaskGroup.md) | A list of task groups. Tasks belonging to the same task group must be planned on the same route, or consecutively if they are on the same route, depending on the constraint defined in the task group. | [optional] [default to []]
 **RespectedSequences** | Pointer to [**[]RespectedTaskSequence**](RespectedTaskSequence.md) | A list of sequences that must be respected when scheduling routes. Tasks belonging to a category that occurs earlier in the sequence must be scheduled on the route before a task belonging to a category later in the sequence. | [optional] [default to []]
 **ForbiddenSequences** | Pointer to [**[]ForbiddenTaskSequence**](ForbiddenTaskSequence.md) | A list of sequences that are forbidden to be scheduled on a route. Tasks belonging to certain categories must not be scheduled before, or immediately before, tasks belonging to another specific category. | [optional] [default to []]
+**LoadingIncompatibilities** | Pointer to [**[]TaskLoadingIncompatibilityConstraint**](TaskLoadingIncompatibilityConstraint.md) | A list of constraints that prevent tasks to be loaded or unloaded depending on which other orders are loaded in the vehicle. | [optional] [default to []]
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetForbiddenSequences sets ForbiddenSequences field to given value.
 `func (o *TaskConstraints) HasForbiddenSequences() bool`
 
 HasForbiddenSequences returns a boolean if a field has been set.
+
+### GetLoadingIncompatibilities
+
+`func (o *TaskConstraints) GetLoadingIncompatibilities() []TaskLoadingIncompatibilityConstraint`
+
+GetLoadingIncompatibilities returns the LoadingIncompatibilities field if non-nil, zero value otherwise.
+
+### GetLoadingIncompatibilitiesOk
+
+`func (o *TaskConstraints) GetLoadingIncompatibilitiesOk() (*[]TaskLoadingIncompatibilityConstraint, bool)`
+
+GetLoadingIncompatibilitiesOk returns a tuple with the LoadingIncompatibilities field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLoadingIncompatibilities
+
+`func (o *TaskConstraints) SetLoadingIncompatibilities(v []TaskLoadingIncompatibilityConstraint)`
+
+SetLoadingIncompatibilities sets LoadingIncompatibilities field to given value.
+
+### HasLoadingIncompatibilities
+
+`func (o *TaskConstraints) HasLoadingIncompatibilities() bool`
+
+HasLoadingIncompatibilities returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
