@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | A unique identifier of the order. This must be unique across all orders. | 
+**Pickup** | Pointer to [**DepotTaskProperties**](DepotTaskProperties.md) |  | [optional] 
 **Delivery** | [**TaskProperties**](TaskProperties.md) |  | 
 **Properties** | Pointer to [**OrderProperties**](OrderProperties.md) |  | [optional] 
 
@@ -46,6 +47,31 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+
+### GetPickup
+
+`func (o *DeliveryOrder) GetPickup() DepotTaskProperties`
+
+GetPickup returns the Pickup field if non-nil, zero value otherwise.
+
+### GetPickupOk
+
+`func (o *DeliveryOrder) GetPickupOk() (*DepotTaskProperties, bool)`
+
+GetPickupOk returns a tuple with the Pickup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPickup
+
+`func (o *DeliveryOrder) SetPickup(v DepotTaskProperties)`
+
+SetPickup sets Pickup field to given value.
+
+### HasPickup
+
+`func (o *DeliveryOrder) HasPickup() bool`
+
+HasPickup returns a boolean if a field has been set.
 
 ### GetDelivery
 

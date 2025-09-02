@@ -16,6 +16,7 @@ docs/CompartmentLoadingStrategy.md
 docs/Constraints.md
 docs/DeliveryOrder.md
 docs/Depot.md
+docs/DepotTaskProperties.md
 docs/DepotVehicleCombinationConstraint.md
 docs/DepotVehicleCombinationConstraintType.md
 docs/DrivingBreakSettings.md
@@ -100,6 +101,7 @@ model_compartment_loading_strategy.go
 model_constraints.go
 model_delivery_order.go
 model_depot.go
+model_depot_task_properties.go
 model_depot_vehicle_combination_constraint.go
 model_depot_vehicle_combination_constraint_type.go
 model_driving_break_settings.go

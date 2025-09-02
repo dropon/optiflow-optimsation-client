@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LocationId** | **string** | The unique identifier of the location where a route assigned to the vehicle must start. | 
+**LocationId** | Pointer to **string** | The unique identifier of the location where a route assigned to the vehicle must start. | [optional] 
 **EarliestStartTime** | **time.Time** | The earliest point in time a route assigned to the vehicle may start. This must be not be later than the vehicle&#39;s latest end time. When used in conjunction with a latest start time, the earliest start time must not be later than the latest start time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before &#x60;1970-01-01T00:00:00+00:00&#x60; nor after &#x60;2037-12-31T23:59:59+00:00&#x60;. The date must provide an offset to UTC. | 
 **LatestStartTime** | Pointer to **time.Time** | The latest point in time a route assigned to the vehicle may start. This must not be earlier than the vehicle&#39;s earliest start time nor later than the vehicle&#39;s earliest end time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before &#x60;1970-01-01T00:00:00+00:00&#x60; nor after &#x60;2037-12-31T23:59:59+00:00&#x60;. The date must provide an offset to UTC. | [optional] 
 **Duration** | Pointer to **int32** | Describes how long [s] it takes for the vehicle to depart at its start location after the route starts. | [optional] [default to 0]
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewVehicleStart
 
-`func NewVehicleStart(locationId string, earliestStartTime time.Time, ) *VehicleStart`
+`func NewVehicleStart(earliestStartTime time.Time, ) *VehicleStart`
 
 NewVehicleStart instantiates a new VehicleStart object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +47,11 @@ and a boolean to check if the value has been set.
 
 SetLocationId sets LocationId field to given value.
 
+### HasLocationId
+
+`func (o *VehicleStart) HasLocationId() bool`
+
+HasLocationId returns a boolean if a field has been set.
 
 ### GetEarliestStartTime
 
