@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.19"
+  version: "1.20"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -2616,6 +2616,9 @@ components:
           - FORK_LIFT_NEEDED
         pickup:
           duration: 16200
+          categories:
+          - GHENT
+          - FORK_LIFT_NEEDED
         id: DELIVERY-123
         properties:
           outsourcingCost: 50
@@ -2656,7 +2659,6 @@ components:
       description: |-
         A depot where pickup orders can be delivered to or delivery orders can be picked up from. When stopping at a depot, all pickup orders present in the vehicle are unloaded first. Afterwards delivery orders can be loaded in the vehicle, which must be delivered before stopping at the next depot.
         When providing pickup or delivery orders, at least one depot should be specified.
-        When providing pickup-delivery orders, no tasks happen at the depot and depots must be omitted.
       example:
         timeSlotIds:
         - MORNING
@@ -2722,6 +2724,9 @@ components:
         pickup) order that is executed at a depot.
       example:
         duration: 16200
+        categories:
+        - GHENT
+        - FORK_LIFT_NEEDED
       properties:
         duration:
           default: 0
@@ -2730,6 +2735,20 @@ components:
           format: int32
           minimum: 0
           type: integer
+        categories:
+          default: []
+          description: A list of categories the task belongs to that can be used to
+            describe constraints or rules.
+          example:
+          - GHENT
+          - FORK_LIFT_NEEDED
+          items:
+            maxLength: 36
+            minLength: 1
+            pattern: "^[a-zA-Z0-9_-]{1,36}$"
+            type: string
+          maxItems: 50
+          type: array
       type: object
     DepotVehicleCombinationConstraint:
       description: A constraint on the combination of depots and vehicles belonging
@@ -4769,6 +4788,9 @@ components:
           pickups:
           - delivery:
               duration: 16200
+              categories:
+              - GHENT
+              - FORK_LIFT_NEEDED
             pickup:
               timeSlotIds:
               - MORNING
@@ -4797,6 +4819,9 @@ components:
               - FRESH
           - delivery:
               duration: 16200
+              categories:
+              - GHENT
+              - FORK_LIFT_NEEDED
             pickup:
               timeSlotIds:
               - MORNING
@@ -4825,6 +4850,9 @@ components:
               - FRESH
           - delivery:
               duration: 16200
+              categories:
+              - GHENT
+              - FORK_LIFT_NEEDED
             pickup:
               timeSlotIds:
               - MORNING
@@ -4853,6 +4881,9 @@ components:
               - FRESH
           - delivery:
               duration: 16200
+              categories:
+              - GHENT
+              - FORK_LIFT_NEEDED
             pickup:
               timeSlotIds:
               - MORNING
@@ -4881,6 +4912,9 @@ components:
               - FRESH
           - delivery:
               duration: 16200
+              categories:
+              - GHENT
+              - FORK_LIFT_NEEDED
             pickup:
               timeSlotIds:
               - MORNING
@@ -4919,6 +4953,9 @@ components:
               - FORK_LIFT_NEEDED
             pickup:
               duration: 16200
+              categories:
+              - GHENT
+              - FORK_LIFT_NEEDED
             id: DELIVERY-123
             properties:
               outsourcingCost: 50
@@ -4947,6 +4984,9 @@ components:
               - FORK_LIFT_NEEDED
             pickup:
               duration: 16200
+              categories:
+              - GHENT
+              - FORK_LIFT_NEEDED
             id: DELIVERY-123
             properties:
               outsourcingCost: 50
@@ -4975,6 +5015,9 @@ components:
               - FORK_LIFT_NEEDED
             pickup:
               duration: 16200
+              categories:
+              - GHENT
+              - FORK_LIFT_NEEDED
             id: DELIVERY-123
             properties:
               outsourcingCost: 50
@@ -5003,6 +5046,9 @@ components:
               - FORK_LIFT_NEEDED
             pickup:
               duration: 16200
+              categories:
+              - GHENT
+              - FORK_LIFT_NEEDED
             id: DELIVERY-123
             properties:
               outsourcingCost: 50
@@ -5031,6 +5077,9 @@ components:
               - FORK_LIFT_NEEDED
             pickup:
               duration: 16200
+              categories:
+              - GHENT
+              - FORK_LIFT_NEEDED
             id: DELIVERY-123
             properties:
               outsourcingCost: 50
@@ -5340,8 +5389,7 @@ components:
           default: []
           description: "A list of depots where pickup orders can be delivered to or\
             \ delivery orders can be picked up from. When providing pickup or delivery\
-            \ orders, at least one depot must be specified. Depots must not be specified\
-            \ when all orders are pickup-delivery orders. When stopping at a depot,\
+            \ orders, at least one depot must be specified. When stopping at a depot,\
             \ all pickup orders present in the vehicle are unloaded first. Afterwards,\
             \ delivery orders can be loaded into the vehicle. Those must be delivered\
             \ before stopping at the next depot."
@@ -6270,11 +6318,10 @@ components:
       - FORBIDDEN_COMBINATION
     Orders:
       description: "A list of orders that should be scheduled by the optimization\
-        \ on the routes. When providing pickup-delivery orders, it is not possible\
-        \ to provide other order types. If pickup orders or delivery orders are provided,\
-        \ at least one depot must be provided where the pickup orders can be delivered\
-        \ to or the delivery orders can be picked up from. The unique identifiers\
-        \ of the orders must by unique across the three types."
+        \ on the routes. If pickup orders or delivery orders are provided, at least\
+        \ one depot must be provided where the pickup orders can be delivered to or\
+        \ the delivery orders can be picked up from. The unique identifiers of the\
+        \ orders must by unique across the three types."
       example:
         pickupDeliveries:
         - delivery:
@@ -6455,6 +6502,9 @@ components:
         pickups:
         - delivery:
             duration: 16200
+            categories:
+            - GHENT
+            - FORK_LIFT_NEEDED
           pickup:
             timeSlotIds:
             - MORNING
@@ -6483,6 +6533,9 @@ components:
             - FRESH
         - delivery:
             duration: 16200
+            categories:
+            - GHENT
+            - FORK_LIFT_NEEDED
           pickup:
             timeSlotIds:
             - MORNING
@@ -6511,6 +6564,9 @@ components:
             - FRESH
         - delivery:
             duration: 16200
+            categories:
+            - GHENT
+            - FORK_LIFT_NEEDED
           pickup:
             timeSlotIds:
             - MORNING
@@ -6539,6 +6595,9 @@ components:
             - FRESH
         - delivery:
             duration: 16200
+            categories:
+            - GHENT
+            - FORK_LIFT_NEEDED
           pickup:
             timeSlotIds:
             - MORNING
@@ -6567,6 +6626,9 @@ components:
             - FRESH
         - delivery:
             duration: 16200
+            categories:
+            - GHENT
+            - FORK_LIFT_NEEDED
           pickup:
             timeSlotIds:
             - MORNING
@@ -6605,6 +6667,9 @@ components:
             - FORK_LIFT_NEEDED
           pickup:
             duration: 16200
+            categories:
+            - GHENT
+            - FORK_LIFT_NEEDED
           id: DELIVERY-123
           properties:
             outsourcingCost: 50
@@ -6633,6 +6698,9 @@ components:
             - FORK_LIFT_NEEDED
           pickup:
             duration: 16200
+            categories:
+            - GHENT
+            - FORK_LIFT_NEEDED
           id: DELIVERY-123
           properties:
             outsourcingCost: 50
@@ -6661,6 +6729,9 @@ components:
             - FORK_LIFT_NEEDED
           pickup:
             duration: 16200
+            categories:
+            - GHENT
+            - FORK_LIFT_NEEDED
           id: DELIVERY-123
           properties:
             outsourcingCost: 50
@@ -6689,6 +6760,9 @@ components:
             - FORK_LIFT_NEEDED
           pickup:
             duration: 16200
+            categories:
+            - GHENT
+            - FORK_LIFT_NEEDED
           id: DELIVERY-123
           properties:
             outsourcingCost: 50
@@ -6717,6 +6791,9 @@ components:
             - FORK_LIFT_NEEDED
           pickup:
             duration: 16200
+            categories:
+            - GHENT
+            - FORK_LIFT_NEEDED
           id: DELIVERY-123
           properties:
             outsourcingCost: 50
@@ -6917,6 +6994,9 @@ components:
       example:
         delivery:
           duration: 16200
+          categories:
+          - GHENT
+          - FORK_LIFT_NEEDED
         pickup:
           timeSlotIds:
           - MORNING
@@ -8800,8 +8880,8 @@ components:
           default: []
           description: "A list of overtime costs that describe an increasing cost\
             \ if the route duration exceeds a threshold. For each exceeded threshold,\
-            \ the additional cost for the extra hours contributes to the total cost\
-            \ of the route."
+            \ the extra fixed cost and the additional cost for the extra hours contribute\
+            \ to the total cost of the route."
           items:
             $ref: "#/components/schemas/OvertimeCost"
           maxItems: 20
@@ -8810,8 +8890,8 @@ components:
           default: []
           description: "A list of overdistance costs that describe an increasing cost\
             \ if the total distance of a route exceeds a threshold. For each exceeded\
-            \ threshold, the additional cost for the extra kilometers contributes\
-            \ to the total cost of the route."
+            \ threshold, the extra fixed cost and the additional cost for the extra\
+            \ kilometers contribute to the total cost of the route."
           items:
             $ref: "#/components/schemas/OverdistanceCost"
           maxItems: 20
@@ -8820,8 +8900,8 @@ components:
           default: []
           description: "A list of overstop costs that describe an increasing cost\
             \ if the number of stops of a route exceeds a threshold. For each exceeded\
-            \ threshold, the additional cost for the extra stops contributes to the\
-            \ total cost of the route."
+            \ threshold, the extra fixed cost and the additional cost for the extra\
+            \ stops contribute to the total cost of the route."
           items:
             $ref: "#/components/schemas/OverstopCost"
           maxItems: 20
