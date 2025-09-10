@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrderCompartment** | Pointer to [**[]OrderCompartmentCombinationConstraint**](OrderCompartmentCombinationConstraint.md) | A list of constraints on combinations of orders and compartments. | [optional] [default to []]
 **OrderVehicle** | Pointer to [**[]OrderVehicleCombinationConstraint**](OrderVehicleCombinationConstraint.md) | A list of constraints on combinations of orders and vehicles. | [optional] [default to []]
+**OrderDepot** | Pointer to [**[]OrderDepotCombinationConstraint**](OrderDepotCombinationConstraint.md) | A list of constraints on combinations of orders and depots. | [optional] [default to []]
 **DepotVehicle** | Pointer to [**[]DepotVehicleCombinationConstraint**](DepotVehicleCombinationConstraint.md) | A list of constraints on combinations of depots and vehicles. | [optional] [default to []]
 
 ## Methods
@@ -76,6 +77,31 @@ SetOrderVehicle sets OrderVehicle field to given value.
 `func (o *CombinationConstraints) HasOrderVehicle() bool`
 
 HasOrderVehicle returns a boolean if a field has been set.
+
+### GetOrderDepot
+
+`func (o *CombinationConstraints) GetOrderDepot() []OrderDepotCombinationConstraint`
+
+GetOrderDepot returns the OrderDepot field if non-nil, zero value otherwise.
+
+### GetOrderDepotOk
+
+`func (o *CombinationConstraints) GetOrderDepotOk() (*[]OrderDepotCombinationConstraint, bool)`
+
+GetOrderDepotOk returns a tuple with the OrderDepot field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderDepot
+
+`func (o *CombinationConstraints) SetOrderDepot(v []OrderDepotCombinationConstraint)`
+
+SetOrderDepot sets OrderDepot field to given value.
+
+### HasOrderDepot
+
+`func (o *CombinationConstraints) HasOrderDepot() bool`
+
+HasOrderDepot returns a boolean if a field has been set.
 
 ### GetDepotVehicle
 

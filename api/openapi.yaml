@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.20"
+  version: "1.21"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -2296,6 +2296,22 @@ components:
       description: "Describes constraints on combinations of orders, vehicles and\
         \ depots."
       example:
+        orderDepot:
+        - depotCategory: CHEESE_FACTORY
+          type: ORDER_REQUIRES_DEPOT
+          orderCategory: CHEESE
+        - depotCategory: CHEESE_FACTORY
+          type: ORDER_REQUIRES_DEPOT
+          orderCategory: CHEESE
+        - depotCategory: CHEESE_FACTORY
+          type: ORDER_REQUIRES_DEPOT
+          orderCategory: CHEESE
+        - depotCategory: CHEESE_FACTORY
+          type: ORDER_REQUIRES_DEPOT
+          orderCategory: CHEESE
+        - depotCategory: CHEESE_FACTORY
+          type: ORDER_REQUIRES_DEPOT
+          orderCategory: CHEESE
         depotVehicle:
         - depotCategory: NO_LOADING_BAY
           type: DEPOT_REQUIRES_VEHICLE
@@ -2364,6 +2380,13 @@ components:
             $ref: "#/components/schemas/OrderVehicleCombinationConstraint"
           maxItems: 1000
           type: array
+        orderDepot:
+          default: []
+          description: A list of constraints on combinations of orders and depots.
+          items:
+            $ref: "#/components/schemas/OrderDepotCombinationConstraint"
+          maxItems: 1000
+          type: array
         depotVehicle:
           default: []
           description: A list of constraints on combinations of depots and vehicles.
@@ -2428,6 +2451,22 @@ components:
       description: Constraints that should be taken into account by optimization.
       example:
         combinations:
+          orderDepot:
+          - depotCategory: CHEESE_FACTORY
+            type: ORDER_REQUIRES_DEPOT
+            orderCategory: CHEESE
+          - depotCategory: CHEESE_FACTORY
+            type: ORDER_REQUIRES_DEPOT
+            orderCategory: CHEESE
+          - depotCategory: CHEESE_FACTORY
+            type: ORDER_REQUIRES_DEPOT
+            orderCategory: CHEESE
+          - depotCategory: CHEESE_FACTORY
+            type: ORDER_REQUIRES_DEPOT
+            orderCategory: CHEESE
+          - depotCategory: CHEESE_FACTORY
+            type: ORDER_REQUIRES_DEPOT
+            orderCategory: CHEESE
           depotVehicle:
           - depotCategory: NO_LOADING_BAY
             type: DEPOT_REQUIRES_VEHICLE
@@ -5196,6 +5235,22 @@ components:
               vehicleCategory: BIG_TRUCK
         constraints:
           combinations:
+            orderDepot:
+            - depotCategory: CHEESE_FACTORY
+              type: ORDER_REQUIRES_DEPOT
+              orderCategory: CHEESE
+            - depotCategory: CHEESE_FACTORY
+              type: ORDER_REQUIRES_DEPOT
+              orderCategory: CHEESE
+            - depotCategory: CHEESE_FACTORY
+              type: ORDER_REQUIRES_DEPOT
+              orderCategory: CHEESE
+            - depotCategory: CHEESE_FACTORY
+              type: ORDER_REQUIRES_DEPOT
+              orderCategory: CHEESE
+            - depotCategory: CHEESE_FACTORY
+              type: ORDER_REQUIRES_DEPOT
+              orderCategory: CHEESE
             depotVehicle:
             - depotCategory: NO_LOADING_BAY
               type: DEPOT_REQUIRES_VEHICLE
@@ -6153,6 +6208,53 @@ components:
           maxItems: 1000
           type: array
       type: object
+    OrderDepotCombinationConstraint:
+      description: A constraint on the combination of orders and depots belonging
+        to a certain category.
+      example:
+        depotCategory: CHEESE_FACTORY
+        type: ORDER_REQUIRES_DEPOT
+        orderCategory: CHEESE
+      properties:
+        type:
+          $ref: "#/components/schemas/OrderDepotCombinationConstraintType"
+        orderCategory:
+          description: The category of orders to which the constraint applies. The
+            constraint will be ignored if no order belongs to this category.
+          example: CHEESE
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+        depotCategory:
+          description: The category of depots to which the constraint applies. The
+            constraint will be ignored if no depot belongs to this category.
+          example: CHEESE_FACTORY
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+      required:
+      - depotCategory
+      - orderCategory
+      - type
+      type: object
+    OrderDepotCombinationConstraintType:
+      description: |-
+        Describes which combinations of orders and depots have to be respected or excluded.
+        * `ORDER_REQUIRES_DEPOT` - An order from the given order category can only be (un)loaded at a depot from the given depot category.
+        * `DEPOT_REQUIRES_ORDER` - At a depot from the given depot category only orders from the given order category can be (un)loaded.
+        * `FORBIDDEN_COMBINATION` - An order from the given order category cannot be (un)loaded at a depot from the given depot category.
+      enum:
+      - ORDER_REQUIRES_DEPOT
+      - DEPOT_REQUIRES_ORDER
+      - FORBIDDEN_COMBINATION
+      example: ORDER_REQUIRES_DEPOT
+      type: string
+      x-enum-varnames:
+      - ORDER_REQUIRES_DEPOT
+      - DEPOT_REQUIRES_ORDER
+      - FORBIDDEN_COMBINATION
     OrderLoadingIncompatibilityConstraint:
       description: Describes a constraint where orders are forbidden to be loaded
         or unloaded while other orders are loaded in the vehicle.
@@ -9057,8 +9159,9 @@ components:
         locationId: GHENT
       properties:
         locationId:
-          description: The unique identifier of the location where a route assigned
-            to the vehicle must start.
+          description: "The unique identifier of the location where a route assigned\
+            \ to the vehicle must start. When omitted, the route starts at the location\
+            \ of the first stop."
           example: GHENT
           maxLength: 36
           minLength: 1

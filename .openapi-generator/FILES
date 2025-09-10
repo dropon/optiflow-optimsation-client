@@ -42,6 +42,8 @@ docs/OptimizationStatus.md
 docs/OrderCompartmentCombinationConstraint.md
 docs/OrderCompartmentCombinationConstraintType.md
 docs/OrderConstraints.md
+docs/OrderDepotCombinationConstraint.md
+docs/OrderDepotCombinationConstraintType.md
 docs/OrderLoadingIncompatibilityConstraint.md
 docs/OrderProperties.md
 docs/OrderVehicleCombinationConstraint.md
@@ -126,6 +128,8 @@ model_optimization_status.go
 model_order_compartment_combination_constraint.go
 model_order_compartment_combination_constraint_type.go
 model_order_constraints.go
+model_order_depot_combination_constraint.go
+model_order_depot_combination_constraint_type.go
 model_order_loading_incompatibility_constraint.go
 model_order_properties.go
 model_order_vehicle_combination_constraint.go
