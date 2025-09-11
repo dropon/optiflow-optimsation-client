@@ -2,8 +2,8 @@ name: Update Go Client from OpenAPI Spec
 
 on:
   schedule:
-    - cron: '0 * * * *' # runs hourly
-  workflow_dispatch:     # allows manual run
+    - cron: "0 * * * *" # runs hourly
+  workflow_dispatch: # allows manual run
 
 jobs:
   regenerate-client:
@@ -13,12 +13,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GH_PAT }}  
+          token: ${{ secrets.GH_PAT }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' 
+          node-version: "20"
 
       - name: Fetch all branches
         run: git fetch -a
@@ -32,7 +32,7 @@ jobs:
         run: npm install -g @openapitools/openapi-generator-cli
 
       - name: Remove previously generated client
-        run: rm -rf * 
+        run: rm -rf *
 
       - name: Generate Go client from OpenAPI spec
         run: |
@@ -69,7 +69,7 @@ jobs:
         run: go build -o /dev/null ./...
 
       - name: Notify Slack on build failure
-        if: failure() 
+        if: failure()
         run: |
           WEBHOOK_URL="https://hooks.slack.com/services/${{ vars.SLACK_CHANNEL }}/${{ vars.SLACK_CHANNEL_ID }}/${{ secrets.SLACK_SECRET }}"
           MESSAGE=":rotating_light: *Go build failed for optiflow client!* Please check the logs in GitHub Actions. :boom:"
@@ -114,16 +114,14 @@ jobs:
           git tag "$NEW_TAG"
           git push origin "$NEW_TAG"
 
-
       - name: Notify Slack about new version
-        if: steps.changes.outputs.diff_count != '0' 
+        if: steps.changes.outputs.diff_count != '0'
         run: |
           WEBHOOK_URL="https://hooks.slack.com/services/${{ vars.SLACK_CHANNEL }}/${{ vars.SLACK_CHANNEL_ID }}/${{ secrets.SLACK_SECRET }}"
           MESSAGE="Heads up, new optiflow client version available. Go to https://github.com/dropon/optiflow-optimsation-client/tags to create a release from the generated tag. Don't forget to update the go.mod file from base and redeploy."
-          
+
           curl -X POST --data-urlencode "payload={\"text\": \"$MESSAGE\", \"channel\": \"#it_builds\", \"username\": \"deploy-bot\", \"icon_emoji\": \":monkey_face:\"}" "$WEBHOOK_URL"
 
       - name: Force push to main
         if: steps.changes.outputs.diff_count != '0'
         run: git push origin main --force
-
