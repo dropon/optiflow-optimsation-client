@@ -4,12 +4,83 @@ All URIs are relative to *https://api.myptv.com/routeoptimization/optiflow/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetOptimizationProgress**](OptimizationAPI.md#GetOptimizationProgress) | **Get** /optimizations/{id}/progress | 
 [**GetOptimizationRequest**](OptimizationAPI.md#GetOptimizationRequest) | **Get** /optimizations/{id}/request | 
 [**GetOptimizationResult**](OptimizationAPI.md#GetOptimizationResult) | **Get** /optimizations/{id} | 
 [**ListOptimizations**](OptimizationAPI.md#ListOptimizations) | **Get** /optimizations | 
 [**StartOptimization**](OptimizationAPI.md#StartOptimization) | **Post** /optimizations | 
 [**StopOptimization**](OptimizationAPI.md#StopOptimization) | **Post** /optimizations/{id}/stop | 
 
+
+
+## GetOptimizationProgress
+
+> OptimizationProgress GetOptimizationProgress(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A unique identifier of the optimization.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OptimizationAPI.GetOptimizationProgress(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OptimizationAPI.GetOptimizationProgress``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOptimizationProgress`: OptimizationProgress
+	fmt.Fprintf(os.Stdout, "Response from `OptimizationAPI.GetOptimizationProgress`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique identifier of the optimization. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOptimizationProgressRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**OptimizationProgress**](OptimizationProgress.md)
+
+### Authorization
+
+[apiKeyAuth](../README.md#apiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetOptimizationRequest
@@ -154,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## ListOptimizations
 
-> OptimizationSummaries ListOptimizations(ctx).Cursor(cursor).CreatedBefore(createdBefore).CreatedAfter(createdAfter).Name(name).Tags(tags).Statuses(statuses).Execute()
+> OptimizationSummaries ListOptimizations(ctx).Cursor(cursor).Limit(limit).CreatedBefore(createdBefore).CreatedAfter(createdAfter).Name(name).Tags(tags).Statuses(statuses).Execute()
 
 
 
@@ -175,6 +246,7 @@ import (
 
 func main() {
 	cursor := "cursor_example" // string | A pagination cursor for retrieving the next page of results. Use the `nextCursor` value from a previous response to fetch subsequent pages. Omit this parameter to retrieve the first page of optimizations. (optional)
+	limit := int32(56) // int32 | Maximum number of optimizations to return per page. If more results exist, the response includes a `nextCursor` value for pagination. Use this cursor in subsequent requests to retrieve additional pages. (optional) (default to 50)
 	createdBefore := time.Now() // time.Time | Filter optimizations created before this date and time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). (optional)
 	createdAfter := time.Now() // time.Time | Filter optimizations created after this date and time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). (optional)
 	name := "name_example" // string | Filter optimizations with this name. (optional)
@@ -183,7 +255,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OptimizationAPI.ListOptimizations(context.Background()).Cursor(cursor).CreatedBefore(createdBefore).CreatedAfter(createdAfter).Name(name).Tags(tags).Statuses(statuses).Execute()
+	resp, r, err := apiClient.OptimizationAPI.ListOptimizations(context.Background()).Cursor(cursor).Limit(limit).CreatedBefore(createdBefore).CreatedAfter(createdAfter).Name(name).Tags(tags).Statuses(statuses).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptimizationAPI.ListOptimizations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -205,6 +277,7 @@ Other parameters are passed through a pointer to a apiListOptimizationsRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **string** | A pagination cursor for retrieving the next page of results. Use the &#x60;nextCursor&#x60; value from a previous response to fetch subsequent pages. Omit this parameter to retrieve the first page of optimizations. | 
+ **limit** | **int32** | Maximum number of optimizations to return per page. If more results exist, the response includes a &#x60;nextCursor&#x60; value for pagination. Use this cursor in subsequent requests to retrieve additional pages. | [default to 50]
  **createdBefore** | **time.Time** | Filter optimizations created before this date and time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | 
  **createdAfter** | **time.Time** | Filter optimizations created after this date and time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | 
  **name** | **string** | Filter optimizations with this name. | 

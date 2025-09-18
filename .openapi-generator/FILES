@@ -33,6 +33,8 @@ docs/LocationRuleCondition.md
 docs/Metrics.md
 docs/OptimizationAPI.md
 docs/OptimizationIdentifier.md
+docs/OptimizationProgress.md
+docs/OptimizationProgressSample.md
 docs/OptimizationRequest.md
 docs/OptimizationRequestMetadata.md
 docs/OptimizationResult.md
@@ -121,6 +123,8 @@ model_location_rule.go
 model_location_rule_condition.go
 model_metrics.go
 model_optimization_identifier.go
+model_optimization_progress.go
+model_optimization_progress_sample.go
 model_optimization_request.go
 model_optimization_request_metadata.go
 model_optimization_result.go

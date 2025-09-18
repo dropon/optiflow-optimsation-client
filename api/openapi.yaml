@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.22"
+  version: "1.23"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -28,6 +28,20 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - description: "Maximum number of optimizations to return per page. If more\
+          \ results exist, the response includes a `nextCursor` value for pagination.\
+          \ Use this cursor in subsequent requests to retrieve additional pages."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 100
+          minimum: 1
+          type: integer
         style: form
       - description: "Filter optimizations created before this date and time. Formatted\
           \ according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)."
@@ -179,6 +193,35 @@ paths:
               schema:
                 $ref: "#/components/schemas/OptimizationResult"
           description: The current result of the optimization is successfully provided.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Response on failure.
+      tags:
+      - Optimization
+  /optimizations/{id}/progress:
+    get:
+      description: Retrieves the optimization progress.
+      operationId: getOptimizationProgress
+      parameters:
+      - description: A unique identifier of the optimization.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OptimizationProgress"
+          description: The optimization progress is retrieved successfully.
         default:
           content:
             application/json:
@@ -2143,6 +2186,21 @@ components:
       schema:
         type: string
       style: form
+    ListOptimizationsLimitQueryParameter:
+      description: "Maximum number of optimizations to return per page. If more results\
+        \ exist, the response includes a `nextCursor` value for pagination. Use this\
+        \ cursor in subsequent requests to retrieve additional pages."
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 50
+        format: int32
+        maximum: 100
+        minimum: 1
+        type: integer
+      style: form
     ListOptimizationsCreatedBeforeQueryParameter:
       description: "Filter optimizations created before this date and time. Formatted\
         \ according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)."
@@ -3570,9 +3628,7 @@ components:
           type: string
       type: object
     Metrics:
-      description: "Metrics providing insights into the current result of the optimization.\
-        \ These will be provided if the status of the optimization is `RUNNING`, `STOPPING`\
-        \ or `SUCCEEDED`."
+      description: Metrics providing insights into the result of the optimization.
       example:
         numberOfRoutes: 97
         totalDuration: 2179392
@@ -3627,6 +3683,52 @@ components:
           format: uuid
           type: string
       type: object
+    OptimizationProgress:
+      description: "Time-series record of optimization metrics, tracking how the optimization\
+        \ evolves and converges over time."
+      example:
+        samples:
+        - time: 2023-10-03T12:30:00Z
+          metrics:
+            numberOfRoutes: 97
+            totalDuration: 2179392
+            numberOfUnscheduledOrders: 0
+            totalDistance: 45678901
+            totalCost: 12345
+        - time: 2023-10-03T12:30:00Z
+          metrics:
+            numberOfRoutes: 97
+            totalDuration: 2179392
+            numberOfUnscheduledOrders: 0
+            totalDistance: 45678901
+            totalCost: 12345
+      properties:
+        samples:
+          description: A list of samples that describe the optimization metrics at
+            various points in time.
+          items:
+            $ref: "#/components/schemas/OptimizationProgressSample"
+          type: array
+      type: object
+    OptimizationProgressSample:
+      description: A snapshot of optimization metrics at a specific point in time.
+      example:
+        time: 2023-10-03T12:30:00Z
+        metrics:
+          numberOfRoutes: 97
+          totalDuration: 2179392
+          numberOfUnscheduledOrders: 0
+          totalDistance: 45678901
+          totalCost: 12345
+      properties:
+        time:
+          description: "The time at which the metrics were captured. Formatted according\
+            \ to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)."
+          example: 2023-10-03T12:30:00Z
+          format: date-time
+          type: string
+        metrics:
+          $ref: "#/components/schemas/Metrics"
     OptimizationRequest:
       description: The request data needed to start an optimization.
       example:
