@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.21"
+  version: "1.22"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -14,6 +14,96 @@ tags:
 - name: Optimization
 paths:
   /optimizations:
+    get:
+      description: Retrieves a list of optimization summaries that match the specified
+        search criteria.
+      operationId: listOptimizations
+      parameters:
+      - description: A pagination cursor for retrieving the next page of results.
+          Use the `nextCursor` value from a previous response to fetch subsequent
+          pages. Omit this parameter to retrieve the first page of optimizations.
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Filter optimizations created before this date and time. Formatted\
+          \ according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)."
+        explode: true
+        in: query
+        name: createdBefore
+        required: false
+        schema:
+          example: 2023-10-03T12:00:00Z
+          format: date-time
+          type: string
+        style: form
+      - description: "Filter optimizations created after this date and time. Formatted\
+          \ according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)."
+        explode: true
+        in: query
+        name: createdAfter
+        required: false
+        schema:
+          example: 2023-10-03T12:00:00Z
+          format: date-time
+          type: string
+        style: form
+      - description: Filter optimizations with this name.
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_ -]{1,100}$"
+          type: string
+        style: form
+      - description: Filter optimizations containing all of these tags.
+        explode: true
+        in: query
+        name: tags
+        required: false
+        schema:
+          items:
+            maxLength: 36
+            minLength: 1
+            pattern: "^[a-zA-Z0-9_-]{1,36}$"
+            type: string
+          maxItems: 5
+          minItems: 0
+          type: array
+        style: form
+      - description: Filter optimizations having any of these statuses.
+        explode: true
+        in: query
+        name: statuses
+        required: false
+        schema:
+          items:
+            $ref: "#/components/schemas/OptimizationStatus"
+          maxItems: 5
+          minItems: 0
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OptimizationSummaries"
+          description: Optimization summaries retrieved successfully.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Response on failure.
+      tags:
+      - Optimization
     post:
       description: "Initiates a cost-minimizing optimization that efficiently schedules\
         \ orders onto routes. The routes are assigned to the provided vehicles and\
@@ -89,6 +179,35 @@ paths:
               schema:
                 $ref: "#/components/schemas/OptimizationResult"
           description: The current result of the optimization is successfully provided.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Response on failure.
+      tags:
+      - Optimization
+  /optimizations/{id}/request:
+    get:
+      description: Retrieves the original request for the optimization.
+      operationId: getOptimizationRequest
+      parameters:
+      - description: A unique identifier of the optimization.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OptimizationRequest"
+          description: The original request of the optimization.
         default:
           content:
             application/json:
@@ -2013,6 +2132,82 @@ components:
         format: uuid
         type: string
       style: simple
+    ListOptimizationsCursorQueryParameter:
+      description: A pagination cursor for retrieving the next page of results. Use
+        the `nextCursor` value from a previous response to fetch subsequent pages.
+        Omit this parameter to retrieve the first page of optimizations.
+      explode: true
+      in: query
+      name: cursor
+      required: false
+      schema:
+        type: string
+      style: form
+    ListOptimizationsCreatedBeforeQueryParameter:
+      description: "Filter optimizations created before this date and time. Formatted\
+        \ according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)."
+      explode: true
+      in: query
+      name: createdBefore
+      required: false
+      schema:
+        example: 2023-10-03T12:00:00Z
+        format: date-time
+        type: string
+      style: form
+    ListOptimizationsCreatedAfterQueryParameter:
+      description: "Filter optimizations created after this date and time. Formatted\
+        \ according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)."
+      explode: true
+      in: query
+      name: createdAfter
+      required: false
+      schema:
+        example: 2023-10-03T12:00:00Z
+        format: date-time
+        type: string
+      style: form
+    ListOptimizationsNameQueryParameter:
+      description: Filter optimizations with this name.
+      explode: true
+      in: query
+      name: name
+      required: false
+      schema:
+        maxLength: 100
+        minLength: 1
+        pattern: "^[a-zA-Z0-9_ -]{1,100}$"
+        type: string
+      style: form
+    ListOptimizationsTagsQueryParameter:
+      description: Filter optimizations containing all of these tags.
+      explode: true
+      in: query
+      name: tags
+      required: false
+      schema:
+        items:
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+        maxItems: 5
+        minItems: 0
+        type: array
+      style: form
+    ListOptimizationsStatusesQueryParameter:
+      description: Filter optimizations having any of these statuses.
+      explode: true
+      in: query
+      name: statuses
+      required: false
+      schema:
+        items:
+          $ref: "#/components/schemas/OptimizationStatus"
+        maxItems: 5
+        minItems: 0
+        type: array
+      style: form
   schemas:
     Appointment:
       description: A collection of consecutive tasks that are allocated to a time
@@ -2146,13 +2341,25 @@ components:
         driving:
         - maximumDrivingDuration: 16200
           minimumBreakDuration: 2700
+          minimumBreakDurations:
+          - 900
+          - 1800
         - maximumDrivingDuration: 16200
           minimumBreakDuration: 2700
+          minimumBreakDurations:
+          - 900
+          - 1800
         working:
         - maximumWorkingDuration: 21600
           minimumBreakDuration: 1800
+          minimumBreakDurations:
+          - 900
+          - 1800
         - maximumWorkingDuration: 21600
           minimumBreakDuration: 1800
+          minimumBreakDurations:
+          - 900
+          - 1800
       properties:
         working:
           default: []
@@ -2838,10 +3045,14 @@ components:
       - FORBIDDEN_COMBINATION
     DrivingBreakSettings:
       description: Restricts how long the driver of the vehicle may drive without
-        taking a break of at least the specified duration.
+        taking a break of at least the specified duration(s). Either a minimum break
+        duration or a list of minimum break durations should be provided.
       example:
         maximumDrivingDuration: 16200
         minimumBreakDuration: 2700
+        minimumBreakDurations:
+        - 900
+        - 1800
       properties:
         maximumDrivingDuration:
           description: "Describes how long [s] the driver may drive without taking\
@@ -2852,16 +3063,37 @@ components:
           minimum: 0
           type: integer
         minimumBreakDuration:
-          description: "Specifies the duration [s] of a break a driver has to take\
-            \ if they exceed the maximum driving duration."
+          deprecated: true
+          description: "**Deprecated, instead use `minimumBreakDurations` by specifying\
+            \ a list containing only this minimum break duration.** Specifies the\
+            \ duration [s] of a break a driver has to take if they exceed the maximum\
+            \ driving duration."
           example: 2700
           exclusiveMinimum: true
           format: int32
           minimum: 0
           type: integer
+        minimumBreakDurations:
+          description: "Specifies the durations [s] of the breaks a driver has to\
+            \ take before exceeding the maximum driving duration. The breaks must\
+            \ be taken in the order provided in this list but consecutive elements\
+            \ in this list may be combined into single breaks. For example, when specifying\
+            \ `[300, 900, 1200]`, the possible break configurations are `[300, 900,\
+            \ 1200]`, `[300 + 900 = 1200, 1200]`, `[300, 900 + 1200 = 2100]` and a\
+            \ single break `[300 + 900 + 1200 = 2400]`."
+          example:
+          - 900
+          - 1800
+          items:
+            exclusiveMinimum: true
+            format: int32
+            minimum: 0
+            type: integer
+          maxItems: 3
+          minItems: 1
+          type: array
       required:
       - maximumDrivingDuration
-      - minimumBreakDuration
       type: object
     DurationModifier:
       description: The modifications that should be made to the duration. At least
@@ -3725,13 +3957,25 @@ components:
             driving:
             - maximumDrivingDuration: 16200
               minimumBreakDuration: 2700
+              minimumBreakDurations:
+              - 900
+              - 1800
             - maximumDrivingDuration: 16200
               minimumBreakDuration: 2700
+              minimumBreakDurations:
+              - 900
+              - 1800
             working:
             - maximumWorkingDuration: 21600
               minimumBreakDuration: 1800
+              minimumBreakDurations:
+              - 900
+              - 1800
             - maximumWorkingDuration: 21600
               minimumBreakDuration: 1800
+              minimumBreakDurations:
+              - 900
+              - 1800
           start:
             duration: 1800
             latestStartTime: 2023-10-03T09:00:00Z
@@ -3872,13 +4116,25 @@ components:
             driving:
             - maximumDrivingDuration: 16200
               minimumBreakDuration: 2700
+              minimumBreakDurations:
+              - 900
+              - 1800
             - maximumDrivingDuration: 16200
               minimumBreakDuration: 2700
+              minimumBreakDurations:
+              - 900
+              - 1800
             working:
             - maximumWorkingDuration: 21600
               minimumBreakDuration: 1800
+              minimumBreakDurations:
+              - 900
+              - 1800
             - maximumWorkingDuration: 21600
               minimumBreakDuration: 1800
+              minimumBreakDurations:
+              - 900
+              - 1800
           start:
             duration: 1800
             latestStartTime: 2023-10-03T09:00:00Z
@@ -4019,13 +4275,25 @@ components:
             driving:
             - maximumDrivingDuration: 16200
               minimumBreakDuration: 2700
+              minimumBreakDurations:
+              - 900
+              - 1800
             - maximumDrivingDuration: 16200
               minimumBreakDuration: 2700
+              minimumBreakDurations:
+              - 900
+              - 1800
             working:
             - maximumWorkingDuration: 21600
               minimumBreakDuration: 1800
+              minimumBreakDurations:
+              - 900
+              - 1800
             - maximumWorkingDuration: 21600
               minimumBreakDuration: 1800
+              minimumBreakDurations:
+              - 900
+              - 1800
           start:
             duration: 1800
             latestStartTime: 2023-10-03T09:00:00Z
@@ -4166,13 +4434,25 @@ components:
             driving:
             - maximumDrivingDuration: 16200
               minimumBreakDuration: 2700
+              minimumBreakDurations:
+              - 900
+              - 1800
             - maximumDrivingDuration: 16200
               minimumBreakDuration: 2700
+              minimumBreakDurations:
+              - 900
+              - 1800
             working:
             - maximumWorkingDuration: 21600
               minimumBreakDuration: 1800
+              minimumBreakDurations:
+              - 900
+              - 1800
             - maximumWorkingDuration: 21600
               minimumBreakDuration: 1800
+              minimumBreakDurations:
+              - 900
+              - 1800
           start:
             duration: 1800
             latestStartTime: 2023-10-03T09:00:00Z
@@ -4313,13 +4593,25 @@ components:
             driving:
             - maximumDrivingDuration: 16200
               minimumBreakDuration: 2700
+              minimumBreakDurations:
+              - 900
+              - 1800
             - maximumDrivingDuration: 16200
               minimumBreakDuration: 2700
+              minimumBreakDurations:
+              - 900
+              - 1800
             working:
             - maximumWorkingDuration: 21600
               minimumBreakDuration: 1800
+              minimumBreakDurations:
+              - 900
+              - 1800
             - maximumWorkingDuration: 21600
               minimumBreakDuration: 1800
+              minimumBreakDurations:
+              - 900
+              - 1800
           start:
             duration: 1800
             latestStartTime: 2023-10-03T09:00:00Z
@@ -6100,6 +6392,83 @@ components:
       - STOPPING
       - FAILED
       - SUCCEEDED
+    OptimizationSummaries:
+      description: A paginated list of optimization summaries returned by the *listOptimization*
+        operation.
+      example:
+        nextCursor: nextCursor
+        optimizations:
+        - metadata:
+            created: 2023-10-03T12:30:00Z
+            name: name
+            tags:
+            - tags
+            - tags
+          id: acde070d-8c4c-4f0d-9d8a-162843c10333
+          metrics:
+            numberOfRoutes: 97
+            totalDuration: 2179392
+            numberOfUnscheduledOrders: 0
+            totalDistance: 45678901
+            totalCost: 12345
+          status: PREPARING
+        - metadata:
+            created: 2023-10-03T12:30:00Z
+            name: name
+            tags:
+            - tags
+            - tags
+          id: acde070d-8c4c-4f0d-9d8a-162843c10333
+          metrics:
+            numberOfRoutes: 97
+            totalDuration: 2179392
+            numberOfUnscheduledOrders: 0
+            totalDistance: 45678901
+            totalCost: 12345
+          status: PREPARING
+      properties:
+        optimizations:
+          description: A list of optimization summaries.
+          items:
+            $ref: "#/components/schemas/OptimizationSummary"
+          type: array
+        nextCursor:
+          description: Pagination cursor for the next page of results. Present when
+            additional results exist beyond the current page. Pass this value as the
+            `cursor` parameter in the next request to continue pagination. Null indicates
+            the final page.
+          type: string
+      type: object
+    OptimizationSummary:
+      description: A summary representation of an optimization.
+      example:
+        metadata:
+          created: 2023-10-03T12:30:00Z
+          name: name
+          tags:
+          - tags
+          - tags
+        id: acde070d-8c4c-4f0d-9d8a-162843c10333
+        metrics:
+          numberOfRoutes: 97
+          totalDuration: 2179392
+          numberOfUnscheduledOrders: 0
+          totalDistance: 45678901
+          totalCost: 12345
+        status: PREPARING
+      properties:
+        id:
+          description: The unique identifier of the optimization.
+          example: acde070d-8c4c-4f0d-9d8a-162843c10333
+          format: uuid
+          type: string
+        status:
+          $ref: "#/components/schemas/OptimizationStatus"
+        metrics:
+          $ref: "#/components/schemas/Metrics"
+        metadata:
+          $ref: "#/components/schemas/OptimizationResultMetadata"
+      type: object
     OrderCompartmentCombinationConstraint:
       description: A constraint on the combination of orders and compartments belonging
         to a certain category.
@@ -8728,13 +9097,25 @@ components:
           driving:
           - maximumDrivingDuration: 16200
             minimumBreakDuration: 2700
+            minimumBreakDurations:
+            - 900
+            - 1800
           - maximumDrivingDuration: 16200
             minimumBreakDuration: 2700
+            minimumBreakDurations:
+            - 900
+            - 1800
           working:
           - maximumWorkingDuration: 21600
             minimumBreakDuration: 1800
+            minimumBreakDurations:
+            - 900
+            - 1800
           - maximumWorkingDuration: 21600
             minimumBreakDuration: 1800
+            minimumBreakDurations:
+            - 900
+            - 1800
         start:
           duration: 1800
           latestStartTime: 2023-10-03T09:00:00Z
@@ -9089,12 +9470,13 @@ components:
         routeDurationBalancing:
           default: 0
           deprecated: true
-          description: "**Deprecated, use routeDuration instead.**  A scale between\
-            \ 0 and 1 resembling a tradeoff between minimizing the total hour cost\
-            \ and balancing the route durations of the vehicles. Higher values indicate\
-            \ a stronger preference for a route duration close to the average route\
-            \ duration. As the cost per hour increases, the influence of this tradeoff\
-            \ becomes more significant."
+          description: "**Deprecated, instead provide this value as `importance` in\
+            \ `routeDuration` and leave the `preferredDuration` undefined.**  A scale\
+            \ between 0 and 1 resembling a tradeoff between minimizing the total hour\
+            \ cost and balancing the route durations of the vehicles. Higher values\
+            \ indicate a stronger preference for a route duration close to the average\
+            \ route duration. As the cost per hour increases, the influence of this\
+            \ tradeoff becomes more significant."
           example: 0.5
           format: double
           maximum: 1
@@ -9250,11 +9632,15 @@ components:
       type: object
     WorkingBreakSettings:
       description: Restricts how long the driver of the vehicle may work without taking
-        a break of at least the specified duration. All the time spent during a route
-        is considered working time except for waiting time and break time.
+        a break of at least the specified duration(s). All the time spent during a
+        route is considered working time except for waiting time and break time. Either
+        a minimum break duration or a list of minimum break durations should be provided.
       example:
         maximumWorkingDuration: 21600
         minimumBreakDuration: 1800
+        minimumBreakDurations:
+        - 900
+        - 1800
       properties:
         maximumWorkingDuration:
           description: "Describes how long [s] the driver may work without taking\
@@ -9265,16 +9651,37 @@ components:
           minimum: 0
           type: integer
         minimumBreakDuration:
-          description: "Specifies the duration [s] of a break a driver must take if\
-            \ they exceed the maximum working duration."
+          deprecated: true
+          description: "**Deprecated, instead use `minimumBreakDurations` by specifying\
+            \ a list containing only this minimum break duration.** Specifies the\
+            \ duration [s] of a break a driver must take if they exceed the maximum\
+            \ working duration."
           example: 1800
           exclusiveMinimum: true
           format: int32
           minimum: 0
           type: integer
+        minimumBreakDurations:
+          description: "Specifies the durations [s] of the breaks a driver has to\
+            \ take before exceeding the maximum working duration. The breaks must\
+            \ be taken in the order provided in this list but consecutive elements\
+            \ in this list may be combined into single breaks. For example, when specifying\
+            \ `[300, 900, 1200]`, the possible break configurations are `[300, 900,\
+            \ 1200]`, `[300 + 900 = 1200, 1200]`, `[300, 900 + 1200 = 2100]` and a\
+            \ single break `[300 + 900 + 1200 = 2400]`."
+          example:
+          - 900
+          - 1800
+          items:
+            exclusiveMinimum: true
+            format: int32
+            minimum: 0
+            type: integer
+          maxItems: 3
+          minItems: 1
+          type: array
       required:
       - maximumWorkingDuration
-      - minimumBreakDuration
       type: object
   securitySchemes:
     apiKeyAuth:

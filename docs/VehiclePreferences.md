@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Compactness** | Pointer to **float64** | A scale between 0 and 1 resembling a tradeoff between minimizing distance cost and maximizing compactness, where higher values indicate a stronger preference for compact routes. As the cost per kilometer increases, the influence of this tradeoff becomes more significant. A route is considered compact if all stops for executing non-depot tasks are close to each other. | [optional] [default to 0]
 **RouteDuration** | Pointer to [**RouteDurationPreference**](RouteDurationPreference.md) |  | [optional] 
-**RouteDurationBalancing** | Pointer to **float64** | **Deprecated, use routeDuration instead.**  A scale between 0 and 1 resembling a tradeoff between minimizing the total hour cost and balancing the route durations of the vehicles. Higher values indicate a stronger preference for a route duration close to the average route duration. As the cost per hour increases, the influence of this tradeoff becomes more significant. | [optional] [default to 0]
+**RouteDurationBalancing** | Pointer to **float64** | **Deprecated, instead provide this value as &#x60;importance&#x60; in &#x60;routeDuration&#x60; and leave the &#x60;preferredDuration&#x60; undefined.**  A scale between 0 and 1 resembling a tradeoff between minimizing the total hour cost and balancing the route durations of the vehicles. Higher values indicate a stronger preference for a route duration close to the average route duration. As the cost per hour increases, the influence of this tradeoff becomes more significant. | [optional] [default to 0]
 
 ## Methods
 

@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -40,6 +39,8 @@ docs/OptimizationResult.md
 docs/OptimizationResultMetadata.md
 docs/OptimizationSettings.md
 docs/OptimizationStatus.md
+docs/OptimizationSummaries.md
+docs/OptimizationSummary.md
 docs/OrderCompartmentCombinationConstraint.md
 docs/OrderCompartmentCombinationConstraintType.md
 docs/OrderConstraints.md
@@ -126,6 +127,8 @@ model_optimization_result.go
 model_optimization_result_metadata.go
 model_optimization_settings.go
 model_optimization_status.go
+model_optimization_summaries.go
+model_optimization_summary.go
 model_order_compartment_combination_constraint.go
 model_order_compartment_combination_constraint_type.go
 model_order_constraints.go

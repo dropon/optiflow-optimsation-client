@@ -4,10 +4,82 @@ All URIs are relative to *https://api.myptv.com/routeoptimization/optiflow/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetOptimizationRequest**](OptimizationAPI.md#GetOptimizationRequest) | **Get** /optimizations/{id}/request | 
 [**GetOptimizationResult**](OptimizationAPI.md#GetOptimizationResult) | **Get** /optimizations/{id} | 
+[**ListOptimizations**](OptimizationAPI.md#ListOptimizations) | **Get** /optimizations | 
 [**StartOptimization**](OptimizationAPI.md#StartOptimization) | **Post** /optimizations | 
 [**StopOptimization**](OptimizationAPI.md#StopOptimization) | **Post** /optimizations/{id}/stop | 
 
+
+
+## GetOptimizationRequest
+
+> OptimizationRequest GetOptimizationRequest(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A unique identifier of the optimization.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OptimizationAPI.GetOptimizationRequest(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OptimizationAPI.GetOptimizationRequest``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOptimizationRequest`: OptimizationRequest
+	fmt.Fprintf(os.Stdout, "Response from `OptimizationAPI.GetOptimizationRequest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique identifier of the optimization. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOptimizationRequestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**OptimizationRequest**](OptimizationRequest.md)
+
+### Authorization
+
+[apiKeyAuth](../README.md#apiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetOptimizationResult
@@ -65,6 +137,83 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OptimizationResult**](OptimizationResult.md)
+
+### Authorization
+
+[apiKeyAuth](../README.md#apiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOptimizations
+
+> OptimizationSummaries ListOptimizations(ctx).Cursor(cursor).CreatedBefore(createdBefore).CreatedAfter(createdAfter).Name(name).Tags(tags).Statuses(statuses).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+    "time"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	cursor := "cursor_example" // string | A pagination cursor for retrieving the next page of results. Use the `nextCursor` value from a previous response to fetch subsequent pages. Omit this parameter to retrieve the first page of optimizations. (optional)
+	createdBefore := time.Now() // time.Time | Filter optimizations created before this date and time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). (optional)
+	createdAfter := time.Now() // time.Time | Filter optimizations created after this date and time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). (optional)
+	name := "name_example" // string | Filter optimizations with this name. (optional)
+	tags := []string{"Inner_example"} // []string | Filter optimizations containing all of these tags. (optional)
+	statuses := []openapiclient.OptimizationStatus{openapiclient.OptimizationStatus("PREPARING")} // []OptimizationStatus | Filter optimizations having any of these statuses. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OptimizationAPI.ListOptimizations(context.Background()).Cursor(cursor).CreatedBefore(createdBefore).CreatedAfter(createdAfter).Name(name).Tags(tags).Statuses(statuses).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OptimizationAPI.ListOptimizations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOptimizations`: OptimizationSummaries
+	fmt.Fprintf(os.Stdout, "Response from `OptimizationAPI.ListOptimizations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOptimizationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cursor** | **string** | A pagination cursor for retrieving the next page of results. Use the &#x60;nextCursor&#x60; value from a previous response to fetch subsequent pages. Omit this parameter to retrieve the first page of optimizations. | 
+ **createdBefore** | **time.Time** | Filter optimizations created before this date and time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | 
+ **createdAfter** | **time.Time** | Filter optimizations created after this date and time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | 
+ **name** | **string** | Filter optimizations with this name. | 
+ **tags** | **[]string** | Filter optimizations containing all of these tags. | 
+ **statuses** | [**[]OptimizationStatus**](OptimizationStatus.md) | Filter optimizations having any of these statuses. | 
+
+### Return type
+
+[**OptimizationSummaries**](OptimizationSummaries.md)
 
 ### Authorization
 
