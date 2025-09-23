@@ -20,9 +20,9 @@ type DepotVehicleCombinationConstraintType string
 
 // List of DepotVehicleCombinationConstraintType
 const (
-	DEPOT_REQUIRES_VEHICLE              DepotVehicleCombinationConstraintType = "DEPOT_REQUIRES_VEHICLE"
-	VEHICLE_REQUIRES_DEPOT              DepotVehicleCombinationConstraintType = "VEHICLE_REQUIRES_DEPOT"
-	FORBIDDEN_COMBINATION_DEPOT_VEHICLE DepotVehicleCombinationConstraintType = "FORBIDDEN_COMBINATION"
+	DEPOT_REQUIRES_VEHICLE DepotVehicleCombinationConstraintType = "DEPOT_REQUIRES_VEHICLE"
+	VEHICLE_REQUIRES_DEPOT DepotVehicleCombinationConstraintType = "VEHICLE_REQUIRES_DEPOT"
+	FORBIDDEN_COMBINATION DepotVehicleCombinationConstraintType = "FORBIDDEN_COMBINATION"
 )
 
 // All allowed values of DepotVehicleCombinationConstraintType enum
@@ -110,3 +110,4 @@ func (v *NullableDepotVehicleCombinationConstraintType) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
