@@ -16,49 +16,49 @@ import (
 	"fmt"
 )
 
-// checks if the OvertimeCost type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OvertimeCost{}
+// checks if the OvervehicleCost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OvervehicleCost{}
 
-// OvertimeCost Specifies an extra fixed cost and an increased cost per hour if the route duration exceeds a threshold. Either the fixed cost or the extra cost per hour must not be zero.
-type OvertimeCost struct {
-	// The threshold for the route duration [s] above which the extra costs apply.
+// OvervehicleCost Specifies an extra fixed cost and an increased cost per vehicle if the number of vehicles assigned to the resource exceeds a threshold. Either the fixed cost or the extra cost per vehicle must not be zero.
+type OvervehicleCost struct {
+	// The threshold for the number of vehicles assigned to the resource above which the extra costs apply.
 	Threshold int32 `json:"threshold"`
 	// Specifies the extra fixed cost when exceeding the threshold.
 	ExtraFixed *float64 `json:"extraFixed,omitempty"`
-	// Specifies the extra cost for every hour above the threshold.
-	ExtraPerHour *float64 `json:"extraPerHour,omitempty"`
+	// Specifies the extra cost for every assigned vehicle above the threshold.
+	ExtraPerVehicle *float64 `json:"extraPerVehicle,omitempty"`
 }
 
-type _OvertimeCost OvertimeCost
+type _OvervehicleCost OvervehicleCost
 
-// NewOvertimeCost instantiates a new OvertimeCost object
+// NewOvervehicleCost instantiates a new OvervehicleCost object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOvertimeCost(threshold int32) *OvertimeCost {
-	this := OvertimeCost{}
+func NewOvervehicleCost(threshold int32) *OvervehicleCost {
+	this := OvervehicleCost{}
 	this.Threshold = threshold
 	var extraFixed float64 = 0
 	this.ExtraFixed = &extraFixed
-	var extraPerHour float64 = 0
-	this.ExtraPerHour = &extraPerHour
+	var extraPerVehicle float64 = 0
+	this.ExtraPerVehicle = &extraPerVehicle
 	return &this
 }
 
-// NewOvertimeCostWithDefaults instantiates a new OvertimeCost object
+// NewOvervehicleCostWithDefaults instantiates a new OvervehicleCost object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOvertimeCostWithDefaults() *OvertimeCost {
-	this := OvertimeCost{}
+func NewOvervehicleCostWithDefaults() *OvervehicleCost {
+	this := OvervehicleCost{}
 	var extraFixed float64 = 0
 	this.ExtraFixed = &extraFixed
-	var extraPerHour float64 = 0
-	this.ExtraPerHour = &extraPerHour
+	var extraPerVehicle float64 = 0
+	this.ExtraPerVehicle = &extraPerVehicle
 	return &this
 }
 
 // GetThreshold returns the Threshold field value
-func (o *OvertimeCost) GetThreshold() int32 {
+func (o *OvervehicleCost) GetThreshold() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -69,7 +69,7 @@ func (o *OvertimeCost) GetThreshold() int32 {
 
 // GetThresholdOk returns a tuple with the Threshold field value
 // and a boolean to check if the value has been set.
-func (o *OvertimeCost) GetThresholdOk() (*int32, bool) {
+func (o *OvervehicleCost) GetThresholdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -77,12 +77,12 @@ func (o *OvertimeCost) GetThresholdOk() (*int32, bool) {
 }
 
 // SetThreshold sets field value
-func (o *OvertimeCost) SetThreshold(v int32) {
+func (o *OvervehicleCost) SetThreshold(v int32) {
 	o.Threshold = v
 }
 
 // GetExtraFixed returns the ExtraFixed field value if set, zero value otherwise.
-func (o *OvertimeCost) GetExtraFixed() float64 {
+func (o *OvervehicleCost) GetExtraFixed() float64 {
 	if o == nil || IsNil(o.ExtraFixed) {
 		var ret float64
 		return ret
@@ -92,7 +92,7 @@ func (o *OvertimeCost) GetExtraFixed() float64 {
 
 // GetExtraFixedOk returns a tuple with the ExtraFixed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OvertimeCost) GetExtraFixedOk() (*float64, bool) {
+func (o *OvervehicleCost) GetExtraFixedOk() (*float64, bool) {
 	if o == nil || IsNil(o.ExtraFixed) {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *OvertimeCost) GetExtraFixedOk() (*float64, bool) {
 }
 
 // HasExtraFixed returns a boolean if a field has been set.
-func (o *OvertimeCost) HasExtraFixed() bool {
+func (o *OvervehicleCost) HasExtraFixed() bool {
 	if o != nil && !IsNil(o.ExtraFixed) {
 		return true
 	}
@@ -109,43 +109,43 @@ func (o *OvertimeCost) HasExtraFixed() bool {
 }
 
 // SetExtraFixed gets a reference to the given float64 and assigns it to the ExtraFixed field.
-func (o *OvertimeCost) SetExtraFixed(v float64) {
+func (o *OvervehicleCost) SetExtraFixed(v float64) {
 	o.ExtraFixed = &v
 }
 
-// GetExtraPerHour returns the ExtraPerHour field value if set, zero value otherwise.
-func (o *OvertimeCost) GetExtraPerHour() float64 {
-	if o == nil || IsNil(o.ExtraPerHour) {
+// GetExtraPerVehicle returns the ExtraPerVehicle field value if set, zero value otherwise.
+func (o *OvervehicleCost) GetExtraPerVehicle() float64 {
+	if o == nil || IsNil(o.ExtraPerVehicle) {
 		var ret float64
 		return ret
 	}
-	return *o.ExtraPerHour
+	return *o.ExtraPerVehicle
 }
 
-// GetExtraPerHourOk returns a tuple with the ExtraPerHour field value if set, nil otherwise
+// GetExtraPerVehicleOk returns a tuple with the ExtraPerVehicle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OvertimeCost) GetExtraPerHourOk() (*float64, bool) {
-	if o == nil || IsNil(o.ExtraPerHour) {
+func (o *OvervehicleCost) GetExtraPerVehicleOk() (*float64, bool) {
+	if o == nil || IsNil(o.ExtraPerVehicle) {
 		return nil, false
 	}
-	return o.ExtraPerHour, true
+	return o.ExtraPerVehicle, true
 }
 
-// HasExtraPerHour returns a boolean if a field has been set.
-func (o *OvertimeCost) HasExtraPerHour() bool {
-	if o != nil && !IsNil(o.ExtraPerHour) {
+// HasExtraPerVehicle returns a boolean if a field has been set.
+func (o *OvervehicleCost) HasExtraPerVehicle() bool {
+	if o != nil && !IsNil(o.ExtraPerVehicle) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtraPerHour gets a reference to the given float64 and assigns it to the ExtraPerHour field.
-func (o *OvertimeCost) SetExtraPerHour(v float64) {
-	o.ExtraPerHour = &v
+// SetExtraPerVehicle gets a reference to the given float64 and assigns it to the ExtraPerVehicle field.
+func (o *OvervehicleCost) SetExtraPerVehicle(v float64) {
+	o.ExtraPerVehicle = &v
 }
 
-func (o OvertimeCost) MarshalJSON() ([]byte, error) {
+func (o OvervehicleCost) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -153,19 +153,19 @@ func (o OvertimeCost) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o OvertimeCost) ToMap() (map[string]interface{}, error) {
+func (o OvervehicleCost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["threshold"] = o.Threshold
 	if !IsNil(o.ExtraFixed) {
 		toSerialize["extraFixed"] = o.ExtraFixed
 	}
-	if !IsNil(o.ExtraPerHour) {
-		toSerialize["extraPerHour"] = o.ExtraPerHour
+	if !IsNil(o.ExtraPerVehicle) {
+		toSerialize["extraPerVehicle"] = o.ExtraPerVehicle
 	}
 	return toSerialize, nil
 }
 
-func (o *OvertimeCost) UnmarshalJSON(data []byte) (err error) {
+func (o *OvervehicleCost) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -187,53 +187,53 @@ func (o *OvertimeCost) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varOvertimeCost := _OvertimeCost{}
+	varOvervehicleCost := _OvervehicleCost{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOvertimeCost)
+	err = decoder.Decode(&varOvervehicleCost)
 
 	if err != nil {
 		return err
 	}
 
-	*o = OvertimeCost(varOvertimeCost)
+	*o = OvervehicleCost(varOvervehicleCost)
 
 	return err
 }
 
-type NullableOvertimeCost struct {
-	value *OvertimeCost
+type NullableOvervehicleCost struct {
+	value *OvervehicleCost
 	isSet bool
 }
 
-func (v NullableOvertimeCost) Get() *OvertimeCost {
+func (v NullableOvervehicleCost) Get() *OvervehicleCost {
 	return v.value
 }
 
-func (v *NullableOvertimeCost) Set(val *OvertimeCost) {
+func (v *NullableOvervehicleCost) Set(val *OvervehicleCost) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOvertimeCost) IsSet() bool {
+func (v NullableOvervehicleCost) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOvertimeCost) Unset() {
+func (v *NullableOvervehicleCost) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOvertimeCost(val *OvertimeCost) *NullableOvertimeCost {
-	return &NullableOvertimeCost{value: val, isSet: true}
+func NewNullableOvervehicleCost(val *OvervehicleCost) *NullableOvervehicleCost {
+	return &NullableOvervehicleCost{value: val, isSet: true}
 }
 
-func (v NullableOvertimeCost) MarshalJSON() ([]byte, error) {
+func (v NullableOvervehicleCost) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOvertimeCost) UnmarshalJSON(src []byte) error {
+func (v *NullableOvervehicleCost) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VehicleId** | Pointer to **string** | The unique identifier of the vehicle assigned to the route. | [optional] 
+**ResourceIds** | Pointer to **[]string** | The unique identifiers of the resources assigned to the vehicle executing the route. | [optional] 
 **Start** | Pointer to [**RouteStart**](RouteStart.md) |  | [optional] 
 **Stops** | Pointer to [**[]Stop**](Stop.md) | The list of stops scheduled on the route. A stop describes the visit of a location on a route where one or more tasks are scheduled. Its approach describes how to reach the location from the previous location visited on the route. Consecutive tasks are grouped to an appointment if they are assigned to the same time slot. Consecutive appointments are grouped as a stop if they are scheduled at the same location. | [optional] [default to []]
 **End** | Pointer to [**RouteEnd**](RouteEnd.md) |  | [optional] 
@@ -53,6 +54,31 @@ SetVehicleId sets VehicleId field to given value.
 `func (o *Route) HasVehicleId() bool`
 
 HasVehicleId returns a boolean if a field has been set.
+
+### GetResourceIds
+
+`func (o *Route) GetResourceIds() []string`
+
+GetResourceIds returns the ResourceIds field if non-nil, zero value otherwise.
+
+### GetResourceIdsOk
+
+`func (o *Route) GetResourceIdsOk() (*[]string, bool)`
+
+GetResourceIdsOk returns a tuple with the ResourceIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResourceIds
+
+`func (o *Route) SetResourceIds(v []string)`
+
+SetResourceIds sets ResourceIds field to given value.
+
+### HasResourceIds
+
+`func (o *Route) HasResourceIds() bool`
+
+HasResourceIds returns a boolean if a field has been set.
 
 ### GetStart
 

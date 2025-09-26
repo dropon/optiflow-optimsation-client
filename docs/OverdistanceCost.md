@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Threshold** | **int32** | The threshold for the route&#39;s total distance [m] above which the extra cost per kilometer applies. | 
+**Threshold** | **int32** | The threshold for the route&#39;s total distance [m] above which the extra costs apply. | 
 **ExtraFixed** | Pointer to **float64** | Specifies the extra fixed cost when exceeding the threshold. | [optional] [default to 0]
 **ExtraPerKilometer** | Pointer to **float64** | Specifies the extra cost for every kilometer above the threshold. | [optional] [default to 0]
 

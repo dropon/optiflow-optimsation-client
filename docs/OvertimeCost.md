@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Threshold** | **int32** | The threshold for the route duration [s] above which the extra cost per hour applies. | 
+**Threshold** | **int32** | The threshold for the route duration [s] above which the extra costs apply. | 
 **ExtraFixed** | Pointer to **float64** | Specifies the extra fixed cost when exceeding the threshold. | [optional] [default to 0]
 **ExtraPerHour** | Pointer to **float64** | Specifies the extra cost for every hour above the threshold. | [optional] [default to 0]
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Threshold** | **int32** | The threshold for the route&#39;s number of stops above which the extra cost per stop applies. | 
+**Threshold** | **int32** | The threshold for the route&#39;s number of stops above which the extra costs apply. | 
 **ExtraFixed** | Pointer to **float64** | Specifies the extra fixed cost when exceeding the threshold. | [optional] [default to 0]
 **ExtraPerStop** | Pointer to **float64** | Specifies the extra cost for every stop above the threshold. | [optional] [default to 0]
 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Locations** | [**[]Location**](Location.md) | A list of locations where goods have to be picked up or delivered, or where vehicles are located. Please note that the upper bound on number of locations is a technical limit. Check your individual price plan or contract to see which limits apply. | 
 **Orders** | [**Orders**](Orders.md) |  | 
 **Vehicles** | [**[]Vehicle**](Vehicle.md) | A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle. Please note that the upper bound on number of vehicles is a technical limit. Check your individual price plan or contract to see which limits apply. | 
+**Resources** | Pointer to [**[]Resource**](Resource.md) | A list of resources that can be assigned to vehicles. Resources are shared assets that cannot be used simultaneously by multiple vehicles. When vehicles share a resource, their routes must be scheduled such that they do not overlap in time. | [optional] 
 **Depots** | Pointer to [**[]Depot**](Depot.md) | A list of depots where pickup orders can be delivered to or delivery orders can be picked up from. When providing pickup or delivery orders, at least one depot must be specified. When stopping at a depot, all pickup orders present in the vehicle are unloaded first. Afterwards, delivery orders can be loaded into the vehicle. Those must be delivered before stopping at the next depot. | [optional] [default to []]
 **Routes** | Pointer to [**[]RouteStructure**](RouteStructure.md) | A list of routes that should be reconstructed prior to optimization. Reconstruction ensures all constraints are met and may involve removing orders, changing breaks, or adjusting the start time of the route. After the reconstruction, the optimization will try to improve the routes. The structure of the routes can be changed by the optimization as long as the constraints are satisfied. Check your individual price plan or contract to see whether or not the request may contain routes. | [optional] [default to []]
 **Constraints** | Pointer to [**Constraints**](Constraints.md) |  | [optional] 
@@ -112,6 +113,31 @@ and a boolean to check if the value has been set.
 
 SetVehicles sets Vehicles field to given value.
 
+
+### GetResources
+
+`func (o *OptimizationRequest) GetResources() []Resource`
+
+GetResources returns the Resources field if non-nil, zero value otherwise.
+
+### GetResourcesOk
+
+`func (o *OptimizationRequest) GetResourcesOk() (*[]Resource, bool)`
+
+GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResources
+
+`func (o *OptimizationRequest) SetResources(v []Resource)`
+
+SetResources sets Resources field to given value.
+
+### HasResources
+
+`func (o *OptimizationRequest) HasResources() bool`
+
+HasResources returns a boolean if a field has been set.
 
 ### GetDepots
 
