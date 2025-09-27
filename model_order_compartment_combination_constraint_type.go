@@ -20,9 +20,9 @@ type OrderCompartmentCombinationConstraintType string
 
 // List of OrderCompartmentCombinationConstraintType
 const (
-	ORDER_REQUIRES_COMPARTMENT OrderCompartmentCombinationConstraintType = "ORDER_REQUIRES_COMPARTMENT"
-	COMPARTMENT_REQUIRES_ORDER OrderCompartmentCombinationConstraintType = "COMPARTMENT_REQUIRES_ORDER"
-	FORBIDDEN_COMBINATION OrderCompartmentCombinationConstraintType = "FORBIDDEN_COMBINATION"
+	ORDER_REQUIRES_COMPARTMENT              OrderCompartmentCombinationConstraintType = "ORDER_REQUIRES_COMPARTMENT"
+	COMPARTMENT_REQUIRES_ORDER              OrderCompartmentCombinationConstraintType = "COMPARTMENT_REQUIRES_ORDER"
+	FORBIDDEN_COMBINATION_ORDER_COMPARTMENT OrderCompartmentCombinationConstraintType = "FORBIDDEN_COMBINATION"
 )
 
 // All allowed values of OrderCompartmentCombinationConstraintType enum
@@ -110,4 +110,3 @@ func (v *NullableOrderCompartmentCombinationConstraintType) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
