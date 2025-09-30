@@ -61,6 +61,7 @@ docs/PickupDeliveryOrder.md
 docs/PickupOrder.md
 docs/RepositioningEffortCost.md
 docs/Resource.md
+docs/ResourceConstraints.md
 docs/ResourceCosts.md
 docs/RespectedOrderSequence.md
 docs/RespectedTaskSequence.md
@@ -154,6 +155,7 @@ model_pickup_delivery_order.go
 model_pickup_order.go
 model_repositioning_effort_cost.go
 model_resource.go
+model_resource_constraints.go
 model_resource_costs.go
 model_respected_order_sequence.go
 model_respected_task_sequence.go

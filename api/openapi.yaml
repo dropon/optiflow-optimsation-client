@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.24"
+  version: "1.25"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -132,6 +132,8 @@ paths:
             examples:
               animalTransport:
                 $ref: "#/components/examples/AnimalTransportRequest"
+              beatlesResource:
+                $ref: "#/components/examples/BeatlesResourceRequest"
               deliveriesWithBackHauls:
                 $ref: "#/components/examples/DeliveriesWithBackHaulsRequest"
               nothingToOptimize:
@@ -182,6 +184,8 @@ paths:
               examples:
                 animalTransport:
                   $ref: "#/components/examples/AnimalTransportResult"
+                beatlesResource:
+                  $ref: "#/components/examples/BeatlesResourceResult"
                 deliveriesWithBackHauls:
                   $ref: "#/components/examples/DeliveriesWithBackHaulsResult"
                 nothingToOptimize:
@@ -296,7 +300,7 @@ components:
         \ together with preys such as the flamingo. The lion must be loaded in the\
         \ back of the truck and can therefore not be picked up while the tiger is\
         \ already present in the vehicle."
-      summary: Animal transport with multiple time slots
+      summary: Animal transport with multiple time slots.
       value:
         settings:
           duration: 60
@@ -715,6 +719,705 @@ components:
           totalDistance: 313374
           totalDuration: 26624
         warnings: []
+    BeatlesResourceRequest:
+      description: "A request where the Beatles have to visit some iconic places from\
+        \ their history.  There are six places to visit and no two places can be visited\
+        \ within a single day. Since we only have four Beatles at our disposal, the\
+        \ six locations cannot be visited on the same day. Assigning a Beatle is very\
+        \ expensive and a Beatle is not allowed to visit more than two locations.\
+        \  The Beatles are modelled as resources and should be assigned to vehicles."
+      summary: A request for Beatles to visit some iconic places.
+      value:
+        settings:
+          duration: 60
+        locations:
+        - id: EMI_STUDIOS
+          latitude: 51.5321771
+          longitude: -0.1804201
+        - id: STRAWBERRY_FIELD
+          latitude: 53.380388
+          longitude: -2.8884064
+        - id: CAVERN_CLUB
+          latitude: 53.4062348
+          longitude: -2.9903451
+        - id: PENNY_LANE
+          latitude: 53.3866186
+          longitude: -2.9226019
+        - id: SAVILE_ROW
+          latitude: 51.5112917
+          longitude: -0.1433376
+        - id: TITTENHURST_PARK
+          latitude: 51.4839423
+          longitude: -0.5639379
+        - id: HUGH_OWEN_BUILDING
+          latitude: 53.230486
+          longitude: -4.133039
+        orders:
+          deliveries:
+          - id: STRAWBERRY_FIELD
+            delivery:
+              locationId: STRAWBERRY_FIELD
+              duration: 14400
+            properties:
+              repositioningEffort: 0
+          - id: CAVERN_CLUB
+            delivery:
+              locationId: CAVERN_CLUB
+              duration: 14400
+            properties:
+              repositioningEffort: 0
+          - id: PENNY_LANE
+            delivery:
+              locationId: PENNY_LANE
+              duration: 14400
+            properties:
+              repositioningEffort: 0
+          - id: SAVILE_ROW
+            delivery:
+              locationId: SAVILE_ROW
+              duration: 36000
+            properties:
+              repositioningEffort: 0
+          - id: TITTENHURST_PARK
+            delivery:
+              locationId: TITTENHURST_PARK
+              duration: 36000
+            properties:
+              repositioningEffort: 0
+          - id: HUGH_OWEN_BUILDING
+            delivery:
+              locationId: HUGH_OWEN_BUILDING
+              duration: 3600
+            properties:
+              repositioningEffort: 0
+        vehicles:
+        - id: VEHICLE_1
+          start:
+            locationId: EMI_STUDIOS
+            earliestStartTime: 2025-09-01T00:00:00Z
+          end:
+            locationId: EMI_STUDIOS
+            latestEndTime: 2025-10-01T00:00:00Z
+          routing:
+            profile: EUR_VAN
+          requiredResourceCategories:
+          - BEATLE
+          costs:
+            perHour: 40
+            perKilometer: 0.42
+          constraints:
+            route:
+              maximumDuration: 43200
+        - id: VEHICLE_2
+          start:
+            locationId: EMI_STUDIOS
+            earliestStartTime: 2025-09-01T00:00:00Z
+          end:
+            locationId: EMI_STUDIOS
+            latestEndTime: 2025-10-01T00:00:00Z
+          routing:
+            profile: EUR_VAN
+          requiredResourceCategories:
+          - BEATLE
+          costs:
+            perHour: 40
+            perKilometer: 0.42
+          constraints:
+            route:
+              maximumDuration: 43200
+        - id: VEHICLE_3
+          start:
+            locationId: EMI_STUDIOS
+            earliestStartTime: 2025-09-01T00:00:00Z
+          end:
+            locationId: EMI_STUDIOS
+            latestEndTime: 2025-10-01T00:00:00Z
+          routing:
+            profile: EUR_VAN
+          requiredResourceCategories:
+          - BEATLE
+          costs:
+            perHour: 40
+            perKilometer: 0.42
+          constraints:
+            route:
+              maximumDuration: 43200
+        - id: VEHICLE_4
+          start:
+            locationId: EMI_STUDIOS
+            earliestStartTime: 2025-09-01T00:00:00Z
+          end:
+            locationId: EMI_STUDIOS
+            latestEndTime: 2025-10-01T00:00:00Z
+          routing:
+            profile: EUR_VAN
+          requiredResourceCategories:
+          - BEATLE
+          costs:
+            perHour: 40
+            perKilometer: 0.42
+          constraints:
+            route:
+              maximumDuration: 43200
+        - id: VEHICLE_5
+          start:
+            locationId: EMI_STUDIOS
+            earliestStartTime: 2025-09-01T00:00:00Z
+          end:
+            locationId: EMI_STUDIOS
+            latestEndTime: 2025-10-01T00:00:00Z
+          routing:
+            profile: EUR_VAN
+          requiredResourceCategories:
+          - BEATLE
+          costs:
+            perHour: 40
+            perKilometer: 0.42
+          constraints:
+            route:
+              maximumDuration: 43200
+        - id: VEHICLE_6
+          start:
+            locationId: EMI_STUDIOS
+            earliestStartTime: 2025-09-01T00:00:00Z
+          end:
+            locationId: EMI_STUDIOS
+            latestEndTime: 2025-10-01T00:00:00Z
+          routing:
+            profile: EUR_VAN
+          requiredResourceCategories:
+          - BEATLE
+          costs:
+            perHour: 40
+            perKilometer: 0.42
+          constraints:
+            route:
+              maximumDuration: 43200
+        resources:
+        - id: JOHN
+          minimumBufferDuration: 39600
+          costs:
+            fixed: 1000
+          constraints:
+            maximumVehicles: 2
+          categories:
+          - BEATLE
+        - id: PAUL
+          minimumBufferDuration: 39600
+          costs:
+            fixed: 1000
+          constraints:
+            maximumVehicles: 2
+          categories:
+          - BEATLE
+        - id: GEORGE
+          minimumBufferDuration: 39600
+          costs:
+            fixed: 1000
+          constraints:
+            maximumVehicles: 2
+          categories:
+          - BEATLE
+        - id: RINGO
+          minimumBufferDuration: 39600
+          costs:
+            fixed: 1000
+          constraints:
+            maximumVehicles: 2
+          categories:
+          - BEATLE
+        depots:
+        - id: EMI_STUDIOS
+          locationId: EMI_STUDIOS
+    BeatlesResourceResult:
+      description: "This sample response assigns the Beatles to the vehicles from\
+        \ the request and scheduled the location to visit. Since an individual Beatle\
+        \ was expensive to assign to a vehicle and every Beatle was only allowed to\
+        \ visit at most two locations, the optimization has chosen to only schedule\
+        \ three out of four Beatles. As a consequence, each of the selected Beatles\
+        \ has been assigned two routes, each containing a singular stop. Both routes\
+        \ each Beatle is assigned to, are separated in time by at least 11 hours."
+      summary: A sample response where the Beatles are scheduled to visit some iconic
+        locations.
+      value:
+        id: 00112233-4455-6677-8899-aabbccddeeff
+        status: SUCCEEDED
+        routes:
+        - vehicleId: VEHICLE_1
+          resourceIds:
+          - GEORGE
+          start:
+            locationId: EMI_STUDIOS
+            start: 2025-09-01T00:00:00Z
+            duration: 0
+            departure: 2025-09-01T00:00:00Z
+          stops:
+          - locationId: EMI_STUDIOS
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T00:00:00Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-01T00:00:00Z
+              breaks: []
+              distance: 0
+              drivingDuration: 0
+            arrival: 2025-09-01T00:00:00Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-01T00:00:00Z
+              preparationDuration: 0
+              tasks:
+              - orderId: HUGH_OWEN_BUILDING
+                type: PICKUP
+                breaks: []
+                start: 2025-09-01T00:00:00Z
+                duration: 0
+                end: 2025-09-01T00:00:00Z
+                depotId: EMI_STUDIOS
+              end: 2025-09-01T00:00:00Z
+            departure: 2025-09-01T00:00:00Z
+          - locationId: HUGH_OWEN_BUILDING
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T00:00:00Z
+              endLocationId: HUGH_OWEN_BUILDING
+              arrival: 2025-09-01T04:34:53Z
+              breaks: []
+              distance: 440172
+              drivingDuration: 16493
+            arrival: 2025-09-01T04:34:53Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-01T04:34:53Z
+              preparationDuration: 0
+              tasks:
+              - orderId: HUGH_OWEN_BUILDING
+                type: DELIVERY
+                breaks: []
+                start: 2025-09-01T04:34:53Z
+                duration: 3600
+                end: 2025-09-01T05:34:53Z
+              end: 2025-09-01T05:34:53Z
+            departure: 2025-09-01T05:34:53Z
+          end:
+            locationId: EMI_STUDIOS
+            approach:
+              startLocationId: HUGH_OWEN_BUILDING
+              departure: 2025-09-01T05:34:53Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-01T10:12:15Z
+              breaks: []
+              distance: 441437
+              drivingDuration: 16642
+            arrival: 2025-09-01T10:12:15Z
+            duration: 0
+            end: 2025-09-01T10:12:15Z
+          metrics:
+            numberOfStops: 2
+            cost: 778.4424466666667
+            distance: 881609
+            duration: 36735
+        - vehicleId: VEHICLE_2
+          resourceIds:
+          - JOHN
+          start:
+            locationId: EMI_STUDIOS
+            start: 2025-09-01T22:52:55Z
+            duration: 0
+            departure: 2025-09-01T22:52:55Z
+          stops:
+          - locationId: EMI_STUDIOS
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T22:52:55Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-01T22:52:55Z
+              breaks: []
+              distance: 0
+              drivingDuration: 0
+            arrival: 2025-09-01T22:52:55Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-01T22:52:55Z
+              preparationDuration: 0
+              tasks:
+              - orderId: STRAWBERRY_FIELD
+                type: PICKUP
+                breaks: []
+                start: 2025-09-01T22:52:55Z
+                duration: 0
+                end: 2025-09-01T22:52:55Z
+                depotId: EMI_STUDIOS
+              end: 2025-09-01T22:52:55Z
+            departure: 2025-09-01T22:52:55Z
+          - locationId: STRAWBERRY_FIELD
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T22:52:55Z
+              endLocationId: STRAWBERRY_FIELD
+              arrival: 2025-09-02T02:15:24Z
+              breaks: []
+              distance: 332734
+              drivingDuration: 12149
+            arrival: 2025-09-02T02:15:24Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-02T02:15:24Z
+              preparationDuration: 0
+              tasks:
+              - orderId: STRAWBERRY_FIELD
+                type: DELIVERY
+                breaks: []
+                start: 2025-09-02T02:15:24Z
+                duration: 14400
+                end: 2025-09-02T06:15:24Z
+              end: 2025-09-02T06:15:24Z
+            departure: 2025-09-02T06:15:24Z
+          end:
+            locationId: EMI_STUDIOS
+            approach:
+              startLocationId: STRAWBERRY_FIELD
+              departure: 2025-09-02T06:15:24Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-02T09:38:44Z
+              breaks: []
+              distance: 334025
+              drivingDuration: 12200
+            arrival: 2025-09-02T09:38:44Z
+            duration: 0
+            end: 2025-09-02T09:38:44Z
+          metrics:
+            numberOfStops: 2
+            cost: 710.5832244444445
+            distance: 666759
+            duration: 38749
+        - vehicleId: VEHICLE_3
+          resourceIds:
+          - PAUL
+          start:
+            locationId: EMI_STUDIOS
+            start: 2025-09-01T00:00:00Z
+            duration: 0
+            departure: 2025-09-01T00:00:00Z
+          stops:
+          - locationId: EMI_STUDIOS
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T00:00:00Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-01T00:00:00Z
+              breaks: []
+              distance: 0
+              drivingDuration: 0
+            arrival: 2025-09-01T00:00:00Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-01T00:00:00Z
+              preparationDuration: 0
+              tasks:
+              - orderId: SAVILE_ROW
+                type: PICKUP
+                breaks: []
+                start: 2025-09-01T00:00:00Z
+                duration: 0
+                end: 2025-09-01T00:00:00Z
+                depotId: EMI_STUDIOS
+              end: 2025-09-01T00:00:00Z
+            departure: 2025-09-01T00:00:00Z
+          - locationId: SAVILE_ROW
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T00:00:00Z
+              endLocationId: SAVILE_ROW
+              arrival: 2025-09-01T00:12:05Z
+              breaks: []
+              distance: 4221
+              drivingDuration: 725
+            arrival: 2025-09-01T00:12:05Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-01T00:12:05Z
+              preparationDuration: 0
+              tasks:
+              - orderId: SAVILE_ROW
+                type: DELIVERY
+                breaks: []
+                start: 2025-09-01T00:12:05Z
+                duration: 36000
+                end: 2025-09-01T10:12:05Z
+              end: 2025-09-01T10:12:05Z
+            departure: 2025-09-01T10:12:05Z
+          end:
+            locationId: EMI_STUDIOS
+            approach:
+              startLocationId: SAVILE_ROW
+              departure: 2025-09-01T10:12:05Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-01T10:24:51Z
+              breaks: []
+              distance: 4677
+              drivingDuration: 766
+            arrival: 2025-09-01T10:24:51Z
+            duration: 0
+            end: 2025-09-01T10:24:51Z
+          metrics:
+            numberOfStops: 2
+            cost: 420.3038266666667
+            distance: 8898
+            duration: 37491
+        - vehicleId: VEHICLE_4
+          resourceIds:
+          - GEORGE
+          start:
+            locationId: EMI_STUDIOS
+            start: 2025-09-01T21:12:15Z
+            duration: 0
+            departure: 2025-09-01T21:12:15Z
+          stops:
+          - locationId: EMI_STUDIOS
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T21:12:15Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-01T21:12:15Z
+              breaks: []
+              distance: 0
+              drivingDuration: 0
+            arrival: 2025-09-01T21:12:15Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-01T21:12:15Z
+              preparationDuration: 0
+              tasks:
+              - orderId: CAVERN_CLUB
+                type: PICKUP
+                breaks: []
+                start: 2025-09-01T21:12:15Z
+                duration: 0
+                end: 2025-09-01T21:12:15Z
+                depotId: EMI_STUDIOS
+              end: 2025-09-01T21:12:15Z
+            departure: 2025-09-01T21:12:15Z
+          - locationId: CAVERN_CLUB
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T21:12:15Z
+              endLocationId: CAVERN_CLUB
+              arrival: 2025-09-02T00:40:29Z
+              breaks: []
+              distance: 335637
+              drivingDuration: 12494
+            arrival: 2025-09-02T00:40:29Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-02T00:40:29Z
+              preparationDuration: 0
+              tasks:
+              - orderId: CAVERN_CLUB
+                type: DELIVERY
+                breaks: []
+                start: 2025-09-02T00:40:29Z
+                duration: 14400
+                end: 2025-09-02T04:40:29Z
+              end: 2025-09-02T04:40:29Z
+            departure: 2025-09-02T04:40:29Z
+          end:
+            locationId: EMI_STUDIOS
+            approach:
+              startLocationId: CAVERN_CLUB
+              departure: 2025-09-02T04:40:29Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-02T08:10:36Z
+              breaks: []
+              distance: 337589
+              drivingDuration: 12607
+            arrival: 2025-09-02T08:10:36Z
+            duration: 0
+            end: 2025-09-02T08:10:36Z
+          metrics:
+            numberOfStops: 2
+            cost: 721.65492
+            distance: 673226
+            duration: 39501
+        - vehicleId: VEHICLE_5
+          resourceIds:
+          - PAUL
+          start:
+            locationId: EMI_STUDIOS
+            start: 2025-09-01T21:24:51Z
+            duration: 0
+            departure: 2025-09-01T21:24:51Z
+          stops:
+          - locationId: EMI_STUDIOS
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T21:24:51Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-01T21:24:51Z
+              breaks: []
+              distance: 0
+              drivingDuration: 0
+            arrival: 2025-09-01T21:24:51Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-01T21:24:51Z
+              preparationDuration: 0
+              tasks:
+              - orderId: PENNY_LANE
+                type: PICKUP
+                breaks: []
+                start: 2025-09-01T21:24:51Z
+                duration: 0
+                end: 2025-09-01T21:24:51Z
+                depotId: EMI_STUDIOS
+              end: 2025-09-01T21:24:51Z
+            departure: 2025-09-01T21:24:51Z
+          - locationId: PENNY_LANE
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T21:24:51Z
+              endLocationId: PENNY_LANE
+              arrival: 2025-09-02T00:48:55Z
+              breaks: []
+              distance: 332321
+              drivingDuration: 12244
+            arrival: 2025-09-02T00:48:55Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-02T00:48:55Z
+              preparationDuration: 0
+              tasks:
+              - orderId: PENNY_LANE
+                type: DELIVERY
+                breaks: []
+                start: 2025-09-02T00:48:55Z
+                duration: 14400
+                end: 2025-09-02T04:48:55Z
+              end: 2025-09-02T04:48:55Z
+            departure: 2025-09-02T04:48:55Z
+          end:
+            locationId: EMI_STUDIOS
+            approach:
+              startLocationId: PENNY_LANE
+              departure: 2025-09-02T04:48:55Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-02T08:12:44Z
+              breaks: []
+              distance: 333355
+              drivingDuration: 12229
+            arrival: 2025-09-02T08:12:44Z
+            duration: 0
+            end: 2025-09-02T08:12:44Z
+          metrics:
+            numberOfStops: 2
+            cost: 711.5061422222223
+            distance: 665676
+            duration: 38873
+        - vehicleId: VEHICLE_6
+          resourceIds:
+          - JOHN
+          start:
+            locationId: EMI_STUDIOS
+            start: 2025-09-01T00:00:00Z
+            duration: 0
+            departure: 2025-09-01T00:00:00Z
+          stops:
+          - locationId: EMI_STUDIOS
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T00:00:00Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-01T00:00:00Z
+              breaks: []
+              distance: 0
+              drivingDuration: 0
+            arrival: 2025-09-01T00:00:00Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-01T00:00:00Z
+              preparationDuration: 0
+              tasks:
+              - orderId: TITTENHURST_PARK
+                type: PICKUP
+                breaks: []
+                start: 2025-09-01T00:00:00Z
+                duration: 0
+                end: 2025-09-01T00:00:00Z
+                depotId: EMI_STUDIOS
+              end: 2025-09-01T00:00:00Z
+            departure: 2025-09-01T00:00:00Z
+          - locationId: TITTENHURST_PARK
+            approach:
+              startLocationId: EMI_STUDIOS
+              departure: 2025-09-01T00:00:00Z
+              endLocationId: TITTENHURST_PARK
+              arrival: 2025-09-01T00:56:39Z
+              breaks: []
+              distance: 46222
+              drivingDuration: 3399
+            arrival: 2025-09-01T00:56:39Z
+            preparationDuration: 0
+            appointments:
+            - breaks: []
+              waitingDuration: 0
+              start: 2025-09-01T00:56:39Z
+              preparationDuration: 0
+              tasks:
+              - orderId: TITTENHURST_PARK
+                type: DELIVERY
+                breaks: []
+                start: 2025-09-01T00:56:39Z
+                duration: 36000
+                end: 2025-09-01T10:56:39Z
+              end: 2025-09-01T10:56:39Z
+            departure: 2025-09-01T10:56:39Z
+          end:
+            locationId: EMI_STUDIOS
+            approach:
+              startLocationId: TITTENHURST_PARK
+              departure: 2025-09-01T10:56:39Z
+              endLocationId: EMI_STUDIOS
+              arrival: 2025-09-01T11:52:55Z
+              breaks: []
+              distance: 45891
+              drivingDuration: 3376
+            arrival: 2025-09-01T11:52:55Z
+            duration: 0
+            end: 2025-09-01T11:52:55Z
+          metrics:
+            numberOfStops: 2
+            cost: 513.9652377777778
+            distance: 92113
+            duration: 42775
+        metrics:
+          numberOfUnscheduledOrders: 0
+          numberOfRoutes: 6
+          totalCost: 6856.455797777779
+          totalDistance: 2988281
+          totalDuration: 234124
+        warnings: []
     DeliveriesWithBackHaulsRequest:
       description: "In this example, goods need to be delivered to shopping centers.\
         \ Each shopping center has a bunch of empty containers from previous deliveries.\
@@ -722,7 +1425,7 @@ components:
         \ and brought back to the depot. Some deliveries should be executed in the\
         \ morning, others in the afternoon. The deliveries in East-Flanders should\
         \ be executed before the deliveries in Antwerp."
-      summary: Shopping center deliveries with back hauls
+      summary: Shopping center deliveries with back hauls.
       value:
         settings:
           duration: 60
@@ -1182,7 +1885,7 @@ components:
       description: "An example where no order fits on any vehicle to illustrate an\
         \ optimization with an error. The example describes two orders that need to\
         \ be delivered by a van. However, the only provided vehicle is a truck."
-      summary: Nothing to optimize
+      summary: Nothing to optimize.
       value:
         settings:
           duration: 60
@@ -1235,7 +1938,7 @@ components:
       description: An example of an optimization result that contains an error. The
         optimization fails because all orders require to be transported by a van while
         the only provided vehicle is a truck.
-      summary: Nothing to optimize
+      summary: Nothing to optimize.
       value:
         id: 00112233-4455-6677-8899-aabbccddeeff
         status: FAILED
@@ -1278,7 +1981,7 @@ components:
         \ vehicle and depot. The letters for the king have high priority and should\
         \ be delivered before the letters with low priority. All letters for Westminster\
         \ need to be scheduled consecutively on the same route."
-      summary: Postal service
+      summary: Postal service.
       value:
         settings:
           duration: 60
@@ -1773,7 +2476,7 @@ components:
         waits to be picked up at a specific moment in time and will be delivered to
         their desired destination. A taxi driver is only allowed to transport one
         customer at a time.
-      summary: Taxi service
+      summary: Taxi service.
       value:
         settings:
           duration: 60
@@ -4828,6 +5531,9 @@ components:
           - DRIVER
           - DRIVER
           - DRIVER
+          constraints:
+            maximumTotalRouteDuration: 3600
+            maximumVehicles: 5
         - costs:
             overvehicles:
             - extraPerVehicle: 0.10246457001441578
@@ -4855,6 +5561,9 @@ components:
           - DRIVER
           - DRIVER
           - DRIVER
+          constraints:
+            maximumTotalRouteDuration: 3600
+            maximumVehicles: 5
         - costs:
             overvehicles:
             - extraPerVehicle: 0.10246457001441578
@@ -4882,6 +5591,9 @@ components:
           - DRIVER
           - DRIVER
           - DRIVER
+          constraints:
+            maximumTotalRouteDuration: 3600
+            maximumVehicles: 5
         - costs:
             overvehicles:
             - extraPerVehicle: 0.10246457001441578
@@ -4909,6 +5621,9 @@ components:
           - DRIVER
           - DRIVER
           - DRIVER
+          constraints:
+            maximumTotalRouteDuration: 3600
+            maximumVehicles: 5
         - costs:
             overvehicles:
             - extraPerVehicle: 0.10246457001441578
@@ -4936,6 +5651,9 @@ components:
           - DRIVER
           - DRIVER
           - DRIVER
+          constraints:
+            maximumTotalRouteDuration: 3600
+            maximumVehicles: 5
         locations:
         - stopProperties:
             preparationDuration: 900
@@ -7879,6 +8597,9 @@ components:
         - DRIVER
         - DRIVER
         - DRIVER
+        constraints:
+          maximumTotalRouteDuration: 3600
+          maximumVehicles: 5
       properties:
         id:
           description: The unique identifier of the resource.
@@ -7896,6 +8617,10 @@ components:
           format: int32
           minimum: 0
           type: integer
+        constraints:
+          $ref: "#/components/schemas/ResourceConstraints"
+        costs:
+          $ref: "#/components/schemas/ResourceCosts"
         categories:
           description: A list of categories the shared resource belongs to that can
             be used to describe constraints or rules.
@@ -7908,11 +8633,31 @@ components:
           maxItems: 50
           minItems: 1
           type: array
-        costs:
-          $ref: "#/components/schemas/ResourceCosts"
       required:
       - categories
       - id
+      type: object
+    ResourceConstraints:
+      description: Defines constraints on the vehicles and routes assigned to the
+        resource.
+      example:
+        maximumTotalRouteDuration: 3600
+        maximumVehicles: 5
+      properties:
+        maximumVehicles:
+          description: Restricts the number of vehicles the resource can be assigned
+            to.
+          example: 5
+          format: int32
+          minimum: 1
+          type: integer
+        maximumTotalRouteDuration:
+          description: "Restricts the summed duration [s] of routes corresponding\
+            \ to vehicles assigned to the resource."
+          example: 3600
+          format: int32
+          minimum: 1
+          type: integer
       type: object
     ResourceCosts:
       description: Defines the costs for assigning the resource to vehicles.

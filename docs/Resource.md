@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The unique identifier of the resource. | 
 **MinimumBufferDuration** | Pointer to **int32** | The minimum duration [s] that must be scheduled between the end of one route and the start of another route using this resource. This allows for transition time, cleaning, or preparation between uses. | [optional] [default to 0]
-**Categories** | **[]string** | A list of categories the shared resource belongs to that can be used to describe constraints or rules. | 
+**Constraints** | Pointer to [**ResourceConstraints**](ResourceConstraints.md) |  | [optional] 
 **Costs** | Pointer to [**ResourceCosts**](ResourceCosts.md) |  | [optional] 
+**Categories** | **[]string** | A list of categories the shared resource belongs to that can be used to describe constraints or rules. | 
 
 ## Methods
 
@@ -73,25 +74,30 @@ SetMinimumBufferDuration sets MinimumBufferDuration field to given value.
 
 HasMinimumBufferDuration returns a boolean if a field has been set.
 
-### GetCategories
+### GetConstraints
 
-`func (o *Resource) GetCategories() []string`
+`func (o *Resource) GetConstraints() ResourceConstraints`
 
-GetCategories returns the Categories field if non-nil, zero value otherwise.
+GetConstraints returns the Constraints field if non-nil, zero value otherwise.
 
-### GetCategoriesOk
+### GetConstraintsOk
 
-`func (o *Resource) GetCategoriesOk() (*[]string, bool)`
+`func (o *Resource) GetConstraintsOk() (*ResourceConstraints, bool)`
 
-GetCategoriesOk returns a tuple with the Categories field if it's non-nil, zero value otherwise
+GetConstraintsOk returns a tuple with the Constraints field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCategories
+### SetConstraints
 
-`func (o *Resource) SetCategories(v []string)`
+`func (o *Resource) SetConstraints(v ResourceConstraints)`
 
-SetCategories sets Categories field to given value.
+SetConstraints sets Constraints field to given value.
 
+### HasConstraints
+
+`func (o *Resource) HasConstraints() bool`
+
+HasConstraints returns a boolean if a field has been set.
 
 ### GetCosts
 
@@ -117,6 +123,26 @@ SetCosts sets Costs field to given value.
 `func (o *Resource) HasCosts() bool`
 
 HasCosts returns a boolean if a field has been set.
+
+### GetCategories
+
+`func (o *Resource) GetCategories() []string`
+
+GetCategories returns the Categories field if non-nil, zero value otherwise.
+
+### GetCategoriesOk
+
+`func (o *Resource) GetCategoriesOk() (*[]string, bool)`
+
+GetCategoriesOk returns a tuple with the Categories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCategories
+
+`func (o *Resource) SetCategories(v []string)`
+
+SetCategories sets Categories field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
