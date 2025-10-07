@@ -4,6 +4,7 @@ All URIs are relative to *https://api.myptv.com/routeoptimization/optiflow/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**DeleteOptimization**](OptimizationAPI.md#DeleteOptimization) | **Delete** /optimizations/{id} | 
 [**GetOptimizationProgress**](OptimizationAPI.md#GetOptimizationProgress) | **Get** /optimizations/{id}/progress | 
 [**GetOptimizationRequest**](OptimizationAPI.md#GetOptimizationRequest) | **Get** /optimizations/{id}/request | 
 [**GetOptimizationResult**](OptimizationAPI.md#GetOptimizationResult) | **Get** /optimizations/{id} | 
@@ -11,6 +12,74 @@ Method | HTTP request | Description
 [**StartOptimization**](OptimizationAPI.md#StartOptimization) | **Post** /optimizations | 
 [**StopOptimization**](OptimizationAPI.md#StopOptimization) | **Post** /optimizations/{id}/stop | 
 
+
+
+## DeleteOptimization
+
+> DeleteOptimization(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A unique identifier of the optimization.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.OptimizationAPI.DeleteOptimization(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OptimizationAPI.DeleteOptimization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique identifier of the optimization. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteOptimizationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[apiKeyAuth](../README.md#apiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetOptimizationProgress

@@ -54,6 +54,7 @@ docs/OrderVehicleCombinationConstraint.md
 docs/OrderVehicleCombinationConstraintType.md
 docs/Orders.md
 docs/OverdistanceCost.md
+docs/OverloadCost.md
 docs/OverstopCost.md
 docs/OvertimeCost.md
 docs/OvervehicleCost.md
@@ -148,6 +149,7 @@ model_order_vehicle_combination_constraint.go
 model_order_vehicle_combination_constraint_type.go
 model_orders.go
 model_overdistance_cost.go
+model_overload_cost.go
 model_overstop_cost.go
 model_overtime_cost.go
 model_overvehicle_cost.go

@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.25"
+  version: "1.26"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -162,6 +162,31 @@ paths:
       tags:
       - Optimization
   /optimizations/{id}:
+    delete:
+      description: Deletes the optimization. Also stops the optimization if it is
+        currently running.
+      operationId: deleteOptimization
+      parameters:
+      - description: A unique identifier of the optimization.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The optimization has been deleted successfully.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Response on failure.
+      tags:
+      - Optimization
     get:
       description: "Retrieves the current result of the optimization. While the optimization\
         \ is running, this will return intermediate metrics to track the progress.\
@@ -4721,6 +4746,22 @@ components:
             - extraPerStop: 0.3616076749251911
               threshold: 0
               extraFixed: 0.9301444243932576
+            overloads:
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
             fixed: 100
             overtimes:
             - extraPerHour: 0.14658129805029452
@@ -4757,15 +4798,15 @@ components:
             perHour: 40
             perStop: 0.5
             repositioningEfforts:
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
@@ -4882,6 +4923,22 @@ components:
             - extraPerStop: 0.3616076749251911
               threshold: 0
               extraFixed: 0.9301444243932576
+            overloads:
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
             fixed: 100
             overtimes:
             - extraPerHour: 0.14658129805029452
@@ -4918,15 +4975,15 @@ components:
             perHour: 40
             perStop: 0.5
             repositioningEfforts:
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
@@ -5043,6 +5100,22 @@ components:
             - extraPerStop: 0.3616076749251911
               threshold: 0
               extraFixed: 0.9301444243932576
+            overloads:
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
             fixed: 100
             overtimes:
             - extraPerHour: 0.14658129805029452
@@ -5079,15 +5152,15 @@ components:
             perHour: 40
             perStop: 0.5
             repositioningEfforts:
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
@@ -5204,6 +5277,22 @@ components:
             - extraPerStop: 0.3616076749251911
               threshold: 0
               extraFixed: 0.9301444243932576
+            overloads:
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
             fixed: 100
             overtimes:
             - extraPerHour: 0.14658129805029452
@@ -5240,15 +5329,15 @@ components:
             perHour: 40
             perStop: 0.5
             repositioningEfforts:
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
@@ -5365,6 +5454,22 @@ components:
             - extraPerStop: 0.3616076749251911
               threshold: 0
               extraFixed: 0.9301444243932576
+            overloads:
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
+            - extraPerUnit: 0.20271230230023218
+              threshold: 40
+              dimension: WEIGHT
             fixed: 100
             overtimes:
             - extraPerHour: 0.14658129805029452
@@ -5401,15 +5506,15 @@ components:
             perHour: 40
             perStop: 0.5
             repositioningEfforts:
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
-            - extraPerEffort: 0.4145608029883936
+            - extraPerEffort: 0.7386281948385884
               threshold: 0
           preferences:
             routeDurationBalancing: 0.5
@@ -5506,21 +5611,21 @@ components:
         resources:
         - costs:
             overvehicles:
-            - extraPerVehicle: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
+              extraFixed: 0.10246457001441578
             fixed: 102.5
             perVehicle: 102.5
           minimumBufferDuration: 3600
@@ -5536,21 +5641,21 @@ components:
             maximumVehicles: 5
         - costs:
             overvehicles:
-            - extraPerVehicle: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
+              extraFixed: 0.10246457001441578
             fixed: 102.5
             perVehicle: 102.5
           minimumBufferDuration: 3600
@@ -5566,21 +5671,21 @@ components:
             maximumVehicles: 5
         - costs:
             overvehicles:
-            - extraPerVehicle: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
+              extraFixed: 0.10246457001441578
             fixed: 102.5
             perVehicle: 102.5
           minimumBufferDuration: 3600
@@ -5596,21 +5701,21 @@ components:
             maximumVehicles: 5
         - costs:
             overvehicles:
-            - extraPerVehicle: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
+              extraFixed: 0.10246457001441578
             fixed: 102.5
             perVehicle: 102.5
           minimumBufferDuration: 3600
@@ -5626,21 +5731,21 @@ components:
             maximumVehicles: 5
         - costs:
             overvehicles:
-            - extraPerVehicle: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
-            - extraPerVehicle: 0.10246457001441578
+              extraFixed: 0.10246457001441578
+            - extraPerVehicle: 0.14894159098541704
               threshold: 0
-              extraFixed: 0.12315135367772556
+              extraFixed: 0.10246457001441578
             fixed: 102.5
             perVehicle: 102.5
           minimumBufferDuration: 3600
@@ -8365,6 +8470,44 @@ components:
       required:
       - threshold
       type: object
+    OverloadCost:
+      description: Defines an extra cost that is applied whenever an order is loaded
+        onto the vehicle and the vehicle's load exceeds the specified threshold.
+      example:
+        extraPerUnit: 0.20271230230023218
+        threshold: 40
+        dimension: WEIGHT
+      properties:
+        dimension:
+          description: "Indicates the dimension of the load, to which the threshold\
+            \ applies."
+          example: WEIGHT
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+        threshold:
+          description: "The threshold for the specified load dimension.  When an order\
+            \ is loaded, only the part of that order which contributes to exceeding\
+            \ the threshold is considered for the extra cost."
+          example: 40
+          format: double
+          maximum: 1000000
+          minimum: 0
+          multipleOf: 0.001
+          type: number
+        extraPerUnit:
+          description: Specifies the extra cost per unit when loading an order which
+            exceeds the threshold.
+          exclusiveMinimum: true
+          format: double
+          minimum: 0
+          type: number
+      required:
+      - dimension
+      - extraPerUnit
+      - threshold
+      type: object
     OvertimeCost:
       description: Specifies an extra fixed cost and an increased cost per hour if
         the route duration exceeds a threshold. Either the fixed cost or the extra
@@ -8400,9 +8543,9 @@ components:
         if the number of vehicles assigned to the resource exceeds a threshold. Either
         the fixed cost or the extra cost per vehicle must not be zero.
       example:
-        extraPerVehicle: 0.10246457001441578
+        extraPerVehicle: 0.14894159098541704
         threshold: 0
-        extraFixed: 0.12315135367772556
+        extraFixed: 0.10246457001441578
       properties:
         threshold:
           description: The threshold for the number of vehicles assigned to the resource
@@ -8543,7 +8686,7 @@ components:
         Specifies an increased cost per effort if the route's repositioning effort goes above a threshold.
         When two orders are loaded into the same compartment and delivered in the reverse order, we refer to them as a non-last-in-first-out (non-LIFO) pair. Any non-LIFO pair of orders requires repositioning in the vehicle, as the last picked-up order obstructs the first order that needs to be delivered. The effort involved in this repositioning is the minimum effort required for the two orders. The total repositioning effort for the route is the sum of the repositioning efforts for all non-LIFO pairs of orders.
       example:
-        extraPerEffort: 0.4145608029883936
+        extraPerEffort: 0.7386281948385884
         threshold: 0
       properties:
         threshold:
@@ -8572,21 +8715,21 @@ components:
       example:
         costs:
           overvehicles:
-          - extraPerVehicle: 0.10246457001441578
+          - extraPerVehicle: 0.14894159098541704
             threshold: 0
-            extraFixed: 0.12315135367772556
-          - extraPerVehicle: 0.10246457001441578
+            extraFixed: 0.10246457001441578
+          - extraPerVehicle: 0.14894159098541704
             threshold: 0
-            extraFixed: 0.12315135367772556
-          - extraPerVehicle: 0.10246457001441578
+            extraFixed: 0.10246457001441578
+          - extraPerVehicle: 0.14894159098541704
             threshold: 0
-            extraFixed: 0.12315135367772556
-          - extraPerVehicle: 0.10246457001441578
+            extraFixed: 0.10246457001441578
+          - extraPerVehicle: 0.14894159098541704
             threshold: 0
-            extraFixed: 0.12315135367772556
-          - extraPerVehicle: 0.10246457001441578
+            extraFixed: 0.10246457001441578
+          - extraPerVehicle: 0.14894159098541704
             threshold: 0
-            extraFixed: 0.12315135367772556
+            extraFixed: 0.10246457001441578
           fixed: 102.5
           perVehicle: 102.5
         minimumBufferDuration: 3600
@@ -8663,21 +8806,21 @@ components:
       description: Defines the costs for assigning the resource to vehicles.
       example:
         overvehicles:
-        - extraPerVehicle: 0.10246457001441578
+        - extraPerVehicle: 0.14894159098541704
           threshold: 0
-          extraFixed: 0.12315135367772556
-        - extraPerVehicle: 0.10246457001441578
+          extraFixed: 0.10246457001441578
+        - extraPerVehicle: 0.14894159098541704
           threshold: 0
-          extraFixed: 0.12315135367772556
-        - extraPerVehicle: 0.10246457001441578
+          extraFixed: 0.10246457001441578
+        - extraPerVehicle: 0.14894159098541704
           threshold: 0
-          extraFixed: 0.12315135367772556
-        - extraPerVehicle: 0.10246457001441578
+          extraFixed: 0.10246457001441578
+        - extraPerVehicle: 0.14894159098541704
           threshold: 0
-          extraFixed: 0.12315135367772556
-        - extraPerVehicle: 0.10246457001441578
+          extraFixed: 0.10246457001441578
+        - extraPerVehicle: 0.14894159098541704
           threshold: 0
-          extraFixed: 0.12315135367772556
+          extraFixed: 0.10246457001441578
         fixed: 102.5
         perVehicle: 102.5
       properties:
@@ -10236,6 +10379,22 @@ components:
           - extraPerStop: 0.3616076749251911
             threshold: 0
             extraFixed: 0.9301444243932576
+          overloads:
+          - extraPerUnit: 0.20271230230023218
+            threshold: 40
+            dimension: WEIGHT
+          - extraPerUnit: 0.20271230230023218
+            threshold: 40
+            dimension: WEIGHT
+          - extraPerUnit: 0.20271230230023218
+            threshold: 40
+            dimension: WEIGHT
+          - extraPerUnit: 0.20271230230023218
+            threshold: 40
+            dimension: WEIGHT
+          - extraPerUnit: 0.20271230230023218
+            threshold: 40
+            dimension: WEIGHT
           fixed: 100
           overtimes:
           - extraPerHour: 0.14658129805029452
@@ -10272,15 +10431,15 @@ components:
           perHour: 40
           perStop: 0.5
           repositioningEfforts:
-          - extraPerEffort: 0.4145608029883936
+          - extraPerEffort: 0.7386281948385884
             threshold: 0
-          - extraPerEffort: 0.4145608029883936
+          - extraPerEffort: 0.7386281948385884
             threshold: 0
-          - extraPerEffort: 0.4145608029883936
+          - extraPerEffort: 0.7386281948385884
             threshold: 0
-          - extraPerEffort: 0.4145608029883936
+          - extraPerEffort: 0.7386281948385884
             threshold: 0
-          - extraPerEffort: 0.4145608029883936
+          - extraPerEffort: 0.7386281948385884
             threshold: 0
         preferences:
           routeDurationBalancing: 0.5
@@ -10498,6 +10657,22 @@ components:
         - extraPerStop: 0.3616076749251911
           threshold: 0
           extraFixed: 0.9301444243932576
+        overloads:
+        - extraPerUnit: 0.20271230230023218
+          threshold: 40
+          dimension: WEIGHT
+        - extraPerUnit: 0.20271230230023218
+          threshold: 40
+          dimension: WEIGHT
+        - extraPerUnit: 0.20271230230023218
+          threshold: 40
+          dimension: WEIGHT
+        - extraPerUnit: 0.20271230230023218
+          threshold: 40
+          dimension: WEIGHT
+        - extraPerUnit: 0.20271230230023218
+          threshold: 40
+          dimension: WEIGHT
         fixed: 100
         overtimes:
         - extraPerHour: 0.14658129805029452
@@ -10534,15 +10709,15 @@ components:
         perHour: 40
         perStop: 0.5
         repositioningEfforts:
-        - extraPerEffort: 0.4145608029883936
+        - extraPerEffort: 0.7386281948385884
           threshold: 0
-        - extraPerEffort: 0.4145608029883936
+        - extraPerEffort: 0.7386281948385884
           threshold: 0
-        - extraPerEffort: 0.4145608029883936
+        - extraPerEffort: 0.7386281948385884
           threshold: 0
-        - extraPerEffort: 0.4145608029883936
+        - extraPerEffort: 0.7386281948385884
           threshold: 0
-        - extraPerEffort: 0.4145608029883936
+        - extraPerEffort: 0.7386281948385884
           threshold: 0
       properties:
         perHour:
@@ -10598,6 +10773,16 @@ components:
             \ stops contribute to the total cost of the route."
           items:
             $ref: "#/components/schemas/OverstopCost"
+          maxItems: 20
+          type: array
+        overloads:
+          default: []
+          description: "A list of overload costs that describe an extra cost for loading\
+            \ orders onto a vehicle when the vehicle's load exceeds a threshold. For\
+            \ each dimension and threshold, the extra cost contribute to the total\
+            \ cost of the route."
+          items:
+            $ref: "#/components/schemas/OverloadCost"
           maxItems: 20
           type: array
         repositioningEfforts:

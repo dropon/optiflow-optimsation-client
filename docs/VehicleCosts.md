@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Overtimes** | Pointer to [**[]OvertimeCost**](OvertimeCost.md) | A list of overtime costs that describe an increasing cost if the route duration exceeds a threshold. For each exceeded threshold, the extra fixed cost and the additional cost for the extra hours contribute to the total cost of the route. | [optional] [default to []]
 **Overdistances** | Pointer to [**[]OverdistanceCost**](OverdistanceCost.md) | A list of overdistance costs that describe an increasing cost if the total distance of a route exceeds a threshold. For each exceeded threshold, the extra fixed cost and the additional cost for the extra kilometers contribute to the total cost of the route. | [optional] [default to []]
 **Overstops** | Pointer to [**[]OverstopCost**](OverstopCost.md) | A list of overstop costs that describe an increasing cost if the number of stops of a route exceeds a threshold. For each exceeded threshold, the extra fixed cost and the additional cost for the extra stops contribute to the total cost of the route. | [optional] [default to []]
+**Overloads** | Pointer to [**[]OverloadCost**](OverloadCost.md) | A list of overload costs that describe an extra cost for loading orders onto a vehicle when the vehicle&#39;s load exceeds a threshold. For each dimension and threshold, the extra cost contribute to the total cost of the route. | [optional] [default to []]
 **RepositioningEfforts** | Pointer to [**[]RepositioningEffortCost**](RepositioningEffortCost.md) | Specifies a list of repositioning effort costs that describe an increasing cost if the route&#39;s repositioning effort exceeds a threshold.  When two orders are loaded into the same compartment and delivered in the same order, we refer to them as a non-last-in-first-out (non-LIFO) pair. Any non-LIFO pair of orders requires repositioning in the vehicle, as the last picked-up order obstructs the first order that needs to be delivered. The effort involved in this repositioning is the minimum effort required for the two orders. The total repositioning effort for the route is the sum of the repositioning efforts for all non-LIFO pairs of orders. | [optional] [default to []]
 
 ## Methods
@@ -196,6 +197,31 @@ SetOverstops sets Overstops field to given value.
 `func (o *VehicleCosts) HasOverstops() bool`
 
 HasOverstops returns a boolean if a field has been set.
+
+### GetOverloads
+
+`func (o *VehicleCosts) GetOverloads() []OverloadCost`
+
+GetOverloads returns the Overloads field if non-nil, zero value otherwise.
+
+### GetOverloadsOk
+
+`func (o *VehicleCosts) GetOverloadsOk() (*[]OverloadCost, bool)`
+
+GetOverloadsOk returns a tuple with the Overloads field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverloads
+
+`func (o *VehicleCosts) SetOverloads(v []OverloadCost)`
+
+SetOverloads sets Overloads field to given value.
+
+### HasOverloads
+
+`func (o *VehicleCosts) HasOverloads() bool`
+
+HasOverloads returns a boolean if a field has been set.
 
 ### GetRepositioningEfforts
 
