@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.26"
+  version: "1.27"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -3258,6 +3258,9 @@ components:
             * `ROUTE_OPTIMIZATION_TOO_MANY_VEHICLES` - The request contains too many vehicles.
               * `vehicles` - The number of vehicles.
               * `limit` - The limit.
+            * `ROUTE_OPTIMIZATION_TOO_MANY_RESOURCES` - The request contains too many resources.
+              * `resources` - The number of resources.
+              * `limit` - The limit.
             * `ROUTE_OPTIMIZATION_TOO_LONG_DURATION` - The duration of the request is too long.
               * `duration` - The duration of the request [s].
               * `limit` - The limit.
@@ -4467,6 +4470,7 @@ components:
       example:
         settings:
           duration: 7200
+          maximumStagnationDuration: 1200
         routes:
         - breaks:
           - duration: 1800
@@ -6801,7 +6805,7 @@ components:
         locations:
           description: |-
             A list of locations where goods have to be picked up or delivered, or where vehicles are located.
-            Please note that the upper bound on number of locations is a technical limit. Check your individual price plan or contract to see which limits apply.
+            Please note that the upper bound on the number of locations is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
             $ref: "#/components/schemas/Location"
           maxItems: 50000
@@ -6812,17 +6816,16 @@ components:
         vehicles:
           description: |-
             A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle.
-            Please note that the upper bound on number of vehicles is a technical limit. Check your individual price plan or contract to see which limits apply.
+            Please note that the upper bound on the number of vehicles is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
             $ref: "#/components/schemas/Vehicle"
           maxItems: 2500
           minItems: 1
           type: array
         resources:
-          description: "A list of resources that can be assigned to vehicles. Resources\
-            \ are shared assets that cannot be used simultaneously by multiple vehicles.\
-            \ When vehicles share a resource, their routes must be scheduled such\
-            \ that they do not overlap in time."
+          description: |-
+            A list of resources that can be assigned to vehicles. Resources are shared assets that cannot be used simultaneously by multiple vehicles. When vehicles share a resource, their routes must be scheduled such that they do not overlap in time.
+            Please note that resources count as separate assets in your license allocation. The total asset count for any optimization includes the sum of routes and their distinct assigned resources. The upper bound on number of resources is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
             $ref: "#/components/schemas/Resource"
           maxItems: 2500
@@ -7457,6 +7460,7 @@ components:
       description: General settings of the optimization.
       example:
         duration: 7200
+        maximumStagnationDuration: 1200
       properties:
         duration:
           description: |-
@@ -7466,6 +7470,16 @@ components:
           format: int32
           maximum: 86400
           minimum: 0
+          type: integer
+        maximumStagnationDuration:
+          description: |-
+            Defines the maximum duration [s] the optimization may continue without improving the best-known solution.
+            If no better solution is found within this period, the optimization will stop early - even if the overall duration limit has not yet been reached. This mechanism helps reduce unnecessary computation time when progress stalls. The stagnation timer starts when the optimization enters the `RUNNING` status and resets each time a better solution is found.
+            *Use with caution:* This feature may prematurely terminate optimizations that could still yield better solutions given more time. Since the timing of improvements is inherently unpredictable, relying on this setting can lead to suboptimal results. It is recommended to disable this feature or set a conservative value unless you have strong reasons to limit runtime based on stagnation.
+          example: 1200
+          format: int32
+          maximum: 86400
+          minimum: 1
           type: integer
       required:
       - duration
@@ -8386,7 +8400,7 @@ components:
           default: []
           description: |-
             A list of orders that must be picked up from a specific location and transported to a depot.
-            Please note that the upper bound on number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply.
+            Please note that the upper bound on the number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
             $ref: "#/components/schemas/PickupOrder"
           maxItems: 50000
@@ -8395,7 +8409,7 @@ components:
           default: []
           description: |-
             A list of orders that must be delivered to a specific location and transported from a depot.
-            Please note that the upper bound on number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply.
+            Please note that the upper bound on the number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
             $ref: "#/components/schemas/DeliveryOrder"
           maxItems: 50000
@@ -8404,7 +8418,7 @@ components:
           default: []
           description: |-
             A list of orders that must be picked up at a specific location and delivered to a specific location.
-            Please note that the upper bound on number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply.
+            Please note that the upper bound on the number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply.
           items:
             $ref: "#/components/schemas/PickupDeliveryOrder"
           maxItems: 50000
@@ -8434,36 +8448,6 @@ components:
         extraPerKilometer:
           default: 0
           description: Specifies the extra cost for every kilometer above the threshold.
-          format: double
-          minimum: 0
-          type: number
-      required:
-      - threshold
-      type: object
-    OverstopCost:
-      description: Specifies an extra fixed cost and an increased cost per stop if
-        the number of stops of a route exceeds a threshold. Either the fixed cost
-        or the extra cost per stop must not be zero.
-      example:
-        extraPerStop: 0.3616076749251911
-        threshold: 0
-        extraFixed: 0.9301444243932576
-      properties:
-        threshold:
-          description: The threshold for the route's number of stops above which the
-            extra costs apply.
-          format: int32
-          minimum: 0
-          type: integer
-        extraFixed:
-          default: 0
-          description: Specifies the extra fixed cost when exceeding the threshold.
-          format: double
-          minimum: 0
-          type: number
-        extraPerStop:
-          default: 0
-          description: Specifies the extra cost for every stop above the threshold.
           format: double
           minimum: 0
           type: number
@@ -8506,6 +8490,36 @@ components:
       required:
       - dimension
       - extraPerUnit
+      - threshold
+      type: object
+    OverstopCost:
+      description: Specifies an extra fixed cost and an increased cost per stop if
+        the number of stops of a route exceeds a threshold. Either the fixed cost
+        or the extra cost per stop must not be zero.
+      example:
+        extraPerStop: 0.3616076749251911
+        threshold: 0
+        extraFixed: 0.9301444243932576
+      properties:
+        threshold:
+          description: The threshold for the route's number of stops above which the
+            extra costs apply.
+          format: int32
+          minimum: 0
+          type: integer
+        extraFixed:
+          default: 0
+          description: Specifies the extra fixed cost when exceeding the threshold.
+          format: double
+          minimum: 0
+          type: number
+        extraPerStop:
+          default: 0
+          description: Specifies the extra cost for every stop above the threshold.
+          format: double
+          minimum: 0
+          type: number
+      required:
       - threshold
       type: object
     OvertimeCost:
@@ -8708,10 +8722,9 @@ components:
       - threshold
       type: object
     Resource:
-      description: "A resource that can be assigned to vehicles. Resources are shared\
-        \ assets that cannot be used simultaneously by multiple vehicles. When the\
-        \ optimization schedules two routes that share a resource, they will be separated\
-        \ in time."
+      description: |-
+        A resource that can be assigned to vehicles. Resources are shared assets that cannot be used simultaneously by multiple vehicles. When the optimization schedules two routes that share a resource, they will be separated in time.
+        Important note: Used resources count as separate assets in your license allocation. The total asset count for any optimization includes the sum of vehicles and distinct shared resources, reflecting the additional resource dimension and optimisation complexity introduced by this feature. To avoid unexpected license impact, this capability requires explicit feature flag activation before use.
       example:
         costs:
           overvehicles:
@@ -10891,7 +10904,7 @@ components:
         profile:
           description: |-
             A profile defines a vehicle by a set of attributes, matching typical transport situations. It must be the name of one of the predefined profiles `EUR_PEDESTRIAN`, `EUR_BICYCLE`, `EUR_CAR`, `EUR_VAN`, `EUR_TRUCK_7_49T`, `EUR_TRUCK_11_99T`, `EUR_TRUCK_40T`, `EUR_TRAILER_TRUCK`, `EUR_TLN_VAN`, `EUR_TLN_TRUCK_11_99T`, `EUR_TLN_TRUCK_20T`, `EUR_TLN_TRUCK_40T`, `AUS_LCV_LIGHT_COMMERCIAL`, `AUS_MR_MEDIUM_RIGID`, `AUS_HR_HEAVY_RIGID`, `IMEA_CAR`, `IMEA_VAN`, `IMEA_TRUCK_7_49T`, `IMEA_TRUCK_40T`, `USA_1_PICKUP`, `USA_5_DELIVERY`, `USA_8_SEMITRAILER_5AXLE`. At most ten profiles may be used within a single optimization.
-            Please note that the upper bound on number of different routing profiles is a technical limit. Check your individual price plan or contract to see which limits apply.
+            Please note that the upper bound on the number of different routing profiles is a technical limit. Check your individual price plan or contract to see which limits apply.
           example: EUR_VAN
           maxLength: 100
           minLength: 1

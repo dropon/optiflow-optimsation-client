@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pickups** | Pointer to [**[]PickupOrder**](PickupOrder.md) | A list of orders that must be picked up from a specific location and transported to a depot. Please note that the upper bound on number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply. | [optional] [default to []]
-**Deliveries** | Pointer to [**[]DeliveryOrder**](DeliveryOrder.md) | A list of orders that must be delivered to a specific location and transported from a depot. Please note that the upper bound on number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. | [optional] [default to []]
-**PickupDeliveries** | Pointer to [**[]PickupDeliveryOrder**](PickupDeliveryOrder.md) | A list of orders that must be picked up at a specific location and delivered to a specific location. Please note that the upper bound on number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. | [optional] [default to []]
+**Pickups** | Pointer to [**[]PickupOrder**](PickupOrder.md) | A list of orders that must be picked up from a specific location and transported to a depot. Please note that the upper bound on the number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply. | [optional] [default to []]
+**Deliveries** | Pointer to [**[]DeliveryOrder**](DeliveryOrder.md) | A list of orders that must be delivered to a specific location and transported from a depot. Please note that the upper bound on the number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. | [optional] [default to []]
+**PickupDeliveries** | Pointer to [**[]PickupDeliveryOrder**](PickupDeliveryOrder.md) | A list of orders that must be picked up at a specific location and delivered to a specific location. Please note that the upper bound on the number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. | [optional] [default to []]
 
 ## Methods
 
