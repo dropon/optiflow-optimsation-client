@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **NumberOfUnscheduledOrders** | **int32** | The number of orders that are not planned by the optimization. | 
 **NumberOfRoutes** | **int32** | The number of routes that where scheduled by the optimization. | 
+**NumberOfResources** | **int32** | The number of resources that where assigned by the optimization. | 
 **TotalCost** | **float64** | The total cost of the scheduled routes. This includes the cost of the routes and the outsourcing cost of the unplanned orders. | 
 **TotalDistance** | **int64** | The sum of the distances [m] of the scheduled routes. | 
 **TotalDuration** | **int64** | The sum of the durations [s] of the scheduled routes. | 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewMetrics
 
-`func NewMetrics(numberOfUnscheduledOrders int32, numberOfRoutes int32, totalCost float64, totalDistance int64, totalDuration int64, ) *Metrics`
+`func NewMetrics(numberOfUnscheduledOrders int32, numberOfRoutes int32, numberOfResources int32, totalCost float64, totalDistance int64, totalDuration int64, ) *Metrics`
 
 NewMetrics instantiates a new Metrics object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +68,26 @@ and a boolean to check if the value has been set.
 `func (o *Metrics) SetNumberOfRoutes(v int32)`
 
 SetNumberOfRoutes sets NumberOfRoutes field to given value.
+
+
+### GetNumberOfResources
+
+`func (o *Metrics) GetNumberOfResources() int32`
+
+GetNumberOfResources returns the NumberOfResources field if non-nil, zero value otherwise.
+
+### GetNumberOfResourcesOk
+
+`func (o *Metrics) GetNumberOfResourcesOk() (*int32, bool)`
+
+GetNumberOfResourcesOk returns a tuple with the NumberOfResources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNumberOfResources
+
+`func (o *Metrics) SetNumberOfResources(v int32)`
+
+SetNumberOfResources sets NumberOfResources field to given value.
 
 
 ### GetTotalCost

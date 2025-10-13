@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Longitude** | **float64** | The longitude value of the location in degrees (WGS84/EPSG:4326) from west to east. | 
 **MatchSideOfStreet** | Pointer to **bool** | Requires the vehicle to approach from the side of the street where the location is situated. This prevents the driver from needing to cross the street. | [optional] [default to false]
 **StopProperties** | Pointer to [**StopProperties**](StopProperties.md) |  | [optional] 
+**ChargingStations** | Pointer to [**[]ChargingStation**](ChargingStation.md) | Specifies the charging capabilities that can be used at the location for electric vehicles. | [optional] 
 **Categories** | Pointer to **[]string** | A list of categories the location belongs to that can be used to describe constraints or rules. | [optional] [default to []]
 
 ## Methods
@@ -139,6 +140,31 @@ SetStopProperties sets StopProperties field to given value.
 `func (o *Location) HasStopProperties() bool`
 
 HasStopProperties returns a boolean if a field has been set.
+
+### GetChargingStations
+
+`func (o *Location) GetChargingStations() []ChargingStation`
+
+GetChargingStations returns the ChargingStations field if non-nil, zero value otherwise.
+
+### GetChargingStationsOk
+
+`func (o *Location) GetChargingStationsOk() (*[]ChargingStation, bool)`
+
+GetChargingStationsOk returns a tuple with the ChargingStations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChargingStations
+
+`func (o *Location) SetChargingStations(v []ChargingStation)`
+
+SetChargingStations sets ChargingStations field to given value.
+
+### HasChargingStations
+
+`func (o *Location) HasChargingStations() bool`
+
+HasChargingStations returns a boolean if a field has been set.
 
 ### GetCategories
 

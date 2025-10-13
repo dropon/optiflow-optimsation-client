@@ -6,10 +6,14 @@ api_optimization.go
 client.go
 configuration.go
 docs/Appointment.md
+docs/BatteryConsumption.md
 docs/Break.md
 docs/BreakSettings.md
 docs/BreakStructure.md
 docs/CausingError.md
+docs/Charging.md
+docs/ChargingStation.md
+docs/ChargingStructure.md
 docs/CombinationConstraints.md
 docs/Compartment.md
 docs/CompartmentLoadingStrategy.md
@@ -89,6 +93,7 @@ docs/TaskType.md
 docs/TimeSlot.md
 docs/TrafficMode.md
 docs/Vehicle.md
+docs/VehicleBattery.md
 docs/VehicleConstraints.md
 docs/VehicleCosts.md
 docs/VehicleEnd.md
@@ -102,10 +107,14 @@ git_push.sh
 go.mod
 go.sum
 model_appointment.go
+model_battery_consumption.go
 model_break.go
 model_break_settings.go
 model_break_structure.go
 model_causing_error.go
+model_charging.go
+model_charging_station.go
+model_charging_structure.go
 model_combination_constraints.go
 model_compartment.go
 model_compartment_loading_strategy.go
@@ -184,6 +193,7 @@ model_task_type.go
 model_time_slot.go
 model_traffic_mode.go
 model_vehicle.go
+model_vehicle_battery.go
 model_vehicle_constraints.go
 model_vehicle_costs.go
 model_vehicle_end.go

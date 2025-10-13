@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Arrival** | Pointer to **time.Time** | The point in time when the vehicle arrives at the location. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | [optional] 
 **PreparationDuration** | Pointer to **int32** | A period of time [s] that is required between the arrival at the location and the start of the first appointment. The preparation duration is scheduled before tasks can be executed at the stop. | [optional] 
 **Appointments** | Pointer to [**[]Appointment**](Appointment.md) | A list of appointments that describe the tasks that are scheduled for execution at this stop. Consecutive tasks are grouped into an appointment if they have been assigned to the same time slot. | [optional] 
+**Charging** | Pointer to [**[]Charging**](Charging.md) | Indicates when the vehicle battery is recharged at the current stop. Charging can take place at the very beginning or at the very end of the stop. | [optional] 
 **VehicleSlotIndex** | Pointer to **int32** | Describes the index of the vehicle slot this stop is assigned to. If there is no vehicle slot provided for this index, the stop is assigned to an extra vehicle slot. | [optional] 
 **Departure** | Pointer to **time.Time** | The point in time when the vehicle departs at the location. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | [optional] 
 
@@ -155,6 +156,31 @@ SetAppointments sets Appointments field to given value.
 `func (o *Stop) HasAppointments() bool`
 
 HasAppointments returns a boolean if a field has been set.
+
+### GetCharging
+
+`func (o *Stop) GetCharging() []Charging`
+
+GetCharging returns the Charging field if non-nil, zero value otherwise.
+
+### GetChargingOk
+
+`func (o *Stop) GetChargingOk() (*[]Charging, bool)`
+
+GetChargingOk returns a tuple with the Charging field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCharging
+
+`func (o *Stop) SetCharging(v []Charging)`
+
+SetCharging sets Charging field to given value.
+
+### HasCharging
+
+`func (o *Stop) HasCharging() bool`
+
+HasCharging returns a boolean if a field has been set.
 
 ### GetVehicleSlotIndex
 

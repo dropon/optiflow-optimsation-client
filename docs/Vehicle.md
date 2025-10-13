@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Start** | [**VehicleStart**](VehicleStart.md) |  | 
 **End** | [**VehicleEnd**](VehicleEnd.md) |  | 
 **Routing** | [**VehicleRouting**](VehicleRouting.md) |  | 
+**Battery** | Pointer to [**VehicleBattery**](VehicleBattery.md) |  | [optional] 
 **RequiredResourceCategories** | Pointer to **[]string** | A list of resource categories specifying the resources required by the vehicle. For each category in this list exactly one matching resource will be assigned to the vehicle. | [optional] [default to []]
 **Costs** | [**VehicleCosts**](VehicleCosts.md) |  | 
 **Preferences** | Pointer to [**VehiclePreferences**](VehiclePreferences.md) |  | [optional] 
@@ -114,6 +115,31 @@ and a boolean to check if the value has been set.
 
 SetRouting sets Routing field to given value.
 
+
+### GetBattery
+
+`func (o *Vehicle) GetBattery() VehicleBattery`
+
+GetBattery returns the Battery field if non-nil, zero value otherwise.
+
+### GetBatteryOk
+
+`func (o *Vehicle) GetBatteryOk() (*VehicleBattery, bool)`
+
+GetBatteryOk returns a tuple with the Battery field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBattery
+
+`func (o *Vehicle) SetBattery(v VehicleBattery)`
+
+SetBattery sets Battery field to given value.
+
+### HasBattery
+
+`func (o *Vehicle) HasBattery() bool`
+
+HasBattery returns a boolean if a field has been set.
 
 ### GetRequiredResourceCategories
 
