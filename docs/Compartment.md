@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | A unique identifier for the compartment, which must be distinct among all compartments within the same vehicle. | 
+**MaximumLoads** | Pointer to [**[]Load**](Load.md) | A list of load dimensions that describe the capacity of the compartment. For each dimension specified in this list, the sum of the values of the orders loaded in the compartment must be lower than or equal to the value of the compartment. For unspecified dimensions, the load of the compartment is assumed to be unconstrained for this dimension. | [optional] [default to []]
 **LoadingStrategy** | Pointer to [**CompartmentLoadingStrategy**](CompartmentLoadingStrategy.md) |  | [optional] [default to NONE]
 **Categories** | Pointer to **[]string** | A list of categories the compartment belongs to that can be used to describe constraints or rules. | [optional] [default to []]
 
@@ -46,6 +47,31 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+
+### GetMaximumLoads
+
+`func (o *Compartment) GetMaximumLoads() []Load`
+
+GetMaximumLoads returns the MaximumLoads field if non-nil, zero value otherwise.
+
+### GetMaximumLoadsOk
+
+`func (o *Compartment) GetMaximumLoadsOk() (*[]Load, bool)`
+
+GetMaximumLoadsOk returns a tuple with the MaximumLoads field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximumLoads
+
+`func (o *Compartment) SetMaximumLoads(v []Load)`
+
+SetMaximumLoads sets MaximumLoads field to given value.
+
+### HasMaximumLoads
+
+`func (o *Compartment) HasMaximumLoads() bool`
+
+HasMaximumLoads returns a boolean if a field has been set.
 
 ### GetLoadingStrategy
 

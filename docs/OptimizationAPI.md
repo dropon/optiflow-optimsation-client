@@ -320,7 +320,7 @@ func main() {
 	createdAfter := time.Now() // time.Time | Filter optimizations created after this date and time. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). (optional)
 	name := "name_example" // string | Filter optimizations with this name. (optional)
 	tags := []string{"Inner_example"} // []string | Filter optimizations containing all of these tags. (optional)
-	statuses := []openapiclient.OptimizationStatus{openapiclient.OptimizationStatus("PREPARING")} // []OptimizationStatus | Filter optimizations having any of these statuses. (optional)
+	statuses := []openapiclient.OptimizationStatus{openapiclient.OptimizationStatus("QUEUING")} // []OptimizationStatus | Filter optimizations having any of these statuses. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

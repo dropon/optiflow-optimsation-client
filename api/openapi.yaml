@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.28"
+  version: "1.29"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -3327,9 +3327,6 @@ components:
             * `ROUTE_OPTIMIZATION_TOO_MANY_PROFILES` - The request contains too many different combinations of profiles and traffic modes.
               * `profiles` - The number of combinations of profiles and traffic modes.
               * `limit` - The limit.
-            * `ROUTE_OPTIMIZATION_TOO_MANY_OPTIMIZATIONS` - The maximum number of concurrent optimizations is exceeded.
-              * `runningOptimizationIds` - Currently running optimization ids [string].
-              * `limit` - The limit.
             * `ROUTE_OPTIMIZATION_ROUTES_FORBIDDEN` - The request is not allowed to contain routes.
             * `ROUTE_OPTIMIZATION_STOP_CONCURRENCY_FORBIDDEN` - The request is not allowed to contain locations with stop concurrency.
 
@@ -3568,6 +3565,17 @@ components:
       description: Defines a vehicle compartment available for loading orders.
       example:
         id: FROZEN
+        maximumLoads:
+        - dimension: VOLUME
+          value: 3.5
+        - dimension: VOLUME
+          value: 3.5
+        - dimension: VOLUME
+          value: 3.5
+        - dimension: VOLUME
+          value: 3.5
+        - dimension: VOLUME
+          value: 3.5
         categories:
         - COOLING_COMPARTMENT
         - SMALL_BOXES
@@ -3582,6 +3590,17 @@ components:
           minLength: 1
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
+        maximumLoads:
+          default: []
+          description: "A list of load dimensions that describe the capacity of the\
+            \ compartment. For each dimension specified in this list, the sum of the\
+            \ values of the orders loaded in the compartment must be lower than or\
+            \ equal to the value of the compartment. For unspecified dimensions, the\
+            \ load of the compartment is assumed to be unconstrained for this dimension."
+          items:
+            $ref: "#/components/schemas/Load"
+          maxItems: 10
+          type: array
         loadingStrategy:
           $ref: "#/components/schemas/CompartmentLoadingStrategy"
         categories:
@@ -4102,7 +4121,7 @@ components:
             * `ROUTE_OPTIMIZATION_UNEXPECTED_ERROR` - An unexpected error occurred.
             * `ROUTE_OPTIMIZATION_NOTHING_TO_OPTIMIZE` - No order can be scheduled on any route of the provided vehicles. The optimization stopped because there is nothing to optimize.
             * `ROUTE_OPTIMIZATION_STOPPED_UNEXPECTEDLY` - The optimization stopped unexpectedly. The provided routes are from the last known optimization result.
-            * `ROUTE_OPTIMIZATION_STOPPED_WHILE_PREPARING` - The optimization has been stopped while it was preparing. No routes will be provided.
+            * `ROUTE_OPTIMIZATION_STOPPED_WHILE_PREPARING` - Indicates that the optimization was stopped while preparing or queuing. No routes will be returned. This can occur either because a stop was explicitly requested, or because the optimization remained in the queue for longer than the maximum allowed queuing duration of 172800 seconds.
           type: string
         details:
           additionalProperties: true
@@ -4322,10 +4341,10 @@ components:
       type: object
     Load:
       description: "For an order this describes how much capacity for a certain dimension\
-        \ is needed in the vehicle. For a vehicle, this describes its capacity for\
-        \ a certain dimension. For each dimension, the sum of the values of orders\
-        \ loaded into the vehicle must be lower than or equal to the value of the\
-        \ vehicle."
+        \ is needed in the vehicle. For a vehicle or a compartment, this describes\
+        \ its capacity for a certain dimension. For each dimension, the sum of the\
+        \ values of orders loaded into the vehicle or compartment must be lower than\
+        \ or equal to the value of the vehicle or compartment."
       example:
         dimension: VOLUME
         value: 3.5
@@ -4973,6 +4992,7 @@ components:
           - DRIVER-X
         metadata:
           name: name
+          priority: 0
           tags:
           - tags
           - tags
@@ -5158,30 +5178,85 @@ components:
           - DRIVER
           compartments:
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
@@ -5339,30 +5414,85 @@ components:
           - DRIVER
           compartments:
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
@@ -5520,30 +5650,85 @@ components:
           - DRIVER
           compartments:
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
@@ -5701,30 +5886,85 @@ components:
           - DRIVER
           compartments:
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
@@ -5882,30 +6122,85 @@ components:
           - DRIVER
           compartments:
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
             - DANGEROUS_GOODS
             loadingStrategy: LAST_IN_FIRST_OUT
           - id: FROZEN
+            maximumLoads:
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
+            - dimension: VOLUME
+              value: 3.5
             categories:
             - COOLING_COMPARTMENT
             - SMALL_BOXES
@@ -7199,6 +7494,7 @@ components:
         but is returned in the result.
       example:
         name: name
+        priority: 0
         tags:
         - tags
         - tags
@@ -7221,6 +7517,14 @@ components:
             type: string
           maxItems: 5
           type: array
+        priority:
+          default: 0
+          description: "The priority level of the optimization. Higher values indicate\
+            \ higher priority. In the case of queuing optimizations, the higher priority\
+            \ optimizations are taken off the queue first."
+          format: int32
+          minimum: 0
+          type: integer
       type: object
     OptimizationResult:
       description: The current result of the optimization.
@@ -7739,6 +8043,7 @@ components:
         metadata:
           created: 2023-10-03T12:30:00Z
           name: name
+          priority: 0
           tags:
           - tags
           - tags
@@ -7764,7 +8069,7 @@ components:
           errorCode: errorCode
           details:
             key: ""
-        status: PREPARING
+        status: QUEUING
       properties:
         id:
           description: The unique identifier of the optimization.
@@ -7802,6 +8107,7 @@ components:
       example:
         created: 2023-10-03T12:30:00Z
         name: name
+        priority: 0
         tags:
         - tags
         - tags
@@ -7814,6 +8120,12 @@ components:
           items:
             type: string
           type: array
+        priority:
+          description: "The priority level of the optimization. Higher values indicate\
+            \ higher priority. In the case of queuing optimizations, the higher priority\
+            \ optimizations are taken off the queue first."
+          format: int32
+          type: integer
         created:
           description: "The creation time of the optimization. Formatted according\
             \ to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)."
@@ -7852,12 +8164,14 @@ components:
     OptimizationStatus:
       description: |-
         Describes the current status of the optimization.
+        * `QUEUING` - The optimization has been accepted. In order to start it has to wait for other optimizations to finish. The maximum number of concurrent optimizations is based on your individual price plan or contract. Optimizations that remain in the queue for more than 48 hours are aborted.
         * `PREPARING` - The optimization has been accepted. Time-distance data is being calculated and the data is being prepared for optimization.
         * `RUNNING` - The routes are being optimized. Metrics will provide insights into the current result of the optimization.
         * `STOPPING` - A request has been received to stop the optimization. The optimization will stop as soon as possible.
         * `FAILED` - The optimization has failed. An error will be provided to clarify what went wrong.
         * `SUCCEEDED` - The optimization has completed successfully.
       enum:
+      - QUEUING
       - PREPARING
       - RUNNING
       - STOPPING
@@ -7865,6 +8179,7 @@ components:
       - SUCCEEDED
       type: string
       x-enum-varnames:
+      - QUEUING
       - PREPARING
       - RUNNING
       - STOPPING
@@ -7879,6 +8194,7 @@ components:
         - metadata:
             created: 2023-10-03T12:30:00Z
             name: name
+            priority: 0
             tags:
             - tags
             - tags
@@ -7890,10 +8206,11 @@ components:
             numberOfResources: 97
             totalDistance: 45678901
             totalCost: 12345
-          status: PREPARING
+          status: QUEUING
         - metadata:
             created: 2023-10-03T12:30:00Z
             name: name
+            priority: 0
             tags:
             - tags
             - tags
@@ -7905,7 +8222,7 @@ components:
             numberOfResources: 97
             totalDistance: 45678901
             totalCost: 12345
-          status: PREPARING
+          status: QUEUING
       properties:
         optimizations:
           description: A list of optimization summaries.
@@ -7925,6 +8242,7 @@ components:
         metadata:
           created: 2023-10-03T12:30:00Z
           name: name
+          priority: 0
           tags:
           - tags
           - tags
@@ -7936,7 +8254,7 @@ components:
           numberOfResources: 97
           totalDistance: 45678901
           totalCost: 12345
-        status: PREPARING
+        status: QUEUING
       properties:
         id:
           description: The unique identifier of the optimization.
@@ -10938,30 +11256,85 @@ components:
         - DRIVER
         compartments:
         - id: FROZEN
+          maximumLoads:
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
           categories:
           - COOLING_COMPARTMENT
           - SMALL_BOXES
           - DANGEROUS_GOODS
           loadingStrategy: LAST_IN_FIRST_OUT
         - id: FROZEN
+          maximumLoads:
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
           categories:
           - COOLING_COMPARTMENT
           - SMALL_BOXES
           - DANGEROUS_GOODS
           loadingStrategy: LAST_IN_FIRST_OUT
         - id: FROZEN
+          maximumLoads:
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
           categories:
           - COOLING_COMPARTMENT
           - SMALL_BOXES
           - DANGEROUS_GOODS
           loadingStrategy: LAST_IN_FIRST_OUT
         - id: FROZEN
+          maximumLoads:
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
           categories:
           - COOLING_COMPARTMENT
           - SMALL_BOXES
           - DANGEROUS_GOODS
           loadingStrategy: LAST_IN_FIRST_OUT
         - id: FROZEN
+          maximumLoads:
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
+          - dimension: VOLUME
+            value: 3.5
           categories:
           - COOLING_COMPARTMENT
           - SMALL_BOXES

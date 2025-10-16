@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `QUEUING` (value: `"QUEUING"`)
+
 * `PREPARING` (value: `"PREPARING"`)
 
 * `RUNNING` (value: `"RUNNING"`)

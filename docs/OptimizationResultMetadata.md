@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | The name of the optimization. | [optional] 
 **Tags** | Pointer to **[]string** | A list of tags of the optimization. | [optional] 
+**Priority** | Pointer to **int32** | The priority level of the optimization. Higher values indicate higher priority. In the case of queuing optimizations, the higher priority optimizations are taken off the queue first. | [optional] 
 **Created** | Pointer to **time.Time** | The creation time of the optimization. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetTags sets Tags field to given value.
 `func (o *OptimizationResultMetadata) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetPriority
+
+`func (o *OptimizationResultMetadata) GetPriority() int32`
+
+GetPriority returns the Priority field if non-nil, zero value otherwise.
+
+### GetPriorityOk
+
+`func (o *OptimizationResultMetadata) GetPriorityOk() (*int32, bool)`
+
+GetPriorityOk returns a tuple with the Priority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPriority
+
+`func (o *OptimizationResultMetadata) SetPriority(v int32)`
+
+SetPriority sets Priority field to given value.
+
+### HasPriority
+
+`func (o *OptimizationResultMetadata) HasPriority() bool`
+
+HasPriority returns a boolean if a field has been set.
 
 ### GetCreated
 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | The name of the optimization. | [optional] 
 **Tags** | Pointer to **[]string** | A list of tags of the optimization. | [optional] 
+**Priority** | Pointer to **int32** | The priority level of the optimization. Higher values indicate higher priority. In the case of queuing optimizations, the higher priority optimizations are taken off the queue first. | [optional] [default to 0]
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetTags sets Tags field to given value.
 `func (o *OptimizationRequestMetadata) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetPriority
+
+`func (o *OptimizationRequestMetadata) GetPriority() int32`
+
+GetPriority returns the Priority field if non-nil, zero value otherwise.
+
+### GetPriorityOk
+
+`func (o *OptimizationRequestMetadata) GetPriorityOk() (*int32, bool)`
+
+GetPriorityOk returns a tuple with the Priority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPriority
+
+`func (o *OptimizationRequestMetadata) SetPriority(v int32)`
+
+SetPriority sets Priority field to given value.
+
+### HasPriority
+
+`func (o *OptimizationRequestMetadata) HasPriority() bool`
+
+HasPriority returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
