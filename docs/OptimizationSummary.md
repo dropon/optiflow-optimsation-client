@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The unique identifier of the optimization. | [optional] 
 **Status** | Pointer to [**OptimizationStatus**](OptimizationStatus.md) |  | [optional] 
 **Metrics** | Pointer to [**Metrics**](Metrics.md) |  | [optional] 
+**Request** | Pointer to [**RequestSummary**](RequestSummary.md) |  | [optional] 
 **Metadata** | Pointer to [**OptimizationResultMetadata**](OptimizationResultMetadata.md) |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetMetrics sets Metrics field to given value.
 `func (o *OptimizationSummary) HasMetrics() bool`
 
 HasMetrics returns a boolean if a field has been set.
+
+### GetRequest
+
+`func (o *OptimizationSummary) GetRequest() RequestSummary`
+
+GetRequest returns the Request field if non-nil, zero value otherwise.
+
+### GetRequestOk
+
+`func (o *OptimizationSummary) GetRequestOk() (*RequestSummary, bool)`
+
+GetRequestOk returns a tuple with the Request field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequest
+
+`func (o *OptimizationSummary) SetRequest(v RequestSummary)`
+
+SetRequest sets Request field to given value.
+
+### HasRequest
+
+`func (o *OptimizationSummary) HasRequest() bool`
+
+HasRequest returns a boolean if a field has been set.
 
 ### GetMetadata
 

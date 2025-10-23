@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Capacity** | **float64** | The total battery capacity [kWh]. | 
+**StateOfCharge** | Pointer to [**BatteryStateOfCharge**](BatteryStateOfCharge.md) |  | [optional] 
 **Consumption** | [**BatteryConsumption**](BatteryConsumption.md) |  | 
 
 ## Methods
@@ -45,6 +46,31 @@ and a boolean to check if the value has been set.
 
 SetCapacity sets Capacity field to given value.
 
+
+### GetStateOfCharge
+
+`func (o *VehicleBattery) GetStateOfCharge() BatteryStateOfCharge`
+
+GetStateOfCharge returns the StateOfCharge field if non-nil, zero value otherwise.
+
+### GetStateOfChargeOk
+
+`func (o *VehicleBattery) GetStateOfChargeOk() (*BatteryStateOfCharge, bool)`
+
+GetStateOfChargeOk returns a tuple with the StateOfCharge field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStateOfCharge
+
+`func (o *VehicleBattery) SetStateOfCharge(v BatteryStateOfCharge)`
+
+SetStateOfCharge sets StateOfCharge field to given value.
+
+### HasStateOfCharge
+
+`func (o *VehicleBattery) HasStateOfCharge() bool`
+
+HasStateOfCharge returns a boolean if a field has been set.
 
 ### GetConsumption
 
