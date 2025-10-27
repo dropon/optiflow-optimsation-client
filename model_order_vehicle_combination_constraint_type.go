@@ -20,9 +20,9 @@ type OrderVehicleCombinationConstraintType string
 
 // List of OrderVehicleCombinationConstraintType
 const (
-	ORDER_REQUIRES_VEHICLE OrderVehicleCombinationConstraintType = "ORDER_REQUIRES_VEHICLE"
-	VEHICLE_REQUIRES_ORDER OrderVehicleCombinationConstraintType = "VEHICLE_REQUIRES_ORDER"
-	FORBIDDEN_COMBINATION OrderVehicleCombinationConstraintType = "FORBIDDEN_COMBINATION"
+	ORDER_REQUIRES_VEHICLE              OrderVehicleCombinationConstraintType = "ORDER_REQUIRES_VEHICLE"
+	VEHICLE_REQUIRES_ORDER              OrderVehicleCombinationConstraintType = "VEHICLE_REQUIRES_ORDER"
+	FORBIDDEN_COMBINATION_ORDER_VEHICLE OrderVehicleCombinationConstraintType = "FORBIDDEN_COMBINATION"
 )
 
 // All allowed values of OrderVehicleCombinationConstraintType enum
@@ -110,4 +110,3 @@ func (v *NullableOrderVehicleCombinationConstraintType) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
