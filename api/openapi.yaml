@@ -8527,8 +8527,11 @@ components:
       - DEPOT_REQUIRES_ORDER
       - FORBIDDEN_COMBINATION
     OrderLoadingIncompatibilityConstraint:
-      description: Describes a constraint where orders are forbidden to be loaded
-        or unloaded while other orders are loaded in the vehicle.
+      description: "Describes a constraint where orders are forbidden to be loaded\
+        \ or unloaded while other orders are loaded in the vehicle or in a compartment\
+        \ of a vehicle. If a vehicle has compartments specified, the constraint is\
+        \ applied individually to each compartment. If no compartments are specified,\
+        \ the constraint applies to the vehicle as a whole."
       example:
         loadedOrderCategory: SMALL_BOX
         forbiddenOrderCategory: BIG_BOX
@@ -8536,8 +8539,8 @@ components:
       properties:
         loadedOrderCategory:
           description: Orders belonging to this category must be loaded in the vehicle
-            for this constraint to apply. The constraint will be ignored when no order
-            belongs to this category.
+            or in a compartment of the vehicle for this constraint to apply. The constraint
+            will be ignored when no order belongs to this category.
           example: SMALL_BOX
           maxLength: 36
           minLength: 1
@@ -8553,9 +8556,11 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         vehicleCategory:
-          description: The category of vehicles to which this constraint applies.
-            When omitted the constraint applies to all vehicles. The constraint will
-            be ignored when no vehicle belongs to this category.
+          description: "The category of vehicles to which this constraint applies.\
+            \ If a vehicle has compartments, the constraint applies to each compartment\
+            \ individually within vehicles of this category. When omitted the constraint\
+            \ applies to all vehicles. The constraint will be ignored when no vehicle\
+            \ belongs to this category."
           example: SINGLE_COMPARTMENT
           maxLength: 36
           minLength: 1
@@ -11006,8 +11011,11 @@ components:
       - CONSECUTIVE
       - SAME_ROUTE
     TaskLoadingIncompatibilityConstraint:
-      description: Describes a constraint where tasks are forbidden to be loaded or
-        unloaded depending on other orders which are loaded in the vehicle.
+      description: "Describes a constraint where tasks are forbidden to be loaded\
+        \ or unloaded depending on other orders which are loaded in the vehicle or\
+        \ in a compartment of a vehicle. If a vehicle has compartments specified,\
+        \ the constraint is applied individually to each compartment. If no compartments\
+        \ are specified, the constraint applies to the vehicle as a whole."
       example:
         loadedOrderCategory: SMALL_BOX
         forbiddenTaskCategory: BIG_BOX
@@ -11015,8 +11023,8 @@ components:
       properties:
         loadedOrderCategory:
           description: Orders belonging to this category must be loaded in the vehicle
-            for this constraint to apply. The constraint will be ignored when no order
-            belongs to this category.
+            or in a compartment of the vehicle for this constraint to apply. The constraint
+            will be ignored when no order belongs to this category.
           example: SMALL_BOX
           maxLength: 36
           minLength: 1
@@ -11032,9 +11040,11 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         vehicleCategory:
-          description: The category of vehicles to which this constraint applies.
-            When omitted the constraint applies to all vehicles. The constraint will
-            be ignored when no vehicle belongs to this category.
+          description: "The category of vehicles to which this constraint applies.\
+            \ If a vehicle has compartments, the constraint applies to each compartment\
+            \ individually within vehicles of this category. When omitted the constraint\
+            \ applies to all vehicles. The constraint will be ignored when no vehicle\
+            \ belongs to this category."
           example: SINGLE_COMPARTMENT
           maxLength: 36
           minLength: 1

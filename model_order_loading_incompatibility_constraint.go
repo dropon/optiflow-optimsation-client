@@ -19,13 +19,13 @@ import (
 // checks if the OrderLoadingIncompatibilityConstraint type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OrderLoadingIncompatibilityConstraint{}
 
-// OrderLoadingIncompatibilityConstraint Describes a constraint where orders are forbidden to be loaded or unloaded while other orders are loaded in the vehicle.
+// OrderLoadingIncompatibilityConstraint Describes a constraint where orders are forbidden to be loaded or unloaded while other orders are loaded in the vehicle or in a compartment of a vehicle. If a vehicle has compartments specified, the constraint is applied individually to each compartment. If no compartments are specified, the constraint applies to the vehicle as a whole.
 type OrderLoadingIncompatibilityConstraint struct {
-	// Orders belonging to this category must be loaded in the vehicle for this constraint to apply. The constraint will be ignored when no order belongs to this category.
+	// Orders belonging to this category must be loaded in the vehicle or in a compartment of the vehicle for this constraint to apply. The constraint will be ignored when no order belongs to this category.
 	LoadedOrderCategory string `json:"loadedOrderCategory" validate:"regexp=^[a-zA-Z0-9_-]{1,36}$"`
 	// Orders belonging to this category cannot be loaded or unloaded while the constraint applies. The constraint will be ignored when no order belongs to this category.
 	ForbiddenOrderCategory string `json:"forbiddenOrderCategory" validate:"regexp=^[a-zA-Z0-9_-]{1,36}$"`
-	// The category of vehicles to which this constraint applies. When omitted the constraint applies to all vehicles. The constraint will be ignored when no vehicle belongs to this category.
+	// The category of vehicles to which this constraint applies. If a vehicle has compartments, the constraint applies to each compartment individually within vehicles of this category. When omitted the constraint applies to all vehicles. The constraint will be ignored when no vehicle belongs to this category.
 	VehicleCategory *string `json:"vehicleCategory,omitempty" validate:"regexp=^[a-zA-Z0-9_-]{1,36}$"`
 }
 
