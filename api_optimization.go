@@ -614,8 +614,9 @@ func (a *OptimizationAPIService) ListOptimizationsExecute(r ApiListOptimizations
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 50
-		r.limit = &defaultValue
+        var defaultValue int32 = 50
+        parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
+        r.limit = &defaultValue
 	}
 	if r.createdBefore != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "createdBefore", r.createdBefore, "form", "")

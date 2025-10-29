@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **VehicleId** | **string** | The unique identifier of the vehicle that is used to execute the route. Only a single route can be provided for each vehicle. | 
 **ResourceIds** | Pointer to **[]string** | The unique identifiers of the resources assigned to the vehicle executing the route. | [optional] 
 **Start** | **time.Time** | The point in time when the route should start. The start time will be respected as closely as possible. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before &#x60;1970-01-01T00:00:00+00:00&#x60; nor after &#x60;2037-12-31T23:59:59+00:00&#x60;. The date must provide an offset to UTC. | 
-**Tasks** | Pointer to [**[]TaskStructure**](TaskStructure.md) | A sequence of tasks scheduled on the route. | [optional] [default to []]
-**Breaks** | Pointer to [**[]BreakStructure**](BreakStructure.md) | A list of breaks scheduled on the route. When omitted, reconstruction will make a best effort to schedule breaks in order to satisfy the break settings. | [optional] [default to []]
-**Charging** | Pointer to [**[]ChargingStructure**](ChargingStructure.md) | A list of charging times scheduled on the route. When omitted, reconstruction will make a best effort to schedule charging in order to satisfy the vehicle’s requirements. | [optional] [default to []]
+**Tasks** | Pointer to [**[]TaskStructure**](TaskStructure.md) | A sequence of tasks scheduled on the route. | [optional] [default to {}]
+**Breaks** | Pointer to [**[]BreakStructure**](BreakStructure.md) | A list of breaks scheduled on the route. When omitted, reconstruction will make a best effort to schedule breaks in order to satisfy the break settings. | [optional] [default to {}]
+**Charging** | Pointer to [**[]ChargingStructure**](ChargingStructure.md) | A list of charging times scheduled on the route. When omitted, reconstruction will make a best effort to schedule charging in order to satisfy the vehicle’s requirements. | [optional] [default to {}]
 
 ## Methods
 

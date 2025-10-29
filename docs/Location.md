@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **MatchSideOfStreet** | Pointer to **bool** | Requires the vehicle to approach from the side of the street where the location is situated. This prevents the driver from needing to cross the street. | [optional] [default to false]
 **StopProperties** | Pointer to [**StopProperties**](StopProperties.md) |  | [optional] 
 **ChargingStations** | Pointer to [**[]ChargingStation**](ChargingStation.md) | Specifies the charging capabilities that can be used at the location for electric vehicles. | [optional] 
-**Categories** | Pointer to **[]string** | A list of categories the location belongs to that can be used to describe constraints or rules. | [optional] [default to []]
+**Categories** | Pointer to **[]string** | A list of categories the location belongs to that can be used to describe constraints or rules. | [optional] [default to {}]
 
 ## Methods
 

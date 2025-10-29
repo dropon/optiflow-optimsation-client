@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Fixed** | Pointer to **float64** | A one-time fixed cost incurred when this resource is used, regardless of how many vehicles use it. | [optional] [default to 0]
 **PerVehicle** | Pointer to **float64** | The cost charged for each vehicle that uses this resource. | [optional] [default to 0]
-**Overvehicles** | Pointer to [**[]OvervehicleCost**](OvervehicleCost.md) | A list of overvehicle costs that describe an increasing cost if the number of vehicles that is assigned to this resource exceeds a threshold. For each exceeded threshold, the extra fixed cost and the additional cost for the extra vehicle contribute to the total cost of the route. | [optional] [default to []]
+**Overvehicles** | Pointer to [**[]OvervehicleCost**](OvervehicleCost.md) | A list of overvehicle costs that describe an increasing cost if the number of vehicles that is assigned to this resource exceeds a threshold. For each exceeded threshold, the extra fixed cost and the additional cost for the extra vehicle contribute to the total cost of the route. | [optional] [default to {}]
 
 ## Methods
 

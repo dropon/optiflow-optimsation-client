@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Locations** | Pointer to [**[]LocationRule**](LocationRule.md) | A list of rules that conditionally modify location properties. | [optional] [default to []]
+**Locations** | Pointer to [**[]LocationRule**](LocationRule.md) | A list of rules that conditionally modify location properties. | [optional] [default to {}]
 
 ## Methods
 

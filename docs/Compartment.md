@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | A unique identifier for the compartment, which must be distinct among all compartments within the same vehicle. | 
-**MaximumLoads** | Pointer to [**[]Load**](Load.md) | A list of load dimensions that describe the capacity of the compartment. For each dimension specified in this list, the sum of the values of the orders loaded in the compartment must be lower than or equal to the value of the compartment. For unspecified dimensions, the load of the compartment is assumed to be unconstrained for this dimension. | [optional] [default to []]
+**MaximumLoads** | Pointer to [**[]Load**](Load.md) | A list of load dimensions that describe the capacity of the compartment. For each dimension specified in this list, the sum of the values of the orders loaded in the compartment must be lower than or equal to the value of the compartment. For unspecified dimensions, the load of the compartment is assumed to be unconstrained for this dimension. | [optional] [default to {}]
 **LoadingStrategy** | Pointer to [**CompartmentLoadingStrategy**](CompartmentLoadingStrategy.md) |  | [optional] [default to NONE]
-**Categories** | Pointer to **[]string** | A list of categories the compartment belongs to that can be used to describe constraints or rules. | [optional] [default to []]
+**Categories** | Pointer to **[]string** | A list of categories the compartment belongs to that can be used to describe constraints or rules. | [optional] [default to {}]
 
 ## Methods
 

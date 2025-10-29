@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PreparationDuration** | Pointer to **int32** | Defines a duration [s] that is needed before an appointment (one or more tasks) can start at this location. This duration is needed once per stop whenever tasks are executed. | [optional] [default to 0]
-**TimeSlots** | Pointer to [**[]TimeSlot**](TimeSlot.md) | A list of time intervals that describe when tasks can be executed at this location. Consecutive tasks with the same time slot are grouped to an appointment. The timings of the appointment must satisfy the restrictions of the time slot. When omitted or empty, all tasks within a stop at this location will be grouped into one appointment and the timings of this appointment are unrestricted. | [optional] [default to []]
+**TimeSlots** | Pointer to [**[]TimeSlot**](TimeSlot.md) | A list of time intervals that describe when tasks can be executed at this location. Consecutive tasks with the same time slot are grouped to an appointment. The timings of the appointment must satisfy the restrictions of the time slot. When omitted or empty, all tasks within a stop at this location will be grouped into one appointment and the timings of this appointment are unrestricted. | [optional] [default to {}]
 **Concurrency** | Pointer to [**StopConcurrency**](StopConcurrency.md) |  | [optional] 
 
 ## Methods

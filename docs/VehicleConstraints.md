@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MaximumLoads** | Pointer to [**[]Load**](Load.md) | A list of load dimensions that describe the capacity of the vehicle. For each dimension specified in this list, the sum of the values of the orders loaded in the vehicle must be lower than or equal to the value of the vehicle. For unspecified dimensions, the load of the vehicle is assumed to be unconstrained for this dimension. | [optional] [default to []]
+**MaximumLoads** | Pointer to [**[]Load**](Load.md) | A list of load dimensions that describe the capacity of the vehicle. For each dimension specified in this list, the sum of the values of the orders loaded in the vehicle must be lower than or equal to the value of the vehicle. For unspecified dimensions, the load of the vehicle is assumed to be unconstrained for this dimension. | [optional] [default to {}]
 **Route** | Pointer to [**RouteConstraints**](RouteConstraints.md) |  | [optional] 
 
 ## Methods

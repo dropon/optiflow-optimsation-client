@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RespectedSequences** | Pointer to [**[]RespectedOrderSequence**](RespectedOrderSequence.md) | A list of sequences that must be respected when scheduling routes. Orders belonging to a category that occurs earlier in the sequence must be delivered in the route before an order belonging to a category later in the sequence can be picked up. | [optional] [default to []]
-**LoadingIncompatibilities** | Pointer to [**[]OrderLoadingIncompatibilityConstraint**](OrderLoadingIncompatibilityConstraint.md) | A list of constraints that prevent orders to be loaded or unloaded while other orders are loaded in the vehicle. | [optional] [default to []]
+**RespectedSequences** | Pointer to [**[]RespectedOrderSequence**](RespectedOrderSequence.md) | A list of sequences that must be respected when scheduling routes. Orders belonging to a category that occurs earlier in the sequence must be delivered in the route before an order belonging to a category later in the sequence can be picked up. | [optional] [default to {}]
+**LoadingIncompatibilities** | Pointer to [**[]OrderLoadingIncompatibilityConstraint**](OrderLoadingIncompatibilityConstraint.md) | A list of constraints that prevent orders to be loaded or unloaded while other orders are loaded in the vehicle. | [optional] [default to {}]
 
 ## Methods
 
