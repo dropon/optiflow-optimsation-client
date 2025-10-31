@@ -20,8 +20,8 @@ type RoutingViolationStrategy string
 
 // List of RoutingViolationStrategy
 const (
-	ALLOW RoutingViolationStrategy = "ALLOW"
-	DISALLOW RoutingViolationStrategy = "DISALLOW"
+	ALLOW                               RoutingViolationStrategy = "ALLOW"
+	DISALLOW_ROUTING_VIOLATION_STRATEGY RoutingViolationStrategy = "DISALLOW"
 )
 
 // All allowed values of RoutingViolationStrategy enum
@@ -108,4 +108,3 @@ func (v *NullableRoutingViolationStrategy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
