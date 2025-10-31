@@ -2,7 +2,7 @@ name: Update Go Client from OpenAPI Spec
 
 on:
   schedule:
-    - cron: "0 * * * *" # runs hourly
+    - cron: "0 */12 * * *" # runs hourly
   workflow_dispatch: # allows manual run
 
 jobs:
