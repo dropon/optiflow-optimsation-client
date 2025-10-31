@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **End** | [**VehicleEnd**](VehicleEnd.md) |  | 
 **Routing** | [**VehicleRouting**](VehicleRouting.md) |  | 
 **Battery** | Pointer to [**VehicleBattery**](VehicleBattery.md) |  | [optional] 
-**RequiredResourceCategories** | Pointer to **[]string** | A list of resource categories specifying the resources required by the vehicle. For each category in this list exactly one matching resource will be assigned to the vehicle. | [optional] [default to {}]
+**RequiredResourceCategories** | Pointer to **[]string** | A list of resource categories specifying the resources required by the vehicle. For each category in this list exactly one matching resource will be assigned to the vehicle. | [optional] [default to []]
 **Costs** | [**VehicleCosts**](VehicleCosts.md) |  | 
 **Preferences** | Pointer to [**VehiclePreferences**](VehiclePreferences.md) |  | [optional] 
 **Breaks** | Pointer to [**BreakSettings**](BreakSettings.md) |  | [optional] 
-**Compartments** | Pointer to [**[]Compartment**](Compartment.md) | A list of compartments available for loading orders. Orders placed into the same compartment must follow the compartment&#39;s loading strategy, which may impose restrictions on the unloading sequence. If orders are loaded into separate compartments, no restrictions apply to the unloading sequence. When unspecified or empty, the vehicle is assumed to have a single compartment with loading strategy &#x60;NONE&#x60;. | [optional] [default to {}]
+**Compartments** | Pointer to [**[]Compartment**](Compartment.md) | A list of compartments available for loading orders. Orders placed into the same compartment must follow the compartment&#39;s loading strategy, which may impose restrictions on the unloading sequence. If orders are loaded into separate compartments, no restrictions apply to the unloading sequence. When unspecified or empty, the vehicle is assumed to have a single compartment with loading strategy &#x60;NONE&#x60;. | [optional] [default to []]
 **Constraints** | Pointer to [**VehicleConstraints**](VehicleConstraints.md) |  | [optional] 
-**Categories** | Pointer to **[]string** | A list of categories the vehicle belongs to that can be used to describe constraints or rules. | [optional] [default to {}]
+**Categories** | Pointer to **[]string** | A list of categories the vehicle belongs to that can be used to describe constraints or rules. | [optional] [default to []]
 
 ## Methods
 

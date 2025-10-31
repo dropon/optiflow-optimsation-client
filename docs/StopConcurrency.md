@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VehicleSlots** | Pointer to [**[]VehicleSlot**](VehicleSlot.md) | A list of available vehicle slots. | [optional] [default to {}]
+**VehicleSlots** | Pointer to [**[]VehicleSlot**](VehicleSlot.md) | A list of available vehicle slots. | [optional] [default to []]
 **ViolationCostPerExtraSlot** | **float64** | The additional cost incurred for using an extra vehicle slot beyond the available ones. This must be greater than or equal to the cost of each vehicle slot. | 
 **MinimumBufferDuration** | Pointer to **int32** | The minimum duration [s] between the end of the last appointment of a stop and the start of the first appointment of another stop assigned to the same vehicle slot. | [optional] [default to 0]
 

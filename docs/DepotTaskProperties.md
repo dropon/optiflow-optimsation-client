@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Duration** | Pointer to **int32** | The duration [s] it takes to execute this task. | [optional] [default to 0]
-**Categories** | Pointer to **[]string** | A list of categories the task belongs to that can be used to describe constraints or rules. | [optional] [default to {}]
+**Categories** | Pointer to **[]string** | A list of categories the task belongs to that can be used to describe constraints or rules. | [optional] [default to []]
 
 ## Methods
 

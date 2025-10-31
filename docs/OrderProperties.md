@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Loads** | Pointer to [**[]Load**](Load.md) | A list of load definitions that describe the necessary vehicle capacity to transport the order. For each dimension, the sum of the values of orders loaded into the vehicle must be lower than or equal to the value of the vehicle. | [optional] [default to {}]
+**Loads** | Pointer to [**[]Load**](Load.md) | A list of load definitions that describe the necessary vehicle capacity to transport the order. For each dimension, the sum of the values of orders loaded into the vehicle must be lower than or equal to the value of the vehicle. | [optional] [default to []]
 **RepositioningEffort** | Pointer to **int32** | When two orders are loaded into the same compartment and delivered in the same order, we refer to them as a non-last-in-first-out (non-LIFO) pair. Any non-LIFO pair of orders requires repositioning in the vehicle, as the last picked-up order obstructs the first order that needs to be delivered. The effort involved in this repositioning is the minimum effort required for the two orders. The total repositioning effort for the route is the sum of the repositioning efforts for all non-LIFO pairs of orders. | [optional] [default to 0]
 **OutsourcingCost** | Pointer to **float64** | Defines the cost for not scheduling the order on a route. This cost is weighed against the cost of scheduling the order on a route. When omitted the optimization will try to schedule the order regardless of the added cost. | [optional] 
-**Categories** | Pointer to **[]string** | A list of categories the order belongs to that can be used to describe constraints or rules. | [optional] [default to {}]
+**Categories** | Pointer to **[]string** | A list of categories the order belongs to that can be used to describe constraints or rules. | [optional] [default to []]
 
 ## Methods
 

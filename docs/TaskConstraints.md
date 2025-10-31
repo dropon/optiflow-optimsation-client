@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Groups** | Pointer to [**[]TaskGroup**](TaskGroup.md) | A list of task groups. Tasks belonging to the same task group must be planned on the same route, or consecutively if they are on the same route, depending on the constraint defined in the task group. | [optional] [default to {}]
-**RespectedSequences** | Pointer to [**[]RespectedTaskSequence**](RespectedTaskSequence.md) | A list of sequences that must be respected when scheduling routes. Tasks belonging to a category that occurs earlier in the sequence must be scheduled on the route before a task belonging to a category later in the sequence. | [optional] [default to {}]
-**ForbiddenSequences** | Pointer to [**[]ForbiddenTaskSequence**](ForbiddenTaskSequence.md) | A list of sequences that are forbidden to be scheduled on a route. Tasks belonging to certain categories must not be scheduled before, or immediately before, tasks belonging to another specific category. | [optional] [default to {}]
-**LoadingIncompatibilities** | Pointer to [**[]TaskLoadingIncompatibilityConstraint**](TaskLoadingIncompatibilityConstraint.md) | A list of constraints that prevent tasks to be loaded or unloaded depending on which other orders are loaded in the vehicle. | [optional] [default to {}]
+**Groups** | Pointer to [**[]TaskGroup**](TaskGroup.md) | A list of task groups. Tasks belonging to the same task group must be planned on the same route, or consecutively if they are on the same route, depending on the constraint defined in the task group. | [optional] [default to []]
+**RespectedSequences** | Pointer to [**[]RespectedTaskSequence**](RespectedTaskSequence.md) | A list of sequences that must be respected when scheduling routes. Tasks belonging to a category that occurs earlier in the sequence must be scheduled on the route before a task belonging to a category later in the sequence. | [optional] [default to []]
+**ForbiddenSequences** | Pointer to [**[]ForbiddenTaskSequence**](ForbiddenTaskSequence.md) | A list of sequences that are forbidden to be scheduled on a route. Tasks belonging to certain categories must not be scheduled before, or immediately before, tasks belonging to another specific category. | [optional] [default to []]
+**LoadingIncompatibilities** | Pointer to [**[]TaskLoadingIncompatibilityConstraint**](TaskLoadingIncompatibilityConstraint.md) | A list of constraints that prevent tasks to be loaded or unloaded depending on which other orders are loaded in the vehicle or in a compartment of a vehicle. | [optional] [default to []]
 
 ## Methods
 

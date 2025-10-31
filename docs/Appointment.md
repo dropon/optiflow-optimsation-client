@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TimeSlotId** | Pointer to **string** | The unique identifier of the time slot this appointment is assigned to. | [optional] 
-**Breaks** | Pointer to [**[]Break**](Break.md) | A list of breaks that are scheduled to be taken before the appointment. | [optional] [default to {}]
+**Breaks** | Pointer to [**[]Break**](Break.md) | A list of breaks that are scheduled to be taken before the appointment. | [optional] [default to []]
 **WaitingDuration** | Pointer to **int32** | The duration [s] of the waiting period before the appointment can start. | [optional] 
 **Start** | Pointer to **time.Time** | The point in time when the appointment starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | [optional] 
 **PreparationDuration** | Pointer to **int32** | The duration [s] of the preparation period before the first task can start. This is determined by the allocated time slot. | [optional] 

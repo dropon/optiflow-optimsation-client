@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **MatchSideOfStreet** | Pointer to **bool** | Requires the vehicle to approach from the side of the street where the location is situated. This prevents the driver from needing to cross the street. | [optional] [default to false]
 **StopProperties** | Pointer to [**StopProperties**](StopProperties.md) |  | [optional] 
 **ChargingStations** | Pointer to [**[]ChargingStation**](ChargingStation.md) | Specifies the charging capabilities that can be used at the location for electric vehicles. | [optional] 
-**Categories** | Pointer to **[]string** | A list of categories the location belongs to that can be used to describe constraints or rules. | [optional] [default to {}]
+**Layover** | Pointer to [**LayoverCondition**](LayoverCondition.md) |  | [optional] [default to DISALLOW]
+**Categories** | Pointer to **[]string** | A list of categories the location belongs to that can be used to describe constraints or rules. | [optional] [default to []]
 
 ## Methods
 
@@ -165,6 +166,31 @@ SetChargingStations sets ChargingStations field to given value.
 `func (o *Location) HasChargingStations() bool`
 
 HasChargingStations returns a boolean if a field has been set.
+
+### GetLayover
+
+`func (o *Location) GetLayover() LayoverCondition`
+
+GetLayover returns the Layover field if non-nil, zero value otherwise.
+
+### GetLayoverOk
+
+`func (o *Location) GetLayoverOk() (*LayoverCondition, bool)`
+
+GetLayoverOk returns a tuple with the Layover field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLayover
+
+`func (o *Location) SetLayover(v LayoverCondition)`
+
+SetLayover sets Layover field to given value.
+
+### HasLayover
+
+`func (o *Location) HasLayover() bool`
+
+HasLayover returns a boolean if a field has been set.
 
 ### GetCategories
 

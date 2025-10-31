@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Departure** | Pointer to **time.Time** | The point in time when the vehicle departs from the start location. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | [optional] 
 **EndLocationId** | Pointer to **string** | The unique identifier of the location where the vehicle arrives. | [optional] 
 **Arrival** | Pointer to **time.Time** | The point in time when the vehicle arrives at the end location. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | [optional] 
-**Breaks** | Pointer to [**[]Break**](Break.md) | A list of breaks taken while travelling from the start location to the end location. | [optional] [default to {}]
+**Breaks** | Pointer to [**[]Break**](Break.md) | A list of breaks taken while travelling from the start location to the end location. | [optional] [default to []]
 **Distance** | Pointer to **int32** | The distance [m] travelled between the start location and end location. | [optional] 
 **DrivingDuration** | Pointer to **int32** | The duration [s] it takes to drive from the start location to the end location. | [optional] 
 

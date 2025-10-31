@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LoadedOrderCategory** | **string** | Orders belonging to this category must be loaded in the vehicle or in a compartment of the vehicle for this constraint to apply. The constraint will be ignored when no order belongs to this category. | 
-**ForbiddenTaskCategory** | **string** | Tasks belonging to this category cannot be executed while the constraint applies. The constraint will be ignored when no task belongs to this category. | 
+**ForbiddenTaskCategory** | **string** | Tasks belonging to this category cannot be loaded or unloaded while the constraint applies. The constraint will be ignored when no task belongs to this category. | 
 **VehicleCategory** | Pointer to **string** | The category of vehicles to which this constraint applies. If a vehicle has compartments, the constraint applies to each compartment individually within vehicles of this category. When omitted the constraint applies to all vehicles. The constraint will be ignored when no vehicle belongs to this category. | [optional] 
 
 ## Methods

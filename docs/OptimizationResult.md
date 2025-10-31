@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique identifier of the optimization. | 
 **Metadata** | Pointer to [**OptimizationResultMetadata**](OptimizationResultMetadata.md) |  | [optional] 
 **Status** | [**OptimizationStatus**](OptimizationStatus.md) |  | 
-**Routes** | Pointer to [**[]Route**](Route.md) | The routes scheduled by the optimization. As long as the optimization is not yet &#x60;SUCCEEDED&#x60;, scheduled routes may be only an intermediate result. | [optional] [default to {}]
+**Routes** | Pointer to [**[]Route**](Route.md) | The routes scheduled by the optimization. As long as the optimization is not yet &#x60;SUCCEEDED&#x60;, scheduled routes may be only an intermediate result. | [optional] [default to []]
 **Metrics** | Pointer to [**Metrics**](Metrics.md) |  | [optional] 
 **Error** | Pointer to [**Error**](Error.md) |  | [optional] 
-**Warnings** | Pointer to [**[]Warning**](Warning.md) | A list of warnings concerning the optimization. | [optional] [default to {}]
+**Warnings** | Pointer to [**[]Warning**](Warning.md) | A list of warnings concerning the optimization. | [optional] [default to []]
 
 ## Methods
 

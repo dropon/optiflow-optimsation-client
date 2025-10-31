@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LocationId** | **string** | The unique identifier of the location where the task must be scheduled. | 
-**TimeSlotIds** | Pointer to **[]string** | A list of unique identifiers of the time slots of the location that can be used to execute this task. When empty all time slots can be used. If more than 50 time slots are specified for the location, the list must not be empty. | [optional] [default to {}]
+**TimeSlotIds** | Pointer to **[]string** | A list of unique identifiers of the time slots of the location that can be used to execute this task. When empty all time slots can be used. If more than 50 time slots are specified for the location, the list must not be empty. | [optional] [default to []]
 **Duration** | Pointer to **int32** | The duration [s] it takes to execute this task. | [optional] [default to 0]
-**Categories** | Pointer to **[]string** | A list of categories the task belongs to that can be used to describe constraints or rules. | [optional] [default to {}]
+**Categories** | Pointer to **[]string** | A list of categories the task belongs to that can be used to describe constraints or rules. | [optional] [default to []]
 
 ## Methods
 

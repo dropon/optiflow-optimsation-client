@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrderCompartment** | Pointer to [**[]OrderCompartmentCombinationConstraint**](OrderCompartmentCombinationConstraint.md) | A list of constraints on combinations of orders and compartments. | [optional] [default to {}]
-**OrderVehicle** | Pointer to [**[]OrderVehicleCombinationConstraint**](OrderVehicleCombinationConstraint.md) | A list of constraints on combinations of orders and vehicles. | [optional] [default to {}]
-**OrderDepot** | Pointer to [**[]OrderDepotCombinationConstraint**](OrderDepotCombinationConstraint.md) | A list of constraints on combinations of orders and depots. | [optional] [default to {}]
-**DepotVehicle** | Pointer to [**[]DepotVehicleCombinationConstraint**](DepotVehicleCombinationConstraint.md) | A list of constraints on combinations of depots and vehicles. | [optional] [default to {}]
+**OrderCompartment** | Pointer to [**[]OrderCompartmentCombinationConstraint**](OrderCompartmentCombinationConstraint.md) | A list of constraints on combinations of orders and compartments. | [optional] [default to []]
+**OrderVehicle** | Pointer to [**[]OrderVehicleCombinationConstraint**](OrderVehicleCombinationConstraint.md) | A list of constraints on combinations of orders and vehicles. | [optional] [default to []]
+**OrderDepot** | Pointer to [**[]OrderDepotCombinationConstraint**](OrderDepotCombinationConstraint.md) | A list of constraints on combinations of orders and depots. | [optional] [default to []]
+**DepotVehicle** | Pointer to [**[]DepotVehicleCombinationConstraint**](DepotVehicleCombinationConstraint.md) | A list of constraints on combinations of depots and vehicles. | [optional] [default to []]
 
 ## Methods
 

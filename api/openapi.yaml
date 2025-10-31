@@ -5,7 +5,7 @@ info:
   description: With the Route Optimization OptiFlow service you can schedule and optimize
     the routes of your fleet.
   title: Route Optimization OptiFlow
-  version: "1.30"
+  version: "1.31"
 servers:
 - url: https://api.myptv.com/routeoptimization/optiflow/v1
 security:
@@ -4484,6 +4484,7 @@ components:
         id: LOCATION-123
         categories:
         - GERMANY
+        layover: DISALLOW
         longitude: 3.8068358460359364
       properties:
         id:
@@ -4524,6 +4525,8 @@ components:
             $ref: "#/components/schemas/ChargingStation"
           maxItems: 1
           type: array
+        layover:
+          $ref: "#/components/schemas/LayoverCondition"
         categories:
           default: []
           description: A list of categories the location belongs to that can be used
@@ -4542,6 +4545,20 @@ components:
       - latitude
       - longitude
       type: object
+    LayoverCondition:
+      default: DISALLOW
+      description: |-
+        Defines whether the location can be used for a layover between consecutive vehicles sharing the same resources.
+        * `WITHOUT_ORDERS` - Two consecutive vehicles that share the same resources can use this location for a layover when no orders are present in the vehicle. In this case, the first vehicle’s route ends at this location and the next vehicle’s route begins here.
+        * `DISALLOW` - This location cannot be used for a layover.
+        At most 100 locations can be used for a layover.
+      enum:
+      - WITHOUT_ORDERS
+      - DISALLOW
+      type: string
+      x-enum-varnames:
+      - WITHOUT_ORDERS
+      - DISALLOW
     LocationRule:
       description: A rule that conditionally modifies location properties.
       example:
@@ -4747,6 +4764,7 @@ components:
           - duration: 1800
             start: 2023-10-03T11:00:00Z
           start: 2023-10-03T12:00:00Z
+          startLocationId: GHENT
           charging:
           - duration: 1800
             locationId: GHENT
@@ -4797,6 +4815,7 @@ components:
             type: PICKUP
           resourceIds:
           - DRIVER-X
+          endLocationId: BRUSSELS
         - breaks:
           - duration: 1800
             start: 2023-10-03T11:00:00Z
@@ -4809,6 +4828,7 @@ components:
           - duration: 1800
             start: 2023-10-03T11:00:00Z
           start: 2023-10-03T12:00:00Z
+          startLocationId: GHENT
           charging:
           - duration: 1800
             locationId: GHENT
@@ -4859,6 +4879,7 @@ components:
             type: PICKUP
           resourceIds:
           - DRIVER-X
+          endLocationId: BRUSSELS
         - breaks:
           - duration: 1800
             start: 2023-10-03T11:00:00Z
@@ -4871,6 +4892,7 @@ components:
           - duration: 1800
             start: 2023-10-03T11:00:00Z
           start: 2023-10-03T12:00:00Z
+          startLocationId: GHENT
           charging:
           - duration: 1800
             locationId: GHENT
@@ -4921,6 +4943,7 @@ components:
             type: PICKUP
           resourceIds:
           - DRIVER-X
+          endLocationId: BRUSSELS
         - breaks:
           - duration: 1800
             start: 2023-10-03T11:00:00Z
@@ -4933,6 +4956,7 @@ components:
           - duration: 1800
             start: 2023-10-03T11:00:00Z
           start: 2023-10-03T12:00:00Z
+          startLocationId: GHENT
           charging:
           - duration: 1800
             locationId: GHENT
@@ -4983,6 +5007,7 @@ components:
             type: PICKUP
           resourceIds:
           - DRIVER-X
+          endLocationId: BRUSSELS
         - breaks:
           - duration: 1800
             start: 2023-10-03T11:00:00Z
@@ -4995,6 +5020,7 @@ components:
           - duration: 1800
             start: 2023-10-03T11:00:00Z
           start: 2023-10-03T12:00:00Z
+          startLocationId: GHENT
           charging:
           - duration: 1800
             locationId: GHENT
@@ -5045,6 +5071,7 @@ components:
             type: PICKUP
           resourceIds:
           - DRIVER-X
+          endLocationId: BRUSSELS
         metadata:
           name: name
           priority: 0
@@ -6311,6 +6338,7 @@ components:
               extraFixed: 0.10246457001441578
             fixed: 102.5
             perVehicle: 102.5
+            perLayover: 50
           minimumBufferDuration: 3600
           id: DRIVER-X
           categories:
@@ -6341,6 +6369,7 @@ components:
               extraFixed: 0.10246457001441578
             fixed: 102.5
             perVehicle: 102.5
+            perLayover: 50
           minimumBufferDuration: 3600
           id: DRIVER-X
           categories:
@@ -6371,6 +6400,7 @@ components:
               extraFixed: 0.10246457001441578
             fixed: 102.5
             perVehicle: 102.5
+            perLayover: 50
           minimumBufferDuration: 3600
           id: DRIVER-X
           categories:
@@ -6401,6 +6431,7 @@ components:
               extraFixed: 0.10246457001441578
             fixed: 102.5
             perVehicle: 102.5
+            perLayover: 50
           minimumBufferDuration: 3600
           id: DRIVER-X
           categories:
@@ -6431,6 +6462,7 @@ components:
               extraFixed: 0.10246457001441578
             fixed: 102.5
             perVehicle: 102.5
+            perLayover: 50
           minimumBufferDuration: 3600
           id: DRIVER-X
           categories:
@@ -6500,6 +6532,7 @@ components:
           id: LOCATION-123
           categories:
           - GERMANY
+          layover: DISALLOW
           longitude: 3.8068358460359364
         - stopProperties:
             preparationDuration: 900
@@ -6558,6 +6591,7 @@ components:
           id: LOCATION-123
           categories:
           - GERMANY
+          layover: DISALLOW
           longitude: 3.8068358460359364
         - stopProperties:
             preparationDuration: 900
@@ -6616,6 +6650,7 @@ components:
           id: LOCATION-123
           categories:
           - GERMANY
+          layover: DISALLOW
           longitude: 3.8068358460359364
         - stopProperties:
             preparationDuration: 900
@@ -6674,6 +6709,7 @@ components:
           id: LOCATION-123
           categories:
           - GERMANY
+          layover: DISALLOW
           longitude: 3.8068358460359364
         - stopProperties:
             preparationDuration: 900
@@ -6732,6 +6768,7 @@ components:
           id: LOCATION-123
           categories:
           - GERMANY
+          layover: DISALLOW
           longitude: 3.8068358460359364
         orders:
           pickupDeliveries:
@@ -8473,7 +8510,8 @@ components:
         loadingIncompatibilities:
           default: []
           description: A list of constraints that prevent orders to be loaded or unloaded
-            while other orders are loaded in the vehicle.
+            while other orders are loaded in the vehicle or in a compartment of a
+            vehicle.
           items:
             $ref: "#/components/schemas/OrderLoadingIncompatibilityConstraint"
           maxItems: 1000
@@ -9588,6 +9626,7 @@ components:
             extraFixed: 0.10246457001441578
           fixed: 102.5
           perVehicle: 102.5
+          perLayover: 50
         minimumBufferDuration: 3600
         id: DRIVER-X
         categories:
@@ -9679,6 +9718,7 @@ components:
           extraFixed: 0.10246457001441578
         fixed: 102.5
         perVehicle: 102.5
+        perLayover: 50
       properties:
         fixed:
           default: 0
@@ -9692,6 +9732,15 @@ components:
           default: 0
           description: The cost charged for each vehicle that uses this resource.
           example: 102.5
+          format: double
+          minimum: 0
+          type: number
+        perLayover:
+          default: 0
+          description: The cost charged when a layover occurs between consecutive
+            vehicles sharing this resource. This cost is weighed against the cost
+            for these vehicles to end and start at their provided start and end locations.
+          example: 50
           format: double
           minimum: 0
           type: number
@@ -10268,6 +10317,7 @@ components:
         - duration: 1800
           start: 2023-10-03T11:00:00Z
         start: 2023-10-03T12:00:00Z
+        startLocationId: GHENT
         charging:
         - duration: 1800
           locationId: GHENT
@@ -10318,6 +10368,7 @@ components:
           type: PICKUP
         resourceIds:
         - DRIVER-X
+        endLocationId: BRUSSELS
       properties:
         vehicleId:
           description: The unique identifier of the vehicle that is used to execute
@@ -10344,6 +10395,28 @@ components:
             Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before `1970-01-01T00:00:00+00:00` nor after `2037-12-31T23:59:59+00:00`. The date must provide an offset to UTC.
           example: 2023-10-03T12:00:00Z
           format: date-time
+          type: string
+        startLocationId:
+          description: "The unique identifier of the location where the route starts.\
+            \ This must either be the provided start location of the vehicle, the\
+            \ location of the first stop when the vehicle has no fixed start location\
+            \ or a layover location. When omitted, the location will be automatically\
+            \ inferred, assuming a layover does not occur before this route."
+          example: GHENT
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
+          type: string
+        endLocationId:
+          description: "The unique identifier of the location where the route ends.\
+            \ This must either be the provided end location of the vehicle, the location\
+            \ of the last stop when the vehicle has no fixed end location or a layover\
+            \ location. When omitted, the location will be automatically inferred,\
+            \ assuming a layover does not occur after this route."
+          example: BRUSSELS
+          maxLength: 36
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         tasks:
           default: []
@@ -10969,7 +11042,8 @@ components:
         loadingIncompatibilities:
           default: []
           description: A list of constraints that prevent tasks to be loaded or unloaded
-            depending on which other orders are loaded in the vehicle.
+            depending on which other orders are loaded in the vehicle or in a compartment
+            of a vehicle.
           items:
             $ref: "#/components/schemas/TaskLoadingIncompatibilityConstraint"
           maxItems: 1000
@@ -11031,9 +11105,9 @@ components:
           pattern: "^[a-zA-Z0-9_-]{1,36}$"
           type: string
         forbiddenTaskCategory:
-          description: Tasks belonging to this category cannot be executed while the
-            constraint applies. The constraint will be ignored when no task belongs
-            to this category.
+          description: Tasks belonging to this category cannot be loaded or unloaded
+            while the constraint applies. The constraint will be ignored when no task
+            belongs to this category.
           example: BIG_BOX
           maxLength: 36
           minLength: 1

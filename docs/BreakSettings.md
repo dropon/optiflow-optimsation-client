@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Working** | Pointer to [**[]WorkingBreakSettings**](WorkingBreakSettings.md) | A list of restrictions that specify how long the driver of the vehicle may work without taking a break. All the time spent during a route is considered working time except for waiting time and break time. | [optional] [default to {}]
-**Driving** | Pointer to [**[]DrivingBreakSettings**](DrivingBreakSettings.md) | A list of restrictions that specify how long the driver of the vehicle may drive without taking a break of at least the specified duration. | [optional] [default to {}]
+**Working** | Pointer to [**[]WorkingBreakSettings**](WorkingBreakSettings.md) | A list of restrictions that specify how long the driver of the vehicle may work without taking a break. All the time spent during a route is considered working time except for waiting time and break time. | [optional] [default to []]
+**Driving** | Pointer to [**[]DrivingBreakSettings**](DrivingBreakSettings.md) | A list of restrictions that specify how long the driver of the vehicle may drive without taking a break of at least the specified duration. | [optional] [default to []]
 
 ## Methods
 

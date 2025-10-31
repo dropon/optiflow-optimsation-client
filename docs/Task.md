@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrderId** | Pointer to **string** | The unique identifier of the order whose pickup or delivery is described by this task. | [optional] 
 **Type** | Pointer to [**TaskType**](TaskType.md) |  | [optional] 
-**Breaks** | Pointer to [**[]Break**](Break.md) | A list of breaks that are scheduled to be taken before the execution of the task. | [optional] [default to {}]
+**Breaks** | Pointer to [**[]Break**](Break.md) | A list of breaks that are scheduled to be taken before the execution of the task. | [optional] [default to []]
 **Start** | Pointer to **time.Time** | The point in time when the execution of the task is scheduled to start. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | [optional] 
 **Duration** | Pointer to **int32** | The scheduled duration [s] for the task to be executed. This is the duration between the start and end of the task. | [optional] 
 **End** | Pointer to **time.Time** | The point in time when the execution of the task is scheduled to end. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | [optional] 
